@@ -1,0 +1,28 @@
+<div class="container px-4 py-5">
+    <div class="row">
+        <div class="col-md-12 pb-2 border-bottom">
+            <h4>European Paintings</h4>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+        <div class="col pt-3" *ngFor="let art of artworks">
+            <div class="card card-custom h-100 overflow-hidden pt-3">
+                <img src={{art.ImageURL}} class="card-img-top">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Object ID: </b>{{art.ObjectID}}</li>
+                        <li class="list-group-item">
+                            <div class="">
+                                <b>Dominant Colour: </b>
+                            </div>
+                            <span class="m-2 circle-div" [ngStyle]="{'background-color': art.DominantColour}" title={{art.DominantColour}}></span></li>
+                        <li class="list-group-item">
+                            <div class=""><b>Palette Colours: </b></div>
+                            <div><span *ngFor="let colorP of art.DominantPrimaryColour" [ngStyle]="{'background-color': colorP}" class="m-2 circle-div"></span></div>
+                        </li>
+                      </ul>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
