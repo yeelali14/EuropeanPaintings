@@ -103,7 +103,7 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["a script"]
           }
         }
       }
