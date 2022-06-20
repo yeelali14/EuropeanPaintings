@@ -13,6 +13,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ##Elad's history:
 I was born in 1990
+In Petah Tikva
 
 ## Further help
 
@@ -44,19 +45,7 @@ Well I can see behind the curtain (I can see, yeah yeah)
 The wheels are cranking, turning, so on the way we're working
 Towards a goal, that's non existent
 It's not existent, but we just keep believing
-And the worst part is
-Before it gets any better
-We're headed for a cliff
-And in the free fall I will realize
-I'm better off when I hit the bottom
-I wanna know what it'd be like
-To find perfection in my pride
-To see nothing in the light
-I'll turn it off
-In all my spite
-In all my spite
-I'll turn it off
-Just turn it off
+A
 Again
 Again
 And the worst part is
