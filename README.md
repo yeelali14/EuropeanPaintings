@@ -12,7 +12,44 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 4) Navigate to `http://localhost:4200/`. The app will automatically reload.
 
 ##Elad's history:
-I was born in 1990
+Jesus FUCK
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be likeI scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be likeI scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be likeI scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be likeI scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be likeI scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be likeI scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+JESUS
 
 ## Further help
 
