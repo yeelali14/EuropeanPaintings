@@ -67,3 +67,124 @@ Before it gets any better
 We're headed for a cliff
 And in the free fall I will realize
 I'm better off when I hit the bottom
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+
+I scraped my knees while I was praying
+And found a demon in my safest haven, seems like
+It's getting harder to believe in anything
+Then just to get lost in all my selfish thoughts
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
