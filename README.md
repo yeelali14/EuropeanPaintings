@@ -12,7 +12,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 4) Navigate to `http://localhost:4200/`. The app will automatically reload.
 
 ##Elad's history:
-I was born in 1990
+I was born in 1990 
+In the big city
+Of
+Petah Tikva!
 
 ## Further help
 
