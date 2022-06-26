@@ -69,3 +69,35 @@ Before it gets any better
 We're headed for a cliff
 And in the free fall I will realize
 I'm better off when I hit the bottom
+
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+And the worst part is
+Before it gets any better
+
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+And the worst part is
+Before it gets any better
+
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+And the worst part is
+Before it gets any better
+
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+And the worst part is
+Before it gets any better
