@@ -13,6 +13,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ##Elad's history:
 I was born in 1990
+fdgkjhgfdlkj
+
+
+lkjdfghgfdlskjhdfgklj
+
+
+lk;dfghkldfgjshdfsglkjhdfkgsl
+
+
+lkdjfghfdgkjlhfdgskljhdfgslkjhfdgslkjfdgshlkdfgshlkjdfs
+
+
+gdf;ihdfgkgdfskljhdfsglkhdfglwerpo[weqrkjlgfj;vakncpawenoejr
 
 ## Further help
 
