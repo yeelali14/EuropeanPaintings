@@ -13,6 +13,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ##Elad's history:
 I was born in 1990
+In a city called Petah Tikva
+
+It's been 5 years since I left Petah Tikva and moved to Tel Aviv.
+
+I served 6 years in the army,
 
 ## Further help
 
