@@ -13,7 +13,39 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ##Elad's history:
 I was born in 1990
+And in the free fall I will realize
+I'm better off when I hit the bottom
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+Just turn it off
+Again
 
+And in the free fall I will realize
+I'm better off when I hit the bottom
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+Just turn it off
+AgainAnd in the free fall I will realize
+I'm better off when I hit the bottom
+I wanna know what it'd be like
+To find perfection in my pride
+To see nothing in the light
+I'll turn it off
+In all my spite
+In all my spite
+I'll turn it off
+Just turn it off
+Again
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
