@@ -1,0 +1,78 @@
+name: gitStream
+'on':
+  - pull_request
+jobs:
+  gitstream:
+    runs-on: ubuntu-latest
+    outputs:
+      lane_add_tests_active: ${{ steps.checks.outputs.lane_add_tests_active }}
+      lane_small_active: ${{ steps.checks.outputs.lane_small_active }}
+      lane_docs_update_active: ${{ steps.checks.outputs.lane_docs_update_active }}
+      gate_add_shaked_as_reviewer_passed: ${{ steps.checks.outputs.gate_add_shaked_as_reviewer_passed }}
+    steps:
+      - run: echo "getting the repo code"
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Run gitstream checks
+        uses: linear-b/actions/gitstream@v1
+        id: checks
+        with:
+          repo: ${{ github.repository }}
+          branch: ${{ github.head_ref }}
+          use_cache: true
+  lane_add_tests:
+    needs: gitstream
+    if: needs.gitstream.outputs.lane_add_tests_active == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: hmarr/auto-approve-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: add_tests
+          token: ${{ secrets.GITHUB_TOKEN }}
+  lane_small:
+    needs: gitstream
+    if: needs.gitstream.outputs.lane_small_active == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: xsmall
+  lane_docs_update:
+    needs: gitstream
+    if: needs.gitstream.outputs.lane_docs_update_active == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: hmarr/auto-approve-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: add_tests
+          token: ${{ secrets.GITHUB_TOKEN }}
+  gate_add_shaked_as_reviewer:
+    needs: gitstream
+    if: needs.gitstream.outputs.gate_add_shaked_as_reviewer_passed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: hmarr/auto-approve-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: add_tests
+          token: ${{ secrets.GITHUB_TOKEN }}
