@@ -14,6 +14,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ##Elad's history:
 I was born in 1990
 
+I was born in 1990
+I was born in 1990I was born in 1990I was born in 1990I was born in 1990
+
+
+
+
+I was born in 1990I was born in 1990I was born in 1990I was born in 1990I was born in 1990
+
+
+
+
+gfjdfhslkjdfshlkjfd
+
+
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
@@ -57,7 +72,11 @@ In all my spite
 In all my spite
 I'll turn it off
 Just turn it off
-Again
+Again\
+gfdkljhdfglkgdfsklhjgfd
+
+
+lkjdagadsflkgdsaflhadfs
 Again
 And the worst part is
 Before it gets any better
