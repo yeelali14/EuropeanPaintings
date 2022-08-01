@@ -1,5 +1,5 @@
 manifest:
-  version: 1.2
+  version: 1.0
 checks:
   content:
     is:
@@ -22,19 +22,19 @@ lanes:
     rules:
       - rule: {{ checks.content.is.tests_only }}
     actions: 
-      - exec: hmarr/auto-approve-action@v2
+      - uses: hmarr/auto-approve-action@v2
         with:
-          github-token: ${{'{{'}} secrets.GITHUB_TOKEN {{'}}'}}
-      - exec: actions-ecosystem/action-add-labels@v1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: add_tests
-          token: ${{'{{'}} secrets.GITHUB_TOKEN {{'}}'}}
+          token: ${{ secrets.GITHUB_TOKEN }}
   small:
     on: [pull_request]
     rules:
       - rule: {{ checks.size.is.xsmall }}
     actions: 
-      - exec: actions-ecosystem/action-add-labels@v1
+      - uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: xsmall
   docs_update:
@@ -42,23 +42,23 @@ lanes:
     rules:
       - rule: {{ checks.content.is.docs_only }}
     actions: 
-      - exec: hmarr/auto-approve-action@v2
+      - uses: hmarr/auto-approve-action@v2
         with:
-          github-token: ${{'{{'}} secrets.GITHUB_TOKEN {{'}}'}}
-      - exec: actions-ecosystem/action-add-labels@v1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: add_tests
-          token: ${{'{{'}} secrets.GITHUB_TOKEN {{'}}'}}
+          token: ${{ secrets.GITHUB_TOKEN }}
 gates:
   add_shaked_as_reviewer:
     on: [pull_request]
     rules:
       - rule: {{ checks.content.is.docs_only }}
     actions: 
-      - exec: hmarr/auto-approve-action@v2
+      - uses: hmarr/auto-approve-action@v2
         with:
-          github-token: ${{'{{'}} secrets.GITHUB_TOKEN {{'}}'}}
-      - exec: actions-ecosystem/action-add-labels@v1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: add_tests
-          token: ${{'{{'}} secrets.GITHUB_TOKEN {{'}}'}}
+          token: ${{ secrets.GITHUB_TOKEN }}
