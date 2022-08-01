@@ -39,11 +39,11 @@ jobs:
     steps:
       - uses: hmarr/auto-approve-action@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: $
       - uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: add_tests
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: $
   lane_small:
     needs: gitstream
     if: needs.gitstream.outputs.lane_small_active == 'true'
@@ -65,11 +65,11 @@ jobs:
     steps:
       - uses: hmarr/auto-approve-action@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: $
       - uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: add_tests
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: $
   gate_add_shaked_as_reviewer:
     needs: gitstream
     if: needs.gitstream.outputs.gate_add_shaked_as_reviewer_passed == 'true'
@@ -80,8 +80,8 @@ jobs:
     steps:
       - uses: hmarr/auto-approve-action@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: $
       - uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: add_tests
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: $
