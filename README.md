@@ -86,3 +86,4 @@ father
 child 
 child commit 2
 child commit 3
+child commit 4
