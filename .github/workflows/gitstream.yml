@@ -1,87 +1,41 @@
-name: gitStream
-'on':
-  - pull_request
+name: gitstream Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      client_payload:
+          description: The Client payload
+          required: true
+      full_repository:
+          description: the repository name include the owner in `owner/repo_name` format
+          required: true
+      head_ref:
+          description: the head sha
+          required: true
+      base_ref:
+          description: the base ref 
+          required: true
+      installation_id:
+          description: the installation id
+          required: false
+
 jobs:
-  gitstream:
+  continuous-merge-rules:
     runs-on: ubuntu-latest
-    outputs:
-      lane_add_tests_active: ${{ steps.checks.outputs.lane_add_tests_active }}
-      lane_small_active: ${{ steps.checks.outputs.lane_small_active }}
-      lane_docs_update_active: ${{ steps.checks.outputs.lane_docs_update_active }}
-      gate_add_shaked_as_reviewer_passed: ${{ steps.checks.outputs.gate_add_shaked_as_reviewer_passed }}
+    name: CMR
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v3
+      - name: Clone gitstream RE
+        uses: actions/checkout@v2
         with:
-          path: code
-      - name: Checkout default branch to process the repo .cm file
-        uses: actions/checkout@v3
+          repository: linear-b/gitstream-github-action
+          ref: develop
+          token: ${{ secrets.CI_USER_GIT_TOKEN }}
+      - name: Evaluate Rules
+        uses: ./
+        id: rules-engine
         with:
-          ref: ${{ github.event.repository.default_branch }}
-          path: cm
-      - name: Run gitstream checks
-        uses: linear-b/actions/gitstream@v2
-        id: checks
-        with:
-          repo: ${{ github.repository }}
-          branch: ${{ github.head_ref }}
-          base: ${{ github.base_ref }}
-          use_cache: false
-          source_path: code
-          cm_path: cm
-  lane_add_tests:
-    needs: gitstream
-    if: needs.gitstream.outputs.lane_add_tests_active == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    steps:
-      - uses: hmarr/auto-approve-action@v2
-        with:
-          github-token: $
-      - uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: add_tests
-          token: $
-  lane_small:
-    needs: gitstream
-    if: needs.gitstream.outputs.lane_small_active == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    steps:
-      - uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: xsmall
-  lane_docs_update:
-    needs: gitstream
-    if: needs.gitstream.outputs.lane_docs_update_active == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    steps:
-      - uses: hmarr/auto-approve-action@v2
-        with:
-          github-token: $
-      - uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: add_tests
-          token: $
-  gate_add_shaked_as_reviewer:
-    needs: gitstream
-    if: needs.gitstream.outputs.gate_add_shaked_as_reviewer_passed == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    steps:
-      - uses: hmarr/auto-approve-action@v2
-        with:
-          github-token: $
-      - uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: add_tests
-          token: $
+          full_repository: ${{ github.event.inputs.full_repository }}
+          head_ref: ${{ github.event.inputs.head_ref }}
+          base_ref: ${{ github.event.inputs.base_ref }}
+          client_payload: ${{ github.event.inputs.client_payload }}
+          installation_id: ${{ github.event.inputs.installation_id }}
