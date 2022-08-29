@@ -6,6 +6,7 @@ checks:
       asset_only: {{ files | allExtensions(['png', 'svg', 'jpg', 'gif', 'css']) }}
       docs_only: {{ files | allExtensions(['md', 'txt']) }}
       tests_only: {{ files | allTests }}
+      necessary_only: {{ files | filterRegex(['php']) | allExtensions(['txt']) }}
   size:
     is:
       xsmall: {{ branch.diff.size < 20 }}
@@ -15,50 +16,26 @@ checks:
   code_includes:
     is:
       analytics: {{ source.diff.content | grep('NotifyAmplitude') }}
-      service: {{ files | regex('service') }}
+      service: {{ files | allPassRegex('service') }}
 lanes:
-  add_tests:
-    on: [pull_request]
-    rules:
-      - rule: {{ checks.content.is.tests_only }}
-    actions: 
-      - uses: hmarr/auto-approve-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: add_tests
-          token: ${{ secrets.GITHUB_TOKEN }}
-  small:
-    on: [pull_request]
-    rules:
-      - rule: {{ checks.size.is.xsmall }}
-    actions: 
-      - uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: xsmall
   docs_update:
     on: [pull_request]
     rules:
       - rule: {{ checks.content.is.docs_only }}
     actions: 
-      - uses: hmarr/auto-approve-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: add_tests
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name : addReviewer
+        type: builtIn
+        attributes:
+          - contributor: shakedZohar
+      - name: actions-ecosystem/action-add-labels@v1
+        type: githubAction
 gates:
-  add_shaked_as_reviewer:
+  necessary_only:
     on: [pull_request]
     rules:
-      - rule: {{ checks.content.is.docs_only }}
+      - rule: {{ checks.content.is.necessary_only }}
     actions: 
-      - uses: hmarr/auto-approve-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: add_tests
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name : hmarr/auto-approve-action@v2
+        type: githubAction
+      - name: actions-ecosystem/action-add-labels@v1
+        type: githubAction
