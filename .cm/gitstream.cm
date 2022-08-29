@@ -3,10 +3,11 @@ manifest:
 checks:
   content:
     is:
-      asset_only: {{ files | allExtensions(['png', 'svg', 'jpg', 'gif', 'css']) }}
-      docs_only: {{ files | allExtensions(['md', 'txt']) }}
+      asset_only: {{ files | allImages }}
+      docs_only: {{ files | allDocs }}
       tests_only: {{ files | allTests }}
       necessary_only: {{ files | filterRegex(['php']) | allExtensions(['txt']) }}
+      has_gitstream_file: {{ files | includes(['gitstream.cm']) }}
   size:
     is:
       xsmall: {{ branch.diff.size < 20 }}
@@ -15,27 +16,50 @@ checks:
       large: {{ branch.diff.size >= 200 }}
   code_includes:
     is:
-      analytics: {{ source.diff.content | grep('NotifyAmplitude') }}
       service: {{ files | allPassRegex('service') }}
-lanes:
+automations:
   docs_update:
-    on: [pull_request]
-    rules:
-      - rule: {{ checks.content.is.docs_only }}
-    actions: 
-      - name : addReviewer
-        type: builtIn
-        attributes:
-          - contributor: shakedZohar
-      - name: actions-ecosystem/action-add-labels@v1
-        type: githubAction
-gates:
+    if:
+      - {{ checks.content.is.docs_only }}
+      - {{ checks.code_includes.is.service }}
+    run: 
+      - action : set-required-reviewers
+        engine: gitstream
+        args:
+          required_approvals: 2
+      - action: add-labels
+        engine: gitstream
+        args:
+          labels: ["label"]
+  has_gitstream:
+    if:
+      - {{ checks.content.is.has_gitstream_file }}
+    run: 
+      - action: add-labels
+        engine: gitstream
+        args:
+          labels: ["label"]
   necessary_only:
-    on: [pull_request]
-    rules:
-      - rule: {{ checks.content.is.necessary_only }}
-    actions: 
-      - name : hmarr/auto-approve-action@v2
-        type: githubAction
-      - name: actions-ecosystem/action-add-labels@v1
-        type: githubAction
+    if:
+      - {{ checks.content.is.necessary_only }}
+    run: 
+      - action: add-labels
+        engine: gitstream
+        args:
+          labels: ["label"]
+  asset_only:
+    if:
+      - {{ checks.content.is.asset_only }}
+    run: 
+      - action: add-labels
+        engine: gitstream
+        args:
+          labels: ["label"]
+  tests_only:
+    if:
+      - {{ checks.content.is.tests_only }}
+    run: 
+      - action: add-labels
+        engine: gitstream
+        args:
+          labels: ["label"]
