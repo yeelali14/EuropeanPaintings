@@ -27,7 +27,7 @@ automations:
         engine: gitstream
         args:
           required_approvals: 2
-      - action: add-labels
+      - action: add-labels@v1
         engine: gitstream
         args:
           labels: ["label"]
@@ -35,7 +35,7 @@ automations:
     if:
       - {{ checks.content.is.has_gitstream_file }}
     run: 
-      - action: add-labels
+      - action: add-labels@v1
         engine: gitstream
         args:
           labels: ["label"]
@@ -43,7 +43,7 @@ automations:
     if:
       - {{ checks.content.is.necessary_only }}
     run: 
-      - action: add-labels
+      - action: add-labels@v1
         engine: gitstream
         args:
           labels: ["label"]
@@ -51,7 +51,7 @@ automations:
     if:
       - {{ checks.content.is.asset_only }}
     run: 
-      - action: add-labels
+      - action: add-labels@v1
         engine: gitstream
         args:
           labels: ["label"]
@@ -59,7 +59,7 @@ automations:
     if:
       - {{ checks.content.is.tests_only }}
     run: 
-      - action: add-labels
+      - action: add-labels@v1
         engine: gitstream
         args:
           labels: ["label"]
