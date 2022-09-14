@@ -3,11 +3,21 @@ manifest:
 checks:
   content:
     is:
-      asset_only: {{ files | allImages }}
+      images_only: {{ files | allImages }}
       docs_only: {{ files | allDocs }}
       tests_only: {{ files | allTests }}
-      necessary_only: {{ files | filterRegex(['php']) | allExtensions(['txt']) }}
-      has_gitstream_file: {{ files | includes(['gitstream.cm']) }}
+      no_php: {{ files | filterListRegex(['php']) | length === 0 }}
+      has_gitstream_file: {{ files | filterList(['gitstream.cm']) | length > 0}}
+      small_pr: {{ branch | estimatedReviewTime < 5 }}
+      types_only: {{ files | isEveryInListRegex(['.type']) }}
+      has_types: {{ files | isSomeInList(['.type']) }}
+      has_consts: {{ files | isSomeInListRegex(['.const']) }}
+      has_index_file: {{ files | isStringIncludes(['index']) }}
+      has_md_file: {{ files | isStringIncludesRegex(['.md']) }}
+      assets_only: {{ files | isEveryInList(['png', 'jpg', 'svg']) }}
+      js_extensions_files: {{ files | extractExtensions(['.js']) }}
+      has_js_files_only: {{ files | isEveryExtensionRegex(['.js']) }}
+      formatting: {{ source.diff.files | isFormattingChange }}
   size:
     is:
       xsmall: {{ branch.diff.size < 20 }}
@@ -18,48 +28,11 @@ checks:
     is:
       service: {{ files | allPassRegex('service') }}
 automations:
-  docs_update:
+  images_only:
     if:
-      - {{ checks.content.is.docs_only }}
-      - {{ checks.code_includes.is.service }}
+      - {{ checks.content.is.images_only }}
     run: 
-      - action : set-required-reviewers
-        engine: gitstream
-        args:
-          required_approvals: 2
-      - action: add-labels@v1
-        engine: gitstream
-        args:
-          labels: ["label"]
-  has_gitstream:
-    if:
-      - {{ checks.content.is.has_gitstream_file }}
-    run: 
-      - action: add-labels@v1
-        engine: gitstream
-        args:
-          labels: ["label"]
-  necessary_only:
-    if:
-      - {{ checks.content.is.necessary_only }}
-    run: 
-      - action: add-labels@v1
-        engine: gitstream
-        args:
-          labels: ["label"]
-  asset_only:
-    if:
-      - {{ checks.content.is.asset_only }}
-    run: 
-      - action: add-labels@v1
-        engine: gitstream
-        args:
-          labels: ["label"]
-  tests_only:
-    if:
-      - {{ checks.content.is.tests_only }}
-    run: 
-      - action: add-labels@v1
+      - action: add-labels
         engine: gitstream
         args:
           labels: ["label"]
