@@ -28,11 +28,11 @@ checks:
     is:
       service: {{ files | allPassRegex('service') }}
 automations:
-  images_only:
+  docs_only:
     if:
-      - {{ checks.content.is.images_only }}
+      - {{ checks.content.is.docs_only }}
     run: 
-      - action: add-labels
+      - action: add-labels@v1
         engine: gitstream
         args:
           labels: ["label"]
