@@ -37,4 +37,17 @@ automations:
         args:
           labels: ["label"]
       - action: add-comment@v1
-        comment: docs only          
+        args:
+          comment: docs only
+  docs_and_images:
+    if:
+      - {{ checks.content.is.docs_only }}
+      - {{ checks.content.is.small_pr }}
+    run: 
+      - action: add-labels@v1
+        engine: gitstream
+        args:
+          labels: ["label"]
+      - action: add-comment@v1
+        args:
+          comment: docs only            
