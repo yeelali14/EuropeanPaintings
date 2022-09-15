@@ -36,3 +36,5 @@ automations:
         engine: gitstream
         args:
           labels: ["label"]
+      - action: add-comment@v1
+        comment: docs only          
