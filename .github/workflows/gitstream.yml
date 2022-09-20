@@ -24,12 +24,12 @@ on:
           description: the resolver url to pass results to
           required: true
       resolver_token:
-          description: Optional resolver token for resulver service
+          description: Optional resolver token for resolver service
           required: false
           default: ''
 
 jobs:
-  continuous-merge-rules:
+  gitStream:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     name: gitStream workflow automation
