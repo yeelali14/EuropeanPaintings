@@ -1,0 +1,53 @@
+manifest:
+  version: 1.0
+checks:
+  content:
+    is:
+      images_only: {{ files | allImages }}
+      docs_only: {{ files | allDocs }}
+      tests_only: {{ files | allTests }}
+      no_php: {{ files | filterListRegex(['php']) | length === 0 }}
+      has_gitstream_file: {{ files | filterList(['gitstream.cm']) | length > 0}}
+      small_pr: {{ branch | estimatedReviewTime < 5 }}
+      types_only: {{ files | isEveryInListRegex(['.type']) }}
+      has_types: {{ files | isSomeInList(['.type']) }}
+      has_consts: {{ files | isSomeInListRegex(['.const']) }}
+      has_index_file: {{ files | isStringIncludes(['index']) }}
+      has_md_file: {{ files | isStringIncludesRegex(['.md']) }}
+      assets_only: {{ files | isEveryInList(['png', 'jpg', 'svg']) }}
+      js_extensions_files: {{ files | extractExtensions(['.js']) }}
+      has_js_files_only: {{ files | isEveryExtensionRegex(['.js']) }}
+      formatting: {{ source.diff.files | isFormattingChange }}
+  size:
+    is:
+      xsmall: {{ branch.diff.size < 20 }}
+      small_or_less: {{ branch.diff.size < 100 }}
+      medium_or_less: {{ branch.diff.size < 200 }}
+      large: {{ branch.diff.size >= 200 }}
+  code_includes:
+    is:
+      service: {{ files | allPassRegex('service') }}
+automations:
+  docs_only:
+    if:
+      - {{ checks.content.is.docs_only }}
+    run: 
+      - action: add-labels@v1
+        engine: gitstream
+        args:
+          labels: ["label"]
+      - action: add-comment@v1
+        args:
+          comment: docs only
+  docs_and_images:
+    if:
+      - {{ checks.content.is.docs_only }}
+      - {{ checks.content.is.small_pr }}
+    run: 
+      - action: add-labels@v1
+        engine: gitstream
+        args:
+          labels: ["label"]
+      - action: add-comment@v1
+        args:
+          comment: docs only   
