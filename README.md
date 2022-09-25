@@ -82,17 +82,4 @@ And in the free fall I will realize
 I'm better off when I hit the bottom
 
 Lady gaga the queen
-Lady gaga the queen
-Lady gaga the queen
-Lady gaga the queen
-Lady gaga the queen
-Lady gaga the queen
-ddffffffffc
-stageddeffffffeddddsdsddasddsa
-dsdasdadasdsadascs
-yalladdsa
-tagdd
-megadeth
-console.log();
-the killing road 1
 console.log();
