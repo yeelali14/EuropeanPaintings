@@ -33,6 +33,7 @@ export class HttpService {
       // A client-side or network error occured
       console.error('An error occurred:', error.message);
     } else {
+      console.log('else test');
       // The backend returned an unsuccessful response code.
       console.error(
         `Backend returned code ${error.status}, ` +
