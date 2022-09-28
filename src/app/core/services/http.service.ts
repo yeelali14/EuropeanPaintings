@@ -18,6 +18,7 @@ export class HttpService {
 
   get(url: string): Observable<any> {
     console.log('http get');
+    console.log('http get');
     return this.http.get(url, httpOptions)
     .pipe(
       finalize(() => {
