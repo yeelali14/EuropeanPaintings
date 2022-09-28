@@ -17,6 +17,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   get(url: string): Observable<any> {
+    console.log('http get');
     return this.http.get(url, httpOptions)
     .pipe(
       finalize(() => {
