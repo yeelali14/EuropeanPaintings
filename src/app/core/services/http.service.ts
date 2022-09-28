@@ -39,6 +39,7 @@ export class HttpService {
     }
     console.log('http error');
     console.log('http error');
+    console.log('http errorfff');
     return throwError(
       'Something bad happened; please try again later.');
   };
