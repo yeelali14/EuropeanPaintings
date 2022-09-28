@@ -18,6 +18,7 @@ checks:
       js_extensions_files: {{ files | extractExtensions(['.js']) }}
       has_js_files_only: {{ files | isEveryExtensionRegex(['.js']) }}
       formatting: {{ source.diff.files | isFormattingChange }}
+      logs_only: {{ source.diff.files | isEveryLineInFileDiffRegex('console.log') }}
   size:
     is:
       xsmall: {{ branch.diff.size < 20 }}
@@ -28,9 +29,9 @@ checks:
     is:
       service: {{ files | allPassRegex('service') }}
 automations:
-  docs_only:
+  logs_only:
     if:
-      - {{ checks.content.is.docs_only }}
+      - {{ checks.content.is.logs_only }}
     run: 
       - action: add-labels@v1
         engine: gitstream
@@ -38,16 +39,4 @@ automations:
           labels: ["label"]
       - action: add-comment@v1
         args:
-          comment: docs only
-  docs_and_images:
-    if:
-      - {{ checks.content.is.docs_only }}
-      - {{ checks.content.is.small_pr }}
-    run: 
-      - action: add-labels@v1
-        engine: gitstream
-        args:
-          labels: ["label"]
-      - action: add-comment@v1
-        args:
-          comment: docs only  
+          comment: logs only  
