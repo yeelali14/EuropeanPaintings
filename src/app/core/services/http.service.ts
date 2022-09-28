@@ -28,18 +28,16 @@ export class HttpService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    console.log('http error');
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occured
       console.error('An error occurred:', error.message);
     } else {
-      console.log('else test');
-      console.log('http');
       // The backend returned an unsuccessful response code.
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.message}`);
     }
+    console.log('http error');
     return throwError(
       'Something bad happened; please try again later.');
   };
