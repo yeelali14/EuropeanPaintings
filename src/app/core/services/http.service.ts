@@ -38,6 +38,7 @@ export class HttpService {
         `body was: ${error.message}`);
     }
     console.log('http error');
+    console.log('http error');
     return throwError(
       'Something bad happened; please try again later.');
   };
