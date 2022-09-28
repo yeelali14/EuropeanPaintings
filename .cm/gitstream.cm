@@ -18,7 +18,7 @@ checks:
       js_extensions_files: {{ files | extractExtensions(['.js']) }}
       has_js_files_only: {{ files | isEveryExtensionRegex(['.js']) }}
       formatting: {{ source.diff.files | isFormattingChange }}
-      logs_only: {{ source.diff.files | isEveryLineInFileDiffRegex('^\\+.*console\\.log') }}
+      logs_only: {{ source.diff.files | isEveryLineInFileDiffRegex('\\+.*console\\.log') }}
   size:
     is:
       xsmall: {{ branch.diff.size < 20 }}
