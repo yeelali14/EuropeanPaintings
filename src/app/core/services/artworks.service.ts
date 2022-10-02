@@ -36,7 +36,6 @@ export class ArtworksService {
   getImageColour(artwork: any) {
     console.log('getImageColour');
     console.log('getImageColour');
-    console.log('getImageColour');
     let rgb = [];
     let palette = [];
     let paletteColours = [];
@@ -71,6 +70,7 @@ export class ArtworksService {
 
 
 function waitForImageToLoad(imageElement) {
+  console.log('getImageColour');
   return new Promise(resolve => {
     imageElement.onload = resolve;
   })
