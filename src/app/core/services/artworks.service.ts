@@ -71,6 +71,7 @@ export class ArtworksService {
 
 function waitForImageToLoad(imageElement) {
   //cm test
+  //dsdsad
   console.log('getImageColour');
   return new Promise(resolve => {
     imageElement.onload = resolve;
