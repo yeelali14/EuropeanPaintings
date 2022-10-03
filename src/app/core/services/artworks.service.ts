@@ -34,7 +34,7 @@ export class ArtworksService {
   getImageColour(artwork: any) {
     //fsdfsdf
     //fwefewff
-    ///ffdsfsd
+    ///ffdsfsddfgdfgdfg
     let rgb = [];
     let palette = [];
     let paletteColours = [];
