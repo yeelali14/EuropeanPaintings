@@ -70,6 +70,7 @@ export class ArtworksService {
 
 
 function waitForImageToLoad(imageElement) {
+  //cm test
   console.log('getImageColour');
   return new Promise(resolve => {
     imageElement.onload = resolve;
