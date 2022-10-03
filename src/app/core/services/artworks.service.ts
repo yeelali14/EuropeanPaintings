@@ -33,6 +33,7 @@ export class ArtworksService {
 
   getImageColour(artwork: any) {
     //TEST
+    //dasdas
     let rgb = [];
     let palette = [];
     let paletteColours = [];
