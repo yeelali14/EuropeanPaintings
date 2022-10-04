@@ -23,6 +23,7 @@ checks:
       logs_only: {{ source.diff.files | isEveryLineInFileDiffRegex('^\\+.*console\\.log') }}
       filter_ts: {{ source.diff.files | filter(attr='new_file', regex='\\.ts$') }}
       filter_diff: {{ source.diff.files | matchDiffLines(regex='^\\+.*console\\.log', ignoreWhiteSpaces=true) | every }}
+      new_handler: {{ source.diff.files | map(attr='new_file') | match('handler.js') | some }}
 # The `automations` section includes a list of automation that applies 
 # to the repo in which gitStream is installed. Each automation has an 
 # `if` key with a list of the necessary assertions, as well as a `run` key with a
@@ -62,3 +63,14 @@ automations:
       - action: add-comment@v1
         args:
           comment: diff has only console logs changes
+  new_handler:
+    if:
+      - {{ checks.content.is.new_handler }}
+    run: 
+      - action: add-labels@v1
+        engine: gitstream
+        args:
+          labels: ["handler"]
+      - action: add-comment@v1
+        args:
+          comment: new handler added
