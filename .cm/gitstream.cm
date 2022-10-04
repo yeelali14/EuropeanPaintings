@@ -22,6 +22,7 @@ checks:
       formatting: {{ source.diff.files | isFormattingChange }}
       logs_only: {{ source.diff.files | isEveryLineInFileDiffRegex('^\\+.*console\\.log') }}
       filter_ts: {{ source.diff.files | filter(attr='new_file', regex='\\.ts$') }}
+      filter_diff: {{ source.diff.files | matchDiffLines(regex='^\\+.*console\\.log', ignoreEmptyLines=true) | every }}
 # The `automations` section includes a list of automation that applies 
 # to the repo in which gitStream is installed. Each automation has an 
 # `if` key with a list of the necessary assertions, as well as a `run` key with a
@@ -50,3 +51,14 @@ automations:
       - action: add-comment@v1
         args:
           comment: ts only 
+  filter_diff:
+    if:
+      - {{ checks.content.is.filter_diff }}
+    run: 
+      - action: add-labels@v1
+        engine: gitstream
+        args:
+          labels: ["filter-diff"]
+      - action: add-comment@v1
+        args:
+          comment: diff has only console logs changes 
