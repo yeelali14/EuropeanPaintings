@@ -67,6 +67,7 @@ export class ArtworksService {
 
 
 function waitForImageToLoad(imageElement) {
+  console.log('test');
   return new Promise(resolve => {
     imageElement.onload = resolve;
   })
