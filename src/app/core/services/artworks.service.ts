@@ -33,6 +33,7 @@ export class ArtworksService {
 
 
   getImageColour(artwork: any) {
+    console.log('test');
     let rgb = [];
     let palette = [];
     let paletteColours = [];
