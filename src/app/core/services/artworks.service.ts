@@ -32,6 +32,7 @@ export class ArtworksService {
 
 
   getImageColour(artwork: any) {
+    console.log('test matchDiffLines');
     let rgb = [];
     let palette = [];
     let paletteColours = [];
