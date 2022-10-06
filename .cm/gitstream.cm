@@ -22,8 +22,8 @@ checks:
       formatting: {{ source.diff.files | isFormattingChange }}
       logs_only: {{ source.diff.files | isEveryLineInFileDiffRegex('^\\+.*console\\.log') }}
       filter_ts: {{ source.diff.files | filter(attr='new_file', regex='\\.ts$') }}
-      filter_diff_only: {{ source.diff.files | matchDiffLines(regex='^\\+.*console\\.log', ignoreWhiteSpaces=true) | every }}
-      filter_diff: {{ source.diff.files | matchDiffLines(regex='^\\+.*console\\.log', ignoreWhiteSpaces=true) | some }}
+      logs_diff_only: {{ source.diff.files | matchDiffLines(regex='^\\+.*console\\.log', ignoreWhiteSpaces=true) | every }}
+      some_logs_diff: {{ source.diff.files | matchDiffLines(regex='^\\+.*console\\.log', ignoreWhiteSpaces=true) | some }}
       new_handler: {{ source.diff.files | map(attr='new_file') | match('handler.js') | some }}
 # The `automations` section includes a list of automation that applies 
 # to the repo in which gitStream is installed. Each automation has an 
@@ -53,9 +53,9 @@ automations:
       - action: add-comment@v1
         args:
           comment: ts only 
-  filter_diff:
+  some_logs_diff:
     if:
-      - {{ checks.content.is.filter_diff }}
+      - {{ checks.content.is.some_logs_diff }}
     run: 
       - action: add-labels@v1
         engine: gitstream
@@ -63,7 +63,7 @@ automations:
           labels: ["filter-diff"]
       - action: add-comment@v1
         args:
-          comment: diff has only console logs changes
+          comment: diff has some console logs changes
   new_handler:
     if:
       - {{ checks.content.is.new_handler }}
@@ -75,9 +75,9 @@ automations:
       - action: add-comment@v1
         args:
           comment: new handler added
-  filter_diff_only:
+  logs_diff_only:
     if:
-      - {{ checks.content.is.filter_diff_only }}
+      - {{ checks.content.is.logs_diff_only }}
     run: 
       - action: add-labels@v1
         engine: gitstream
