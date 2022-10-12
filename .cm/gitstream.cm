@@ -2,22 +2,18 @@
 
 manifest:
   version: 1.0
-
-# The `automations` section includes a list of automation that applies 
-# to the repository in which gitStream is installed. Each automation has an 
-# `if` key with a list of the necessary assertions, as well as a `run` key with a
-# list of all actions. All the listed assertions need to pass in order 
-# for the following actions to be executed (there is AND relation between conditions).
-
-# Each automation under the `automations` section is independent of the others. 
-# Every time a PR is opened or changed, the automation's conditions are evaluated (the `if`). 
-# The actions under `run` are executed one by one if all the conditions pass. 
-
-# Conditions consists of an expression, which are wrapped with double curly braces, and 
-# includes a context variable like `files` and filter functions like `length`. Filters 
-# functions are essentially functions that can be applied to context variables. They are 
-# called with a pipe operator (|) and can take arguments. Read more on https://docs.gitstream.cm
-
+checks:
+  content:
+    is:
+      images_only: {{ files | allImages }}
+      docs_only: {{ files | allDocs }}
+      tests_only: {{ files | allTests }}
+      small_pr: {{ branch | estimatedReviewTime < 5 }}
+      formatting: {{ source.diff.files | isFormattingChange }}
+      filter_ts: {{ source.diff.files | filter(attr='new_file', regex='\\.ts$') }}
+      logs_only_diff: {{ source.diff.files | matchDiffLines(regex='^\\+.*console\\.log', ignoreWhiteSpaces=true) | every }}
+      match_logs: {{ source.diff.files | match(attr='diff', term='console.log') | some }}
+      new_handler: {{ source.diff.files | map(attr='new_file') | match(term='handler.js') | some }}
 automations:
   # This is the name of the review automation. You can use whatever name, a meaningful name 
   # will help to identify it in the future. Each automation name in this file should be unique.
@@ -96,3 +92,11 @@ automations:
         args:
           label: 'short-review'
           color: '#238823'
+  logs_only_diff:
+    if:
+      - {{ checks.content.is.logs_only_diff }}
+    run: 
+      - action: add-labels@v1
+        engine: gitstream
+        args:
+          labels: ["logs-only-diff"]
