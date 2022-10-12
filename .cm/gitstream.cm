@@ -8,7 +8,7 @@ config:
     - package-lock.json
     - openapi.json
     - ui/src/**/*Model.d.ts
-    - *.md
+    - **/*.md
 checks:
   content:
     is:
