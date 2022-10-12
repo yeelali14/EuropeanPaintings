@@ -32,6 +32,7 @@ export class ArtworksService {
 
 
   getImageColour(artwork: any) {
+    console.log('ddd');
     let rgb = [];
     let palette = [];
     let paletteColours = [];
@@ -70,6 +71,7 @@ function waitForImageToLoad(imageElement) {
   //fsdfs
   //fsfsddasdas
   //sljal
+  //dasda
   return new Promise(resolve => {
     imageElement.onload = resolve;
   })
