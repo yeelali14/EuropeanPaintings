@@ -2,13 +2,6 @@
 
 manifest:
   version: 1.0
-config:
-  ignore_files:
-    - 'yarn.lock'
-    - 'package-lock.json'
-    - 'openapi.json'
-    - 'ui/src/**/*Model.d.ts'
-    - '*.md'
 checks:
   content:
     is:
