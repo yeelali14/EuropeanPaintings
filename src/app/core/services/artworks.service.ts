@@ -49,6 +49,8 @@ export class ArtworksService {
     img.crossOrigin = 'Anonymous';
     img.src = googleProxyURL + encodeURIComponent(imageURL);
     waitForImageToLoad(img).then(() => {
+      console.log('dasda');
+      
       rgb = colorThief.getColor(img);
       palette = colorThief.getPalette(img, 5);
       if(rgb && rgb.length > 0 && palette && palette.length > 0) {
@@ -67,6 +69,7 @@ export class ArtworksService {
 
 
 function waitForImageToLoad(imageElement) {
+  //dasdsa
   return new Promise(resolve => {
     imageElement.onload = resolve;
   })
