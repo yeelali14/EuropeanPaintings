@@ -33,6 +33,7 @@ export class ArtworksService {
 
   getImageColour(artwork: any) {
     console.log('jkj');
+    //fdsfsd
     let rgb = [];
     let palette = [];
     let paletteColours = [];
