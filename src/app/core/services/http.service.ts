@@ -29,7 +29,7 @@ export class HttpService {
 
   private handleError(error: HttpErrorResponse) {
     console.log('kdjfsld');
-    
+    //fsdfd
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occured
       console.error('An error occurred:', error.message);
