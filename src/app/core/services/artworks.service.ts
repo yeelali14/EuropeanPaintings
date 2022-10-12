@@ -68,6 +68,7 @@ export class ArtworksService {
 function waitForImageToLoad(imageElement) {
   console.log('ddd');
   //fsdfs
+  //fsfsddasdas
   return new Promise(resolve => {
     imageElement.onload = resolve;
   })
