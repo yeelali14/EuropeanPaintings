@@ -69,6 +69,7 @@ function waitForImageToLoad(imageElement) {
   console.log('ddd');
   //fsdfs
   //fsfsddasdas
+  //sljal
   return new Promise(resolve => {
     imageElement.onload = resolve;
   })
