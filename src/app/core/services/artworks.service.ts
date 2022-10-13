@@ -33,6 +33,7 @@ export class ArtworksService {
 
   getImageColour(artwork: any) {
     //dsada
+    console.log('asds');
     let rgb = [];
     let palette = [];
     let paletteColours = [];
