@@ -100,3 +100,11 @@ automations:
         engine: gitstream
         args:
           labels: ["logs-only-diff"]
+  match_logs:
+    if:
+      - {{ checks.content.is.match_logs }}
+    run: 
+      - action: add-labels@v1
+        engine: gitstream
+        args:
+          labels: ["some-logs"]
