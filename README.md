@@ -82,6 +82,3 @@ And in the free fall I will realize
 I'm better off when I hit the bottom
 
 Lady gaga the queen
-Lady gaga the queen
-//this is md change
-//this is md change 2
