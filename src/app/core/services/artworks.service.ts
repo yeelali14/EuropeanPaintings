@@ -32,7 +32,7 @@ export class ArtworksService {
 
 
   getImageColour(artwork: any) {
-    console.log('dasda');
+    console.log('dasdasd');
     let rgb = [];
     let palette = [];
     let paletteColours = [];
