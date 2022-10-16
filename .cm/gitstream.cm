@@ -115,3 +115,19 @@ automations:
         engine: gitstream
         args:
           labels: ["some-logs"]
+  mark_color_pr:
+    if:
+      - {{ branch.diff.size == 2 }}
+    run:
+      - action: add-label@v1
+        args:
+          label: "color_label"
+          color: "#dcd0ff"
+  mark_pretty_pr:
+    if:
+      - {{ branch.diff.size == 3 }}
+    run:
+      - action: add-label@v1
+        args:
+          label: "pretty_label"
+          color: "#df10ff"
