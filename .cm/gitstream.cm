@@ -63,7 +63,7 @@ automations:
 
   auto_approve_triggers:
     if:
-      - {{ branch.name | match(term="triggers") }}
+      - {{ branch.name | includes(term="triggers") }}
     run:
       - action: add-labels@v1
         args:
