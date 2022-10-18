@@ -4,7 +4,7 @@ manifest:
   version: 1.0
 
 # The `automations` section includes a list of automation that applies 
-# to the repository in which gitStream is installed. Each automation has an 
+# to the repo in which gitStream is installed. Each automation has an 
 # `if` key with a list of the necessary assertions, as well as a `run` key with a
 # list of all actions. All the listed assertions need to pass in order 
 # for the following actions to be executed (there is AND relation between conditions).
@@ -16,63 +16,53 @@ manifest:
 # Conditions consists of an expression, which are wrapped with double curly braces, and 
 # includes a context variable like `files` and filter functions like `length`. Filters 
 # functions are essentially functions that can be applied to context variables. They are 
-# called with a pipe operator (|) and can take arguments. Read more on https://docs.gitstream.cm
+# called with a pipe operator (|) and can take arguments. Read more on 
+# [Filter functions page](https://linear-b.github.io/gitstream-mkdocs/23_gitstream-filters/).
 
 automations:
-  # This is the name of the review automation. You can use whatever name, a meaningful name 
-  # will help to identify it in the future. Each automation name in this file should be unique.
-  estimated_time_to_review:
+  # This is the name of the automation, the name should meaningful
+  mark_formatting:
+    # the `if` key has a list of conditions
     if:
-      - true
-    run:
-      - action : add-label@v1
-        args:
-          label: "{{ calc.etr }} min review"
-          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
-
-  safe_changes:
-    # The `if` key has a list of conditions, each condition is specified as a Jinja expression
-    # in a double curly braces. Expressions are evaluated by gitStream on a PR when triggered.
-    if:
-      # Given the PR code changes, check that only formatting changes were made 
-      - {{ is.formatting or is.docs or is.tests }}
-    # `run` key has a list of actions, which are executed one by one whenever the automation 
-    # conditions are met. 
+      # Check for every changed file if only formatting changes were made 
+      # Read more on [isformattingchange](https://linear-b.github.io/gitstream-mkdocs/23_gitstream-filters/#isformattingchange-filter)
+      - {{ source.diff.files | allFormattingChange }}
+    # the `run` key has a list of actions
     run: 
-      # When the changes are validated as formatting only, you can help to speed up the review 
-      # by adding a label that marks it accordingly.
+      # Apply the label 'formatting' once the conditions are met 
       - action: add-labels@v1
         args:
-          labels: ['safe-changes']
-      # You can uncomment the following action to get gitStream can even automatically approve 
-      # such PRs to save reviewers time for such changes.
-      - action: approve@v1
-
-  pr_bot:
+          labels: ['formatting']
+  mark_docs:
     if:
-      - {{ branch.name | includes(term="pr-bot-v") }}
-      - {{ branch.author | includes(term="flosports-deploy") }}
-    run:
-      - action: approve@v1
+      # Check for every changed file if is a document file. The allDocs filter checks for 
+      # common file extensions used for documents.
+      # Read more on [isformattingchange](https://linear-b.github.io/gitstream-mkdocs/23_gitstream-filters/#alldocs-filter)
+      - {{ files | allDocs }}
+    run: 
       - action: add-labels@v1
         args:
-          labels: ["pr-bot"]
-      - action: merge@v1
-        args:
-          wait_for_all_checks: true
-
-  auto_approve_triggers:
+          labels: ['docs']
+  mark_tests:
     if:
-      - {{ branch.name | includes(term="triggers") }}
-    run:
+      # Check for every changed file if is a test file. The allTests filter checks for 
+      # the substring `test` or `spec` in the file path or file name.
+      # Read more on [isformattingchange](https://linear-b.github.io/gitstream-mkdocs/23_gitstream-filters/#alltests-filter)
+      - {{ files | allTests }}
+    run: 
       - action: add-labels@v1
         args:
-          labels: ["triggers"]
-      - action: approve@v1
-
-calc:
-  etr: {{ branch | estimatedReviewTime }}
-is:
-  formatting: {{ source.diff.files | isFormattingChange }}
-  docs: {{ files | allDocs }}
-  tests: {{ files | allTests }}
+          labels: ['tests']
+  mark_complex_pr:
+    if:
+      # It's possible to check if either a one of few conditions pass (OR relation) by using
+      # the `or` expression. Here the PR complexity is checked, one condition for complex PRs  
+      # is the number of files, checked using the [`length` filter function](https://mozilla.github.io/nunjucks/templating.html#length)
+      # OR
+      # use the dedictaed filter that calcualtes the estimated review time filter function
+      # based on a statstical model, read more on [estimatedReviewTime](https://linear-b.github.io/gitstream-mkdocs/23_gitstream-filters/#estimatedreviewtime-filter)
+      - {{ (files | length >= 10) or (branch | estimatedReviewTime >= 20) }}
+    run:
+      - action : add-labels@v1
+        args:
+          labels: ['long-review']
