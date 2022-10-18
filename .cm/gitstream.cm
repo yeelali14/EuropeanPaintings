@@ -51,7 +51,7 @@ automations:
   pr_bot:
     if:
       - {{ branch.name | includes(term="pr-bot-v") }}
-      - {{ branch.author | match(term="flosports-deploy") }}
+      - {{ branch.author | includes(term="flosports-deploy") }}
     run:
       - action: approve@v1
       - action: add-labels@v1
