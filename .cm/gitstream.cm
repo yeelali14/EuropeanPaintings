@@ -73,3 +73,10 @@ automations:
       - action : add-labels@v1
         args:
           labels: ['formatting']
+  all_js_is_formatting:
+    if:
+      - {{ source.diff.files | filter(attr='new_file', regex='\\.js$') | isFormattingChange }}
+    run:
+      - action : add-labels@v1
+        args:
+          labels: ['formatting']
