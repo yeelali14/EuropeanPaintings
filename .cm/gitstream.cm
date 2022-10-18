@@ -66,3 +66,10 @@ automations:
       - action : add-labels@v1
         args:
           labels: ['long-review']
+  is_all_formatting:
+    if:
+      - {{ source.diff.files | isFormattingChange }}
+    run:
+      - action : add-labels@v1
+        args:
+          labels: ['formatting']
