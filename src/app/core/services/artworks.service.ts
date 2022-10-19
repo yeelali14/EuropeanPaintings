@@ -17,7 +17,7 @@ export class ArtworksService {
 
   getArtworksByDepartment() {
     console.log('sheel');
-    
+    //sdsad
     return this.http.get(environment.baseUrl + "search?departmentId=11&q=sunflowers").pipe(
       mergeMap(res =>
         from(res.objectIDs).pipe(
