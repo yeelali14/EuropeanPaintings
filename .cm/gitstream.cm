@@ -82,8 +82,8 @@ automations:
           labels: ['formatting']
   no_changes_src_and_dest:
     if:
-      - {{ files | match(list=['src', 'dest']) | none }}
+      - {{ files | match(list=['src', 'dest']) | nope }}
     run:
       - action : add-labels@v1
         args:
-          labels: ['no-changes-in-src']
+          labels: ['no-changes']
