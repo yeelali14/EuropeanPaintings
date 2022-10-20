@@ -83,3 +83,5 @@ I'm better off when I hit the bottom
 
 Lady gaga the queen
 i took the wok to poland
+Lady gaga the queen
+i took the wok to poland
