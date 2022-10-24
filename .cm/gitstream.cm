@@ -1,25 +1,14 @@
 # -*- mode: yaml -*-
-
 manifest:
   version: 1.0
-
-# The `automations` section includes a list of automation that applies 
-# to the repository in which gitStream is installed. Each automation has an 
-# `if` key with a list of the necessary assertions, as well as a `run` key with a
-# list of all actions. All the listed assertions need to pass in order 
-# for the following actions to be executed (there is AND relation between conditions).
-
-# Each automation under the `automations` section is independent of the others. 
-# Every time a PR is opened or changed, the automation's conditions are evaluated (the `if`). 
-# The actions under `run` are executed one by one if all the conditions pass. 
-
-# Conditions consists of an expression, which are wrapped with double curly braces, and 
-# includes a context variable like `files` and filter functions like `length`. Filters 
-# functions are essentially functions that can be applied to context variables. They are 
-# called with a pipe operator (|) and can take arguments. Read more on https://docs.gitstream.cm
-
+cft_templates_files:
+  - resources/app/functions/accounts/agent_cf_template.yml
+  - resources/app/functions/accounts/cross_account_role_template.yml
+  - resources/app/functions/accounts/sls.yml
+  - resources/app/functions/accounts/xrays_rest_add_account.yaml
 config:
   ignore_files:
+    - '.cm/gitstream.cm'
     - 'yarn.lock'
     - 'package-lock.json'
     - 'openapi.json'
@@ -31,201 +20,16 @@ config:
     - 'base/java/cn/events/*'
     - '*_pb2.pyi'
     - '*.pb.go'
-
+cft_templates_files_2: banana
 automations:
-  # This is the name of the review automation. You can use whatever name, a meaningful name 
-  # will help to identify it in the future. Each automation name in this file should be unique.
-  {% for item in deprecated %}
-  # Automation names should be unique, therefore the iteration number postfix
-  catch_deprecated_components_{{ loop.index }}:
-    if:
-      - {{ source.diff.files | matchDiffLines(regex=item.regex) | some }}
-    run:
-      - action: add-label@v1
-        args:
-          label: 'deprecated-component'
-          color: '#FF0000'
-      - action: request-changes@v1
-        args:
-          comment: |
-            `{{ item.regex }}` is deprecated, use `EventType` from `constants.py` instead `Types` 
-  {% endfor %}
-
-  formatting_safe_changes:
-    # The `if` key has a list of conditions, each condition is specified as a Jinja expression
-    # in a double curly braces. Expressions are evaluated by gitStream on a PR when triggered.
-    if:
-      # Given the PR code changes, check that only formatting changes were made 
-      - {{ source.diff.files | isFormattingChange }}
-    # `run` key has a list of actions, which are executed one by one whenever the automation 
-    # conditions are met. 
-    run: 
-      # When the changes are validated as formatting only, you can help to speed up the review 
-      # by adding a label that marks it accordingly.
-      - action: add-labels@v1
-        args:
-          labels: ['formatting']
-      - action: approve@v1
-
-  docs_safe_changes:
-    if:
-      # Given the PR files changes, check that only documents were changed.
-      - {{ files | allDocs }}
-      - {{ not (files | match(term='version.txt') | some) }}
-    run: 
-      - action: add-labels@v1
-        args:
-          labels: ['documentation']
-      - action: approve@v1
-  
-  tests_safe_changes:
-    if:
-      # Given the PR files changes, check that only tests were changed. The allTests filter checks for 
-      # the substring `test` or `spec` in the file path or file name.
-      - {{ files | allTests }}
-    run: 
-      - action: add-labels@v1
-        args:
-          labels: ['tests']
-      - action: approve@v1
-
-  images_safe_changes:
-    if:
-      # Check for every changed file if is a document file. The allImages filter checks for
-      # common file extensions used for graphics.
-      - {{ files | allImages }}
-    run:
-      - action: add-labels@v1
-        args:
-          labels: ['images']
-      - action: approve@v1
-  
-  mark_long_review:
-    if:
-      # gitStream estimatedReviewTime filter calculates the estimated review time in minutes
-      # based on a statistical model. Review that takes more than 20 minutes is considered 
-      # bad practice and therefore marked accordingly.
-      - {{ branch | estimatedReviewTime >= 20 }}
-      - {{ files | length >= 10  }}
-    run:
-      - action: add-labels@v1
-        args:
-          labels: ['large-pr']
-  
-  double_review:
-    if:
-      - {{ files | match(regex='agent\\/') | some }}
-    run:
-      - action: set-required-approvals@v1
-        args:
-          reviewers: 2
-
-  ui_review:
-    if:
-      - {{ files | reject(term='events/constants.ts') | match(regex='ui\\/') | some }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [MishaKav, Moshemo]
-
-  github_files_review:
-    if:
-      - {{ files | match(regex='.github\\/') | some }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [MishaKav]
-
-  cn_customer_review:
-    if:
-      - {{ files | match(regex='customer\\/cn-customer\\/') | some }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [ManuelNemirovsky]
-
-  contrast_deploy_review:
-    if:
-      - {{ files | match(regex='_utils\\/contrast_deploy\\/') | some }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [ManuelNemirovsky]
-
-  api_docs_review:
-    if:
-      - {{ files | match(list=['oas3.yml', 'openapi.json']) | some }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [Moshemo]
-
-  inspector_review:
-    if:
-      - {{ files | match(regex='agent\\/inspector\\/') | some }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [stasez]
-
-  gateway_review:
-    if:
-      - {{ files | match(regex='gateway\\/') | some }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [aviadhhh]
-  
-  e2e_review:
-    if:
-      - {{ files | reject(term='version.txt') | match(regex='e2e\\/') | some }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [ChenAlon]
 
   cft_review:
     if:
-      - {{ files | match(regex='resources/app/functions/accounts/agent_cf_template.yml') | some }}
-      - {{ files | match(regex='resources/app/functions/accounts/cross_account_role_template.yml') | some }}
-      - {{ files | match(regex='resources/app/functions/accounts/xrays_rest_add_account.yaml') | some }}
-      - {{ files | match(regex='resources/app/functions/accounts/sls.yml') | some }}
+      - {{ files | match(list=cft_templates_files) | some }}
+  matchDiffLines_test:
+    if:
+      - {{ source.diff.files | matchDiffLines(regex=cft_templates_files_2, ignoreWhiteSpaces=true) | some }}
     run:
-      - action: add-reviewers@v1
+      - action : add-label@v1
         args:
-          reviewers: [4ppsec, spaglipa]
-
-# This list includes the deprecated items
-deprecated:
-  - regex: 'Types.ONBOARDING_REQUESTED'
-  - regex: 'Types.OFFBOARDING_REQUESTED'
-  - regex: 'Types.ONBOARDING_COMPLETED'
-  - regex: 'Types.RESOURCES_COMPLETED'
-  - regex: 'Types.RESOURCES_UPDATED'
-  - regex: 'Types.RESOURCES_DELETED'
-  - regex: 'Types.RESOURCES_OPT_OUT'
-  - regex: 'Types.ACCOUNT_CONFIG_UPDATED'
-  - regex: 'Types.RESOURCES_DEACTIVATION_BATCH_COMPLETED'
-  - regex: 'Types.RESOURCES_DEACTIVATION_COMPLETED'
-  - regex: 'Types.DISCOVERY_BATCH_COMPLETED'
-  - regex: 'Types.DISCOVERY_COMPLETED'
-  - regex: 'Types.GRAPH_CREATION_COMPLETED'
-  - regex: 'Types.SCAN_INITIATED'
-  - regex: 'Types.SCAN_ABORTED'
-  - regex: 'Types.SCAN_REQUESTED'
-  - regex: 'Types.SCAN_DISMISSED'
-  - regex: 'Types.SCAN_FAILED'
-  - regex: 'Types.ANALYSIS_COMPLETED'
-  - regex: 'Types.ANALYSIS_FAILED'
-  - regex: 'Types.CLEANUP_COMPLETED'
-  - regex: 'Types.SERVICE_CLEANUP_REQUESTED'
-  - regex: 'Types.SCAN_COMPLETED'
-  - regex: 'Types.SCANNER_COMPLETED'
-  - regex: 'Types.SCAN_UPDATE'
-  - regex: 'Types.VULNERABILITIES_DEACTIVATION_COMPLETED'
-  - regex: 'Types.ACCOUNT_CONFIG_UPDATED'
-  - regex: 'Types.IAM_RESOURCE_CHANGED'
-  - regex: 'Types.DEPLOYMENT_COMPLETED'
-  - regex: 'Types.TASK_CREATED'
-  - regex: 'Types.ACCOUNT_DEACTIVATION_COMPLETED'
-  - regex: 'Types.TASK_INITIATED'
+          label: 'matchDiffLines_test'
