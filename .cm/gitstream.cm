@@ -1,38 +1,23 @@
-# -*- mode: yaml -*-
-manifest:
-  version: 1.0
-cft_templates_files:
-  - resources/app/functions/accounts/agent_cf_template.yml
-  - resources/app/functions/accounts/cross_account_role_template.yml
-  - resources/app/functions/accounts/sls.yml
-  - resources/app/functions/accounts/xrays_rest_add_account.yaml
-config:
-  ignore_files:
-    - '.cm/gitstream.cm'
-    - 'yarn.lock'
-    - 'package-lock.json'
-    - 'openapi.json'
-    - 'constants.py'
-    - 'constants.ts'
-    - 'constants.js'
-    - 'ui/src/**/*Model.d.ts'
-    - 'agent/aws/java/src/main/java/cn/events/*'
-    - 'base/java/cn/events/*'
-    - '*_pb2.pyi'
-    - '*.pb.go'
-cft_templates_files_2: banana
 automations:
-
-  cft_review:
+  {% for item in deprecated %}
+  catch_deprecated_components_{{ loop.index }}:
     if:
-      - {{ files | match(list=cft_templates_files) | some }}
-  matchDiffLines_test:
-    if:
-      - {{ source.diff.files | matchDiffLines(regex=cft_templates_files_2, ignoreWhiteSpaces=true) | some }}
+      - {{ source.diff.files | matchDiffLines(regex=item.regex) | some }}
     run:
-      - action : add-label@v1
+      - action: add-label@v1
         args:
-          label: 'matchDiffLines_test'
-      - action: add-reviewers@v1
+          label: 'deprecated-component-in-use'
+          color: '#FF0000'
+      - action: request-changes@v1
         args:
-          reviewers: [ShakedZrihen, EladKohavi]
+          comment: |
+            `{{ item.old }}` component is deprecated, use `{{ item.new }}` instead
+  {% endfor %}
+  
+deprecated:
+  - regex: '^[+].*import.*Flex.*from.*_/layout'
+    old: Flex
+    new: string
+  - regex: r/^[+].*import.*Flex.*from.*_\/layout/
+    old: Flex
+    new: regex
