@@ -13,6 +13,23 @@ automations:
           comment: |
             `{{ item.old }}` component is deprecated, use `{{ item.new }}` instead
   {% endfor %}
+  no_tests:
+    if:
+      - {{ files | match(regex=r/(test|spec)/) | nope }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: 'missing-tests'
+          color: '#E94637'
+  small_change:
+    if:
+      - {{ files | length < 3 }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: 'small-change'
+          color: '#5E33FF'
+  
   
 deprecated:
   - regex: '^[+].*import.*Flex.*from.*_/layout'
