@@ -23,12 +23,16 @@ automations:
           color: '#E94637'
   small_change:
     if:
-      - {{ files | length < 3 }}
+      - {{ files | length > 3 }}
     run: 
       - action: add-label@v1
         args:
           label: 'small-change'
           color: '#5E33FF'
+      - action: request-changes@v1
+        args:
+          comment: | 
+            change
   
   
 deprecated:
