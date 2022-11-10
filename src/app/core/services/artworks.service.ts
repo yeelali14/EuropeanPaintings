@@ -70,4 +70,5 @@ function waitForImageToLoad(imageElement) {
     imageElement.onload = resolve;
   })
 }
+//wowkaw
 
