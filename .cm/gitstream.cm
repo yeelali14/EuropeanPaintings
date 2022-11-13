@@ -25,10 +25,7 @@ automations:
     if:
       - {{ files | length < 2 }}
     run: 
-      - action: request-changes@v1
-        args:
-          comment: | 
-            change
+      - action: approve@v1
   large_chage:
     if:
       - {{ files | length > 2 }}
