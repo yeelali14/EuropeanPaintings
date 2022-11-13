@@ -10,3 +10,4 @@ export class AppComponent {
 }
 //change 3 badge domination
 //daskjasfa
+//ok
