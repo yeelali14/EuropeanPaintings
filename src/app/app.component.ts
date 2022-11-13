@@ -8,4 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'EuropeanPaintings';
 }
-//change 3
+//change 3 badge
