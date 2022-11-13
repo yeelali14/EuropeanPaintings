@@ -9,3 +9,4 @@ export class AppComponent {
   title = 'EuropeanPaintings';
 }
 //change 3 badge domination
+//daskj
