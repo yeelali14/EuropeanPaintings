@@ -37,6 +37,14 @@ automations:
       - action: set-required-approvals@v1
         args:
           approvals: 2
+  is_first_commit:
+    if: 
+      - {{ repo.contributors | isFirstCommit(branch.author) }}
+    run: 
+      - action: add-comment@v1
+        args:
+          comment: Welcome!
+        
 
   
   
