@@ -15,7 +15,7 @@ automations:
   {% endfor %}
   mark_color_pr:
     if:
-      - {{ branch.diff.size == 2 }}
+      - {{ files | length == 2 }}
     run:
       - action: add-label@v1
         args:
