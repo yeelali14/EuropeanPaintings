@@ -13,30 +13,18 @@ automations:
           comment: |
             `{{ item.old }}` component is deprecated, use `{{ item.new }}` instead
   {% endfor %}
-  no_tests:
+  mark_color_pr:
     if:
-      - {{ files | match(regex=r/(test|spec)/) | nope }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: 'missing-tests'
-          color: '#E94637'
-  small_change:
-    if:
-      - {{ files | length < 2 }}
-    run: 
-      - action: approve@v1
-  large_chage:
-    if:
-      - {{ files | length > 2 }}
+      - {{ branch.diff.size == 2 }}
     run:
       - action: add-label@v1
         args:
-          label: 'missing-tests'
-          color: '#E94637'
-      - action: set-required-approvals@v1
+          label: "color_label"
+          color: "#dcd0ff"
+      - action: request-changes@v1
         args:
-          approvals: 2
+          comment: |
+            You have used deprected API `oldFetch`, use `newFetch` instead.
   is_first_commit:
     if: 
       - {{ repo.contributors | isFirstCommit(branch.author) }}
