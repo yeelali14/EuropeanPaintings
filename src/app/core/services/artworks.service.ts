@@ -70,4 +70,4 @@ function waitForImageToLoad(imageElement) {
     imageElement.onload = resolve;
   })
 }
-
+//change 1
