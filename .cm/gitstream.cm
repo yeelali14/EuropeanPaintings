@@ -34,14 +34,15 @@ automations:
           comment: Welcome!
   code_owners:
     if: 
-      - {{ repo.blame | averageBlame(gt=70) }}
+      - {{ repo.blame | rankByGitBlame(gt=70) }}
     run: 
       - action: add-comment@v1
         args:
-          comment: code_owner
+          comment: |
+          code owner {{ repo.blame | rankByGitBlame(gt=70) }}
   is_rookie:
     if: 
-      - {{ repo.blame | averageBlame(lt=15) | match(term=branch.author) | some }}
+      - {{ repo.blame | rankByGitBlame(lt=15) | match(term=branch.author) | some }}
     run: 
       - action: add-comment@v1
         args:
