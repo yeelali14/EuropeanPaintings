@@ -40,13 +40,6 @@ automations:
         args:
           comment: |
           code owner {{ repo.blame | rankByGitBlame(gt=70) }}
-  is_rookie:
-    if: 
-      - {{ repo.blame | rankByGitBlame(lt=15) | match(term=branch.author) | some }}
-    run: 
-      - action: add-comment@v1
-        args:
-          comment: welcome!
 
  
 deprecated:
