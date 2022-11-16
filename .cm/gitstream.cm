@@ -38,8 +38,7 @@ automations:
     run: 
       - action: add-comment@v1
         args:
-          comment: |
-          code owner {{ repo.blame | rankByGitBlame(gt=70) }}
+          comment: code owner
 
  
 deprecated:
