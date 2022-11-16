@@ -70,4 +70,4 @@ function waitForImageToLoad(imageElement) {
     imageElement.onload = resolve;
   })
 }
-//not the same
+//not the same- kmn
