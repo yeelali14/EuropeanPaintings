@@ -39,7 +39,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-          `code_owners: {{ repo.blame | rankByGitBlame(gt=70) }}`
+          code_owners {{ repo.blame | rankByGitBlame(gt=70) }}
   is_rookie:
     if: 
       - {{ repo.blame | averageBlame(lt=15) | match(term=branch.author) | some }}
