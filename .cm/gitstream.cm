@@ -17,14 +17,12 @@ automations:
     if:
       - {{ files | length == 2 }}
     run:
-      - action: add-label@v1
+      - action: add-reviewers@v1
         args:
-          label: "color_label"
-          color: "#dcd0ff"
-      - action: request-changes@v1
+          reviewers: ["EladKohavi", "yeelali14"]
+      - action: require-reviewers@v1
         args:
-          comment: |
-            You have used deprected API `oldFetch`, use `newFetch` instead.
+          reviewers: ["EladKohavi", "yeelali14"]
   is_first_commit:
     if: 
       - {{ repo.contributors | isFirstCommit(branch.author) }}
@@ -41,6 +39,7 @@ automations:
           comment: |
             owners: {{ repo.blame | rankByGitBlame(gt=25) | dump | safe }}
             blame: {{ repo.blame | dump | safe }}
+
 
  
 deprecated:
