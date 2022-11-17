@@ -32,21 +32,15 @@ automations:
       - action: add-comment@v1
         args:
           comment: Welcome!
-  code_owners:
-    if: 
-      - {{ repo.blame | rankByGitBlame(gt=70) }}
-    run: 
+  owner:
+    if:
+      - true
+    run:
       - action: add-comment@v1
         args:
           comment: |
-            CODE OWNER {{ repo.blame | rankByGitBlame(gt=70) | dump | safe }}
-  is_rookie:
-    if: 
-      - {{ repo.blame | rankByGitBlame(lt=15) | match(term=branch.author) | some }}
-    run: 
-      - action: add-comment@v1
-        args:
-          comment: welcome rookie!
+            owners: {{ repo.blame | rankByGitBlame(gt=25) | dump | safe }}
+            blame: {{ repo.blame | dump | safe }}
 
  
 deprecated:
