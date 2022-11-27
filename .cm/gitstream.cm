@@ -17,12 +17,10 @@ automations:
     if:
       - {{ files | length == 2 }}
     run:
-      - action: add-reviewers@v1
+      - action: add-label@v1
         args:
-          reviewers: ["EladKohavi", "yeelali14"]
-      - action: require-reviewers@v1
-        args:
-          reviewers: ["EladKohavi", "yeelali14"]
+          label: 'small pr'
+          color: '#33B5FF'
   is_first_commit:
     if: 
       - {{ repo.contributors | isFirstCommit(branch.author) }}
