@@ -5,7 +5,7 @@ import { Artwork } from 'src/app/shared/models/artwork.model';
 import { environment } from 'src/environments/environment';
 import { HttpService } from './http.service';
 import ColorThief from 'colorthief';
-
+//ok
 @Injectable({
   providedIn: 'root'
 })
