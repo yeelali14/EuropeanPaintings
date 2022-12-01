@@ -54,6 +54,9 @@ automations:
      - action: add-reviewers@v1
        args:
          reviewers: {{ repo | rankByGitActivity(gt=10, weeks=6) }}
+    - action: add-comment@v1
+       args:
+         comment: {{ repo | rankByGitActivity(gt=10, weeks=6) | dump | safe }}
 
 
 
