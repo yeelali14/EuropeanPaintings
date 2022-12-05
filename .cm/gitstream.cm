@@ -50,10 +50,11 @@ automations:
   assign_contributor:
    if:
      - true
-   run:
-     - action: add-reviewers@v1
-       args:
-         reviewers: {{ repo | rankByGitActivity(gt=10, weeks=6) }}
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ repo | explainRankByGitBlame(gt=10, weeks=6) }}
 
 
 
