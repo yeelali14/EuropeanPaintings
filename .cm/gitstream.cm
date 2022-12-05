@@ -64,4 +64,4 @@ is:
   formatting: {{ source.diff.files | isFormattingChange }}
   docs: {{ files | allDocs }}
   tests: {{ files | allTests }}
-  explain_blame: {{ repo | explainRankByGitBlame(gt=10, weeks=6) | safe | dump }}
+  explain_blame: {{ repo | explainRankByGitBlame(gt=10, weeks=6) | dump }}
