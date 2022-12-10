@@ -55,7 +55,7 @@ automations:
         args:
           comment: |
             "{{ repo | explainRankByGitBlame(gt=10, weeks=6) | dump }}"
-  explain_blame_1:
+  explain_blame_test:
     if:
       - true
     run:
