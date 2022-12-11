@@ -55,7 +55,7 @@ automations:
         args:
           comment: |
             "{{ repo | explainRankByGitBlame(gt=10, weeks=6) }}"
-  just_regular_commet:
+  just_regular_commet_2:
     if:
       - true
     run:
