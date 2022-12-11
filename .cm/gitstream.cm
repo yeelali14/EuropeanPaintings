@@ -62,7 +62,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            "this is comment in dry mode"
+            "this is comment in dry mode 22222222"
 
 
 
