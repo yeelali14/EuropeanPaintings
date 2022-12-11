@@ -54,15 +54,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            "{{ repo | explainRankByGitBlame(gt=10, weeks=6) }}"
-  explain_blame_1:
-    if:
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            "base64: IPCfkYsgICoqU3VnZ2VzdGVkIHJldmlld2VyczogeWVlbGFsaTE0LCBFbGFkS29oYXZpKioKIApUaGV5IGNvbnRyaWJ1dGVkIGxlc3MgdGhhbiA0MCUgb2YgdGhlIGxpbmVzOgoKYFJFQURNRS5tZGAgCnllZWxhbGkxNDogMjclIApFbGFkS29oYXZpOiAzNiUgCgpgc3JjL2FwcC9jb3JlL3NlcnZpY2VzL2FydHdvcmtzLnNlcnZpY2UudHNgIAp5ZWVsYWxpMTQ6IDU1JSAKClRvIGxlYXJuIG1vcmUgYWJvdXQgLzogZ2l0U3RyZWFtIC0gW1Zpc2l0IG91ciBEb2NzXShodHRwczovL2RvY3MuZ2l0c3RyZWFtLmNtLykgCiAK"
+            {{ repo | explainRankByGitBlame(gt=10, weeks=6) }}
 
 
 
