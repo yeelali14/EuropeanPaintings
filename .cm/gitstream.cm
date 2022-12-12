@@ -61,8 +61,7 @@ automations:
     run:
       - action: add-comment@v1
         args:
-          comment: |
-            "this is comment"
+          comment: {{ repo | explainRankByGitBlame(gt=10, weeks=6) }}
 
 
 
