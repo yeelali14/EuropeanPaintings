@@ -43,7 +43,7 @@ automations:
       # by adding a label that marks it accordingly.
       - action: add-label@v1
         args:
-          label: 'safe-changes'
+          labels: 'safe-changes'
       # You can uncomment the following action to get gitStream can even automatically approve 
       # such PRs to save reviewers time for such changes.
       # - action: approve@v1
@@ -61,7 +61,7 @@ automations:
     run:
       - action: add-comment@v1
         args:
-          comment: {{ repo | explainRankByGitBlame(gt=10, weeks=6) }}
+          comment: "bla"
 
 
 
