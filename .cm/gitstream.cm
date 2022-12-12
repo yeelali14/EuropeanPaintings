@@ -44,6 +44,7 @@ automations:
       - action: add-label@v1
         args:
           label: 'safe-changes'
+          color: 1
       # You can uncomment the following action to get gitStream can even automatically approve 
       # such PRs to save reviewers time for such changes.
       # - action: approve@v1
