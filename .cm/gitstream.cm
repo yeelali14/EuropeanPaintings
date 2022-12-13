@@ -29,3 +29,13 @@ automations:
         args:
           label: WTF
           color: 1
+  assign_contributor:
+    if:
+      - true
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: {{ repo | rankByGitBlame(gt=25) }}
+      - action: add-comment@v1
+        args:
+          comment: "{{ repo | explainRankByGitBlame(gt=25) }}"
