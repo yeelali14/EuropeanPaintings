@@ -27,5 +27,5 @@ automations:
     run:
       - action: add-label@v1
         args:
-          label: ok
+          label: ok1
           color: 1
