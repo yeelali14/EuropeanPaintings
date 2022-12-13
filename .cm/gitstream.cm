@@ -27,5 +27,5 @@ automations:
     run:
       - action: add-label@v1
         args:
-          label: check2
-          color: #FEFEFE
+          label: check21
+          color: 1
