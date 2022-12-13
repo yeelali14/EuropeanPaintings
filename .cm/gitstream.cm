@@ -28,4 +28,4 @@ automations:
       - action: add-label@v1
         args:
           label: WTF2
-          color: 1
+          color: #FEFEFE
