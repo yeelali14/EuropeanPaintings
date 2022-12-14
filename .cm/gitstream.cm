@@ -27,5 +27,5 @@ automations:
     run:
       - action: add-label@v1
         args:
-          label: error cm
-          color: 1
+          label: ok work
+          color: #FEFEFE
