@@ -26,4 +26,3 @@ automations:
       - action: add-comment@v1
         args:
           comment: {{ repo | explainRankByGitBlame(gt=20) }}
-          pin_uid: SENIOR_REVIEW_COMMENT
