@@ -19,13 +19,11 @@ manifest:
 # called with a pipe operator (|) and can take arguments. Read more on https://docs.gitstream.cm
 
 automations:
-  # This is the name of the review automation. You can use whatever name, a meaningful name 
-  # will help to identify it in the future. Each automation name in this file should be unique.
-  estimated_time_to_review:
-    if:
+  the_right_reviewer:
+    if: 
       - true
     run:
-      - action: add-label@v1
+      - action: add-comment@v1
         args:
-          label: ok work
-          color: #FEFEFE
+          comment: {{ repo | explainRankByGitBlame(gt=20) }}
+          pin_uid: SENIOR_REVIEW_COMMENT
