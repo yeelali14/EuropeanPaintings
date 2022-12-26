@@ -1,30 +1,19 @@
+
 # -*- mode: yaml -*-
 
 manifest:
   version: 1.0
 
-# The `automations` section includes a list of automation that applies 
-# to the repository in which gitStream is installed. Each automation has an 
-# `if` key with a list of the necessary assertions, as well as a `run` key with a
-# list of all actions. All the listed assertions need to pass in order 
-# for the following actions to be executed (there is AND relation between conditions).
-
-# Each automation under the `automations` section is independent of the others. 
-# Every time a PR is opened or changed, the automation's conditions are evaluated (the `if`). 
-# The actions under `run` are executed one by one if all the conditions pass. 
-
-# Conditions consists of an expression, which are wrapped with double curly braces, and 
-# includes a context variable like `files` and filter functions like `length`. Filters 
-# functions are essentially functions that can be applied to context variables. They are 
-# called with a pipe operator (|) and can take arguments. Read more on https://docs.gitstream.cm
-
 automations:
-  the_right_reviewer:
-    if: 
-      - true
+  estimated_time_to_review:
+    if:
+      - {{ 'item' | match(term='item') }}
+      - {{ ['item'] | match(list='item') }}
     run:
       - action: add-comment@v1
         args:
           comment: |
-            {{ repo | explainRankByGitBlame(gt=30) }}
-          pin_uid: SENIOR_REVIEW_COMMENT
+            rankByBoth: {{ calc.blame | filter(list=calc.active) }}
+calc:
+  blame: {{ repo | rankByGitBlame(gt=10) }}
+  active: {{ repo | rankByGitActivity(gt=10, weeks=24) | first }}
