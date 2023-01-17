@@ -16,14 +16,14 @@ automations:
             rankByBoth: {{ calc.blame | filter(list=calc.active) }}
   bug_test_1:
     if:
-      - true
+      - {{ files | length > 2 }}
     run:
       - action: add-label@v1
         args:
           label: rrr
   bug_test_2:
     if:
-      - true
+      - {{ files | length < 2 }}
     run:
       - action: add-labels@v1
         args:
