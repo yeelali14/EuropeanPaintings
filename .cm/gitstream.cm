@@ -14,6 +14,20 @@ automations:
         args:
           comment: |
             rankByBoth: {{ calc.blame | filter(list=calc.active) }}
+  bug_test_1:
+    if:
+      - true
+    run:
+      - action: add-label@v1
+        args:
+          label: rrr
+  bug_test_2:
+    if:
+      - true
+    run:
+      - action: add-labels@v1
+        args:
+          labels: [re1, re2]
 calc:
   blame: {{ repo | rankByGitBlame(gt=10) }}
   active: {{ repo | rankByGitActivity(gt=10, weeks=24) | first }}
