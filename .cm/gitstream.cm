@@ -20,14 +20,20 @@ automations:
     run:
       - action: add-label@v1
         args:
-          label: rrr
+          label: large change
+      - action: add-comment@v1
+        args:
+          comment: large change
   bug_test_2:
     if:
       - {{ files | length < 2 }}
     run:
       - action: add-labels@v1
         args:
-          labels: [re1, re2]
+          labels: [small, change1]
+      - action: add-comment@v1
+        args:
+          comment: small change
 calc:
   blame: {{ repo | rankByGitBlame(gt=10) }}
   active: {{ repo | rankByGitActivity(gt=10, weeks=24) | first }}
