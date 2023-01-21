@@ -14,6 +14,7 @@ automations:
         args:
           comment: |
             rankByBoth: {{ calc.blame | filter(list=calc.active) }}
+            explain: {{ repo | explainRankByGitBlame(gt=10) }}
   bug_test_1:
     if:
       - {{ files | length > 2 }}
