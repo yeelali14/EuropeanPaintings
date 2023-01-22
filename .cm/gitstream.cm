@@ -13,7 +13,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            explain: {{ repo | explainRankByGitBlame(gt=10) }}
+            {{ repo | explainRankByGitBlame(gt=10) }}
   bug_test_1:
     if:
       - {{ files | length > 2 }}
