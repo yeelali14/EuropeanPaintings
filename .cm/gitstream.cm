@@ -13,7 +13,6 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            rankByBoth: {{ calc.blame | filter(list=calc.active) }}
             explain: {{ repo | explainRankByGitBlame(gt=10) }}
   bug_test_1:
     if:
