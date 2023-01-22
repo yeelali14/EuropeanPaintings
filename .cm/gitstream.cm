@@ -5,16 +5,7 @@ manifest:
   version: 1.0
 
 automations:
-  estimated_time_to_review:
-    if:
-      - {{ 'item' | match(term='item') }}
-      - {{ ['item'] | match(list='item') }}
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            {{ repo | explainRankByGitBlame(gt=10) }}
-  bug_test_1:
+  large_change:
     if:
       - {{ files | length > 2 }}
     run:
@@ -23,8 +14,9 @@ automations:
           label: large change
       - action: add-comment@v1
         args:
-          comment: large change
-  bug_test_2:
+          comment: |
+            {{ repo | explainRankByGitBlame(gt=10) }}
+  small_change:
     if:
       - {{ files | length < 2 }}
     run:
@@ -33,7 +25,8 @@ automations:
           labels: [small, change1]
       - action: add-comment@v1
         args:
-          comment: small change
+          comment: |
+            {{ repo | explainRankByGitBlame(gt=10) }}
 calc:
   blame: {{ repo | rankByGitBlame(gt=10) }}
   active: {{ repo | rankByGitActivity(gt=10, weeks=24) | first }}
