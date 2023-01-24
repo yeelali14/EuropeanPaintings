@@ -30,6 +30,14 @@ automations:
         args:
           comment: |
             {{ repo | explainRankByGitBlame(gt=10) }}
+  senior_review:
+    if:
+      - true
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: [EladKohavi]
+          unless_reviewers_set: true
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
