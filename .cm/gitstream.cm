@@ -37,7 +37,6 @@ automations:
       - action: add-reviewers@v1
         args:
           reviewers: [EladKohavi]
-          unless_reviewers_set: true
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
