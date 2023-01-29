@@ -32,7 +32,7 @@ automations:
             {{ repo | explainRankByGitBlame(gt=10) }}
   senior_review:
     if:
-      - true
+      - {{ source.diff.files | match(attr='diff', term='add-reviewers') | some }}
     run:
       - action: add-reviewers@v1
         args:
