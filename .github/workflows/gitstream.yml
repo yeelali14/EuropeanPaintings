@@ -28,7 +28,7 @@ on:
       debug_mode:
           description: 'Run parser in debug mode'
           required: false
-          default: true
+          default: 'yeelali14'
 
 jobs:
   gitStream:
