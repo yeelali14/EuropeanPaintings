@@ -45,4 +45,4 @@ jobs:
           installation_id: ${{ github.event.inputs.installation_id }}
           resolver_url: ${{ github.event.inputs.resolver_url }}
           resolver_token: ${{ github.event.inputs.resolver_token }}
-          debug_mode: ${{ github.actor == 'EladKohavi' }}
+          debug_mode: ${{ github.actor == 'yeelali14' }}
