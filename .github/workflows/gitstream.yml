@@ -25,6 +25,10 @@ on:
           description: Optional resolver token for resolver service
           required: false
           default: ''
+      triggered_by:
+          description: workflow triggered_by username
+          required: false
+          default: ''
 
 jobs:
   gitStream:
@@ -45,3 +49,4 @@ jobs:
           installation_id: ${{ github.event.inputs.installation_id }}
           resolver_url: ${{ github.event.inputs.resolver_url }}
           resolver_token: ${{ github.event.inputs.resolver_token }}
+          triggered_by: ${{ github.actor }}
