@@ -28,7 +28,7 @@ on:
       debug_mode:
           description: 'Run parser in debug mode'
           required: false
-          default: true
+          default: false
 jobs:
   gitStream:
     timeout-minutes: 5
