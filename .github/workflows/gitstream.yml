@@ -25,10 +25,7 @@ on:
           description: Optional resolver token for resolver service
           required: false
           default: ''
-      debug_mode:
-          description: 'Run parser in debug mode'
-          required: false
-          default: false
+
 jobs:
   gitStream:
     timeout-minutes: 5
