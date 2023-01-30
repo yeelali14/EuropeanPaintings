@@ -25,6 +25,10 @@ on:
           description: Optional resolver token for resolver service
           required: false
           default: ''
+      debug_mode:
+          description: 'Run parser in debug mode'
+          required: false
+          default: true
 
 jobs:
   gitStream:
@@ -35,7 +39,7 @@ jobs:
     name: gitStream workflow automation
     steps:
       - name: Evaluate Rules
-        uses: linear-b/gitstream-github-action@v1
+        uses: linear-b/gitstream-github-action@misha
         id: rules-engine
         with:
           full_repository: ${{ github.event.inputs.full_repository }}
@@ -45,4 +49,4 @@ jobs:
           installation_id: ${{ github.event.inputs.installation_id }}
           resolver_url: ${{ github.event.inputs.resolver_url }}
           resolver_token: ${{ github.event.inputs.resolver_token }}
-          debug_mode: ${{ github.actor == 'yeelali14' }}
+          debug_mode: 'MishaKav'
