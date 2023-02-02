@@ -30,7 +30,7 @@ automations:
         args:
           comment: |
             {{ repo | explainRankByGitBlame(gt=10) }}
-  senior_review_2:
+  senior_review_22:
     if:
       - {{ source.diff.files | match(attr='diff', term='add-reviewers') | some }}
     run:
