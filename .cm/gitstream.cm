@@ -3,7 +3,7 @@
 manifest:
   version: 1.0
 automations:
-estimated_time_to_review:
+  estimated_time_to_review:
     if:
       - true
     run:
