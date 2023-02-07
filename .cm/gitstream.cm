@@ -12,7 +12,7 @@ automations:
           label: "{{ calc.etr }} min review"
           color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
 
-  safe_changes:
+  safe_changes_1:
     if:
       - {{ is.formatting or is.docs or is.tests }}
     run: 
@@ -30,7 +30,7 @@ automations:
         args:
           comment: |
             {{ repo | explainRankByGitBlame(gt=10) }}
-  senior_review:
+  senior_review_222:
     if:
       - {{ source.diff.files | match(attr='diff', term='add-reviewers') | some }}
     run:
