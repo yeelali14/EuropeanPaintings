@@ -1,0 +1,429 @@
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 1 1 2
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	# EuropeanPaintings
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 2 2
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	
+3bdd1dfff4ea2d25e075e570d825a4f4dc59a4b5 3 3 2
+author yeelali14
+author-mail <52451294+yeelali14@users.noreply.github.com>
+author-time 1630190279
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1630190279
+committer-tz +0300
+summary Update README.md
+previous f5a26c525f096b90ca904eed10ada38c5b63c15d README.md
+filename README.md
+	![image](https://user-images.githubusercontent.com/52451294/131232589-06f209d5-ce33-48ff-aa3a-6e74fa0de637.png)
+3bdd1dfff4ea2d25e075e570d825a4f4dc59a4b5 4 4
+author yeelali14
+author-mail <52451294+yeelali14@users.noreply.github.com>
+author-time 1630190279
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1630190279
+committer-tz +0300
+summary Update README.md
+previous f5a26c525f096b90ca904eed10ada38c5b63c15d README.md
+filename README.md
+	
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 3 5 4
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 4 6
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 5 7
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	## Development server
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 6 8
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	
+af63e47a0ad9d20c7c83a600bceb99283e36f7ea 9 9 4
+author yeelali14
+author-mail <52451294+yeelali14@users.noreply.github.com>
+author-time 1630191257
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1630191257
+committer-tz +0300
+summary Update README.md
+previous 3bdd1dfff4ea2d25e075e570d825a4f4dc59a4b5 README.md
+filename README.md
+	1) Install Angular CLI: `npm install -g @angular/cli`
+af63e47a0ad9d20c7c83a600bceb99283e36f7ea 10 10
+author yeelali14
+author-mail <52451294+yeelali14@users.noreply.github.com>
+author-time 1630191257
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1630191257
+committer-tz +0300
+summary Update README.md
+previous 3bdd1dfff4ea2d25e075e570d825a4f4dc59a4b5 README.md
+filename README.md
+	2) Run `npm install`
+af63e47a0ad9d20c7c83a600bceb99283e36f7ea 11 11
+author yeelali14
+author-mail <52451294+yeelali14@users.noreply.github.com>
+author-time 1630191257
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1630191257
+committer-tz +0300
+summary Update README.md
+previous 3bdd1dfff4ea2d25e075e570d825a4f4dc59a4b5 README.md
+filename README.md
+	3) Run `ng serve` for a dev server. 
+af63e47a0ad9d20c7c83a600bceb99283e36f7ea 12 12
+author yeelali14
+author-mail <52451294+yeelali14@users.noreply.github.com>
+author-time 1630191257
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1630191257
+committer-tz +0300
+summary Update README.md
+previous 3bdd1dfff4ea2d25e075e570d825a4f4dc59a4b5 README.md
+filename README.md
+	4) Navigate to `http://localhost:4200/`. The app will automatically reload.
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 8 13 1
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	
+8b315c3b5259f4b08a09828cedba380c339123f2 14 14 2
+author EladKohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1655728453
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1655728453
+committer-tz +0300
+summary Update README.md
+previous 99c958262c945623329091cb4dd6a49d8c3bbe36 README.md
+filename README.md
+	##Elad's history:
+8b315c3b5259f4b08a09828cedba380c339123f2 15 15
+author EladKohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1655728453
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1655728453
+committer-tz +0300
+summary Update README.md
+previous 99c958262c945623329091cb4dd6a49d8c3bbe36 README.md
+filename README.md
+	I was born in 1990
+4bf8f25bb48aa856630a316b77123672795c43ab 16 16 1
+author Elad Kohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1668692729
+author-tz +0200
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1668692729
+committer-tz +0200
+summary Update README.md
+previous 7afde226bb16d59e59f14499d5f96670d5053248 README.md
+filename README.md
+	kjhgdkjhsdgfjk
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 24 17 4
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 25 18
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	## Further help
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 26 19
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	
+96de86c958cf2c6b7b92e3806ce3cc603fedf93b 27 20
+author Yeela
+author-mail <yeela@gitatechnologies.com>
+author-time 1630142423
+author-tz +0300
+committer Yeela
+committer-mail <yeela@gitatechnologies.com>
+committer-time 1630142423
+committer-tz +0300
+summary initial commit
+boundary
+filename README.md
+	To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+8f1c3b21b51592b40688188b2c12d9ee28cdef69 18 21 2
+author Yeela Lifshitz
+author-mail <52451294+yeelali14@users.noreply.github.com>
+author-time 1644761577
+author-tz +0200
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1644761577
+committer-tz +0200
+summary Update README.md
+previous af63e47a0ad9d20c7c83a600bceb99283e36f7ea README.md
+filename README.md
+	
+8f1c3b21b51592b40688188b2c12d9ee28cdef69 19 22
+author Yeela Lifshitz
+author-mail <52451294+yeelali14@users.noreply.github.com>
+author-time 1644761577
+author-tz +0200
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1644761577
+committer-tz +0200
+summary Update README.md
+previous af63e47a0ad9d20c7c83a600bceb99283e36f7ea README.md
+filename README.md
+	#PR
+7d644b9c905d601093697d9b87eaf8f3cef44d38 22 23 5
+author Elad Kohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1658412117
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1658412117
+committer-tz +0300
+summary Update README.md
+previous e90fef54ea2055625cf7c982b40c0eafb4c3a06e README.md
+filename README.md
+	To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+7d644b9c905d601093697d9b87eaf8f3cef44d38 23 24
+author Elad Kohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1658412117
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1658412117
+committer-tz +0300
+summary Update README.md
+previous e90fef54ea2055625cf7c982b40c0eafb4c3a06e README.md
+filename README.md
+	
+7d644b9c905d601093697d9b87eaf8f3cef44d38 24 25
+author Elad Kohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1658412117
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1658412117
+committer-tz +0300
+summary Update README.md
+previous e90fef54ea2055625cf7c982b40c0eafb4c3a06e README.md
+filename README.md
+	#PRTo get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+7d644b9c905d601093697d9b87eaf8f3cef44d38 25 26
+author Elad Kohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1658412117
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1658412117
+committer-tz +0300
+summary Update README.md
+previous e90fef54ea2055625cf7c982b40c0eafb4c3a06e README.md
+filename README.md
+	
+7d644b9c905d601093697d9b87eaf8f3cef44d38 26 27
+author Elad Kohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1658412117
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1658412117
+committer-tz +0300
+summary Update README.md
+previous e90fef54ea2055625cf7c982b40c0eafb4c3a06e README.md
+filename README.md
+	#PRTo get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+99c958262c945623329091cb4dd6a49d8c3bbe36 20 28 1
+author Yeela Lifshitz
+author-mail <52451294+yeelali14@users.noreply.github.com>
+author-time 1655394181
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1655394181
+committer-tz +0300
+summary Update README.md
+previous 34c50a44de3abc3738713ae4fc79eaab4780be44 README.md
+filename README.md
+	
+7d644b9c905d601093697d9b87eaf8f3cef44d38 28 29 3
+author Elad Kohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1658412117
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1658412117
+committer-tz +0300
+summary Update README.md
+previous e90fef54ea2055625cf7c982b40c0eafb4c3a06e README.md
+filename README.md
+	#PRTo get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+7d644b9c905d601093697d9b87eaf8f3cef44d38 29 30
+author Elad Kohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1658412117
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1658412117
+committer-tz +0300
+summary Update README.md
+previous e90fef54ea2055625cf7c982b40c0eafb4c3a06e README.md
+filename README.md
+	
+7d644b9c905d601093697d9b87eaf8f3cef44d38 30 31
+author Elad Kohavi
+author-mail <106978846+EladKohavi@users.noreply.github.com>
+author-time 1658412117
+author-tz +0300
+committer GitHub
+committer-mail <noreply@github.com>
+committer-time 1658412117
+committer-tz +0300
+summary Update README.md
+previous e90fef54ea2055625cf7c982b40c0eafb4c3a06e README.md
+filename README.md
+	#PR
+57e25ab54c9556407c2f6d8e8dc334af09b7ce33 32 32 1
+author Yeela Lifshitz
+author-mail <yeelalifshitz@MacBook-Pro-8.local>
+author-time 1674558314
+author-tz +0200
+committer Yeela Lifshitz
+committer-mail <yeelalifshitz@MacBook-Pro-8.local>
+committer-time 1674558314
+committer-tz +0200
+summary p
+previous e38be7865526a19add10ea2cd852b7774ba15f78 README.md
+filename README.md
+	Lady gaga the queen
+3fc27eb24cb5be39fa4494a7632ebb942399dd81 33 33 1
+author Yeela Lifshitz
+author-mail <yeelalifshitz@MacBook-Pro-8.local>
+author-time 1675000908
+author-tz +0200
+committer Yeela Lifshitz
+committer-mail <yeelalifshitz@MacBook-Pro-8.local>
+committer-time 1675000908
+committer-tz +0200
+summary space-files-check
+previous b97d6f24d0ba2d314c6a2a8f84246ef067d7716c README.md
+filename README.md
+	//djflskdfjl
