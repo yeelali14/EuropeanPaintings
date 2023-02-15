@@ -8,6 +8,12 @@ config:
     - 'Roy <reshef.roy@gmail.com>': ''
     - 'Roy Reshef <reshef.roy@gmail.com>': ''
     - 'RoyKulik <roy.kulik@linearb.io>': 'RoyKulik'
+config:
+  user_mapping:
+    - 'Ofer <ofer.affias@gmail.com>': 'vim-zz'
+    - 'Roy <reshef.roy@gmail.com>': ''
+    - 'Roy Reshef <reshef.roy@gmail.com>': ''
+    - 'RoyKulik <roy.kulik@linearb.io>': 'RoyKulik'
 automations:
   estimated_time_to_review:
     if:
