@@ -5,8 +5,8 @@ manifest:
 config:
   user_mapping:
     - 'Ofer <ofer.affias@gmail.com>': 'vim-zz'
-    - 'Roy <reshef.roy@gmail.com>': ''
-    - 'Roy Reshef <reshef.roy@gmail.com>': ''
+    - 'Roy <reshef.roy@gmail.com>': null
+    - 'Roy Reshef <reshef.roy@gmail.com>': null
     - 'RoyKulik <roy.kulik@linearb.io>': 'RoyKulik'
 automations:
   estimated_time_to_review:
