@@ -17,7 +17,7 @@ config:
     - 'Yeela Lifshitz <yeelalifshitz@Yeelas-MacBook-Pro.local>': 'yeelali14'
     - 'Luke Kilpatrick <luke@lukek.ca>': null
     - 'shaked zohar <shaked.zrihen@gmail.com>': 'ShakedZrihen'
-    - 'kodiakhq[bot] <49736102+kodiakhq[bot]@users.noreply.github.com>': 'kodiakhq[bot]'
+    - 'kodiakhq[bot] <49736102+kodiakhq[bot]@users.noreply.github.com>': null
 automations:
   estimated_time_to_review:
     if:
