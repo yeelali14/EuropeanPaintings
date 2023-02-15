@@ -2,14 +2,8 @@
 
 manifest:
   version: 1.0
-config:
-  user_mapping:
-    - 'Ofer <ofer.affias@gmail.com>': 'vim-zz'
-    - 'Roy <reshef.roy@gmail.com>': ''
-    - 'Roy Reshef <reshef.roy@gmail.com>': ''
-    - 'RoyKulik <roy.kulik@linearb.io>': 'RoyKulik'
 automations:
-  estimated_time_to_review:
+  estimated_time_to_review_1:
     if:
       - true
     run:
