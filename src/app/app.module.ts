@@ -18,4 +18,4 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-//ggg wtf
+//ggg wtfffff
