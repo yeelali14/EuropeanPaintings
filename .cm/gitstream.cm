@@ -5,19 +5,19 @@ manifest:
 config:
 #   admin:
 #     users: ['EladKohavi']
-   user_mapping:
-     - 'Yeela <yeela@gitatechnologies.com>': 'yeelali14'
-     - 'Yeela Lifshitz <52451294+yeelali14@users.noreply.github.com>': 'yeelali14'
-     - 'Elad Kohavi <106978846+EladKohavi@users.noreply.github.com>': 'EladKohavi'
-     - 'yeelali14 <52451294+yeelali14@users.noreply.github.com>': 'yeelali14'
-     - 'EladKohavi <106978846+EladKohavi@users.noreply.github.com>': 'EladKohavi'
-     - 'Yeela Lifshitz <yeelalifshitz@MacBook-Pro.local>': 'yeelali14'
-     - 'Yeela Lifshitz <yeelalifshitz@MacBook-Pro-8.local>': 'yeelali14'
-     - 'Luke Kilpatrick <lukekilpat@gmail.com>': null
-     - 'Yeela Lifshitz <yeelalifshitz@Yeelas-MacBook-Pro.local>': 'yeelali14'
-     - 'Luke Kilpatrick <luke@lukek.ca>': null
-     - 'shaked zohar <shaked.zrihen@gmail.com>': 'ShakedZrihen'
-     - 'kodiakhq[bot] <49736102+kodiakhq[bot]@users.noreply.github.com>': 'kodiakhq[bot]'
+#   user_mapping:
+#     - 'Yeela <yeela@gitatechnologies.com>': 'yeelali14'
+#     - 'Yeela Lifshitz <52451294+yeelali14@users.noreply.github.com>': 'yeelali14'
+#     - 'Elad Kohavi <106978846+EladKohavi@users.noreply.github.com>': 'EladKohavi'
+#     - 'yeelali14 <52451294+yeelali14@users.noreply.github.com>': 'yeelali14'
+#     - 'EladKohavi <106978846+EladKohavi@users.noreply.github.com>': 'EladKohavi'
+#     - 'Yeela Lifshitz <yeelalifshitz@MacBook-Pro.local>': 'yeelali14'
+#     - 'Yeela Lifshitz <yeelalifshitz@MacBook-Pro-8.local>': 'yeelali14'
+#     - 'Luke Kilpatrick <lukekilpat@gmail.com>': null
+#     - 'Yeela Lifshitz <yeelalifshitz@Yeelas-MacBook-Pro.local>': 'yeelali14'
+#     - 'Luke Kilpatrick <luke@lukek.ca>': null
+#     - 'shaked zohar <shaked.zrihen@gmail.com>': 'ShakedZrihen'
+#     - 'kodiakhq[bot] <49736102+kodiakhq[bot]@users.noreply.github.com>': 'kodiakhq[bot]'
 automations:
   estimated_time_to_review:
     if:
