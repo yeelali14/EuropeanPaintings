@@ -2,9 +2,9 @@
 
 manifest:
   version: 1.0
-# config:
-#   admin:
-#     users: ['EladKohavi']
+config:
+   admin:
+     users: ['EladKohavi']
 #   user_mapping:
 #     - 'Yeela <yeela@gitatechnologies.com>': null
 #     - 'Yeela Lifshitz <52451294+yeelali14@users.noreply.github.com>': 'yeelali14'
