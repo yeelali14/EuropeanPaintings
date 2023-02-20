@@ -1,10 +1,10 @@
 # -*- mode: yaml -*-
 
 manifest:
-  version: 1.0
+  version: 1.1
 config:
-#   admin:
-#     users: ['EladKohavi']
+   admin:
+     users: ['EladKohavi']
    user_mapping:
      - 'Yeela <yeela@gitatechnologies.com>': 'yeelali14'
      - 'Yeela Lifshitz <52451294+yeelali14@users.noreply.github.com>': 'yeelali14'
