@@ -72,4 +72,4 @@ function waitForImageToLoad(imageElement) {
 }
 
 //ffffddddfffdddddddddddfffdddddddddddasdasdsadasdfsdfsd
-//dasda
+//dasdadddd
