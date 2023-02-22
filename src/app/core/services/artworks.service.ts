@@ -71,3 +71,6 @@ function waitForImageToLoad(imageElement) {
   })
 }
 
+//ffffddddfffdddddddddddfffdddddddddddasdasdsadasdfsdfsd
+//dasdaddddddddd
+//dasd
