@@ -30,17 +30,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 #PR
 Lady gaga the queen
-//dasdas///fsdfsd
-//sfsdfdaskhda
-//dsfsdfsddddd
-///fsdf//dasdasfsdfsdrewrwfsdfsdffdsfsdfsd
-//asdasrrrrrrrfsdfsdf
-//dasdasdthis is whydasd
-//dasdadad
-//wtfffffddddd
-//fsdffwefwe
-//this is itfsdfsdddddd
-//dasdasdasdadasssssssasdasd
-//ec is god
-//dasd
-//back to the primitive
+// ec is god
