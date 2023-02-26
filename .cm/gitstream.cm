@@ -45,15 +45,14 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            {{ repo | explainRankByGitBlame(gt=10) }}
-  senior_review:
-    if:
-      - {{ source.diff.files | match(attr='diff', term='add-reviewers') | some }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [ShakedZrihen]
-          unless_reviewers_set: true
+            {{ repo | explainRankByGitBlame(gt=25) }}
+#  senior_review:
+#    if:
+#      - true
+#    run:
+#      - action: add-reviewers@v1
+#        args:
+#          reviewers: {{ repo | rankByGitBlame(gt=95) }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
