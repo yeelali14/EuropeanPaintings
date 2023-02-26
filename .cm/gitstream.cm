@@ -45,14 +45,14 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            {{ repo | explainRankByGitBlame(gt=95) }}
-  senior_review:
-    if:
-      - true
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: {{ repo | rankByGitBlame(gt=95) }}
+            {{ repo | explainRankByGitBlame(gt=25) }}
+#  senior_review:
+#    if:
+#      - true
+#    run:
+#      - action: add-reviewers@v1
+#        args:
+#          reviewers: {{ repo | rankByGitBlame(gt=95) }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
