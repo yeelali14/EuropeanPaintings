@@ -54,6 +54,14 @@ automations:
 #        args:
 #          reviewers: {{ repo | rankByGitBlame(gt=95) }}
 
+  team_review:
+    if:
+      - true
+    run:
+      - action: require-reviewers@v1
+        args:
+          reviewers: {{ repo | rankByGitBlame(gt=95) }}
+
 calc:
   etr: {{ branch | estimatedReviewTime }}
 is:
