@@ -133,7 +133,7 @@ const blameByAuthor = (files, branch) => {
             return {
               ...prevAuthor,
               [author]: calculateLinesPercentage(authorLines, allLinesCount),
-              dsBlame: allAuthorsString
+              dsBlame: allAuthorsString,
             };
           }, {}),
         },
@@ -142,11 +142,17 @@ const blameByAuthor = (files, branch) => {
   };
 };
 const blames = blameByAuthor(["README.md"], "main");
-const newBlames = Object.keys(blames).reduce((acc, file) => {
-    // if()
-    // return {
-    //     ...acc, 
-    //     [file]: 
-    // }, {}
-})
-console.log(blames);
+const dsBlame = Object.keys(blames).reduce((ac, key) => {
+    if (blames[key].dsBlame) {
+      return { ...ac, [key]: blames[key].dsBlame };;
+      
+    }
+    return acc;
+  }, {});
+
+  Object.keys(blames).forEach(file => {
+    if(blames[file].dsBlame) {
+        delete blames[file].dsBlame;
+    }
+  });
+console.log('dsBlame:', dsBlame, 'blames:', blames);
