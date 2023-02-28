@@ -19,57 +19,6 @@ config:
      - 'shaked zohar <shaked.zrihen@gmail.com>': 'ShakedZrihen'
      - 'kodiakhq[bot] <49736102+kodiakhq[bot]@users.noreply.github.com>': 'kodiakhq[bot]'
 automations:
-  estimated_time_to_review:
-    if:
-      - true
-    run:
-      - action: add-label@v1
-        args:
-          label: "{{ calc.etr }} min review"
-          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
-
-  safe_changes:
-    if:
-      - {{ is.formatting or is.docs or is.tests }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: 'safe-changes'
-  large_change:
-    if:
-      - true
-    run:
-      - action: add-label@v1
-        args:
-          label: large change
-      - action: add-comment@v1
-        args:
-          comment: |
-            {{ repo | explainRankByGitBlame(gt=25) }}
-#  senior_review:
-#    if:
-#      - true
-#    run:
-#      - action: add-reviewers@v1
-#        args:
-#          reviewers: {{ repo | rankByGitBlame(gt=95) }}
-
-  team_review:
-    if:
-      - true
-    run:
-      - action: require-reviewers@v1
-        args:
-          reviewers: {{ repo | rankByGitBlame(gt=95) }}
-
-  activity:
-    if:
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            {{ active_coders }}
   the_expert_reviewer:
     if: 
       - true
@@ -78,11 +27,3 @@ automations:
         args:
           comment: |
             {{ repo | expertReviewer }}
-
-calc:
-  etr: {{ branch | estimatedReviewTime }}
-is:
-  formatting: {{ source.diff.files | isFormattingChange }}
-  docs: {{ files | allDocs }}
-  tests: {{ files | allTests }}
-  active_coders: {{ repo | rankByGitActivity(gt=50, weeks=12) }}
