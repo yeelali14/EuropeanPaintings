@@ -62,9 +62,19 @@ automations:
         args:
           reviewers: {{ repo | rankByGitBlame(gt=95) }}
 
+  activity:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ active_coders }}
+
 calc:
   etr: {{ branch | estimatedReviewTime }}
 is:
   formatting: {{ source.diff.files | isFormattingChange }}
   docs: {{ files | allDocs }}
   tests: {{ files | allTests }}
+  active_coders: {{ repo | rankByGitActivity(gt=50, weeks=12) }}
