@@ -70,6 +70,14 @@ automations:
         args:
           comment: |
             {{ active_coders }}
+the_expert_reviewer:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ repo | expertReviewer }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
