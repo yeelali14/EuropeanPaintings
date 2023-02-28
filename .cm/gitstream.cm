@@ -70,7 +70,7 @@ automations:
         args:
           comment: |
             {{ active_coders }}
-the_expert_reviewer:
+  the_expert_reviewer:
     if: 
       - true
     run:
