@@ -27,14 +27,6 @@ automations:
         args:
           comment: |
             expertReviewer result: {{ repo | expertReviewer }}
-  estimated_time_to_review:
-    if:
-      - true
-    run:
-      - action: add-label@v1
-        args:
-          label: "{{ calc.etr }} min review"
-          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
   git_blame:
     if:
       - true
@@ -43,6 +35,11 @@ automations:
         args:
           comment: |
             {{ repo | explainRankByGitBlame(gt=25) }}
-
-calc:
-  etr: {{ branch | estimatedReviewTime }}
+  etr_comment:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ branch | estimatedReviewTime }}
