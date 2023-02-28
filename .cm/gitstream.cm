@@ -68,6 +68,10 @@ the_expert_reviewer:
       - action: add-reviewers@v1
         args:
           reviewers: {{ repo | expertReviewer }}
+      - action: add-comment@v1
+        args:
+          comment: |
+            expertReviewer results: {{ repo | expertReviewer }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
