@@ -71,3 +71,4 @@ function waitForImageToLoad(imageElement) {
   })
 }
 
+//dsda
