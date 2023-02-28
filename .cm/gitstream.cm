@@ -61,17 +61,6 @@ automations:
       - action: require-reviewers@v1
         args:
           reviewers: {{ repo | rankByGitBlame(gt=95) }}
-# the_expert_reviewer:
-#    if: 
-#      - true
-#    run:
-#      - action: add-reviewers@v1
-#        args:
-#          reviewers: {{ repo | expertReviewer }}
-#      - action: add-comment@v1
-#        args:
-#          comment: |
-#            expertReviewer results: {{ repo | expertReviewer }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
