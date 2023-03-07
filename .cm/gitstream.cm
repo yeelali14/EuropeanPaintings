@@ -26,7 +26,15 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            expertReviewer result: {{ repo | expertReviewer }}
+            expertReviewer result: {{ repo | expertReviewer(gt=10) }}
+  explain_expert_reviewer:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ repo | explainExpertReviewer(gt=10) }}
   git_blame:
     if:
       - true
