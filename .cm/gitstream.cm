@@ -34,7 +34,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            {{ repo | explainExpertReviewer(gt=100) }}
+            {{ repo | explainExpertReviewer(gt=10) }}
   git_blame:
     if:
       - true
