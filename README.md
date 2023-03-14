@@ -31,3 +31,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 #PR
 Lady gaga the queen
 team flare :)
+//ok888fsdfsdf
+//djahskdjhasdsadasdasdasdasdsa
+//wwwdasdasdasdasdas
+//fffffififi
+//dasdadadsada
+//dsadasdsadada
+//shit
