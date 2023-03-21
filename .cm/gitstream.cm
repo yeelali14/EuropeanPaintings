@@ -69,7 +69,6 @@ automations:
         args:
           comment: |
             {{ repo | explainCodeExperts(gt=10) }}
-
   print_description:
     if:
       - true
