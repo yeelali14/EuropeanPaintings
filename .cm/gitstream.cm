@@ -76,7 +76,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            description: {{ pr.description }}
+            description: {{ pr.description | safe }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
