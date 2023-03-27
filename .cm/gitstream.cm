@@ -69,14 +69,6 @@ automations:
         args:
           comment: |
             {{ repo | explainCodeExperts(gt=10) }}
-  print_description:
-    if:
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            description: {{ pr.title }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
