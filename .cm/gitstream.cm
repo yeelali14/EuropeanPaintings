@@ -69,7 +69,7 @@ automations:
         args:
           comment: |
             {{ repo | explainCodeExperts(gt=10) }}
-  code_experts:
+  code_experts_reviewers:
     if: 
       - true
     run:
