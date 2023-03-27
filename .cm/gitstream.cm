@@ -69,6 +69,13 @@ automations:
         args:
           comment: |
             {{ repo | explainCodeExperts(gt=10) }}
+  senior_review:
+    if:
+      - true
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: null
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
