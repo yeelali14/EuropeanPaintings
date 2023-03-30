@@ -61,14 +61,6 @@ automations:
         args:
           comment: |
             codeExperts result: {{ repo | codeExperts(gt=10) }}
-  explain_code_experts:
-    if: 
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            {{ pr.title }}
   code_experts_reviewers:
     if: 
       - true
