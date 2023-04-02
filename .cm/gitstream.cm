@@ -76,6 +76,22 @@ automations:
         args:
           comment: |
             description: {{ pr.description }}
+  print_line_comments:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            line_comments: {{ pr.line_comments }}
+  print_general_comments:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            general_comments: {{ pr.general_comments }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
