@@ -91,7 +91,9 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            general_comments: {{ pr.general_comments }}
+            {% for comment in pr.general_comments %}
+            general comment: {{ comment }}
+            {% endfor %}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
