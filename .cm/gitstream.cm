@@ -92,7 +92,9 @@ automations:
         args:
           comment: |
             {% for comment in pr.general_comments %}
-            general comment: {{ comment }}
+            {% for gc in comment %}
+            general comment: {{ gc }}
+            {% endfor %}
             {% endfor %}
 
 calc:
