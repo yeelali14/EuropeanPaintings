@@ -68,6 +68,14 @@ automations:
       - action: add-reviewers@v1
         args:
           reviewers: {{ repo | codeExperts(gt=10) }}
+  print_description:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            description: {{ pr.description }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
