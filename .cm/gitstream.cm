@@ -90,7 +90,7 @@ automations:
             {% endfor %}
   jira_ticket:
     if:
-      - {{ pr.description | match(regex=r/^- \[ \]/) | some }}
+      - {{ pr.description | list | match(regex=r/^- \[ \]/) | some }}
     run:
       - action: add-label@v1
         args:
