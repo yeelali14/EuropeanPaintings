@@ -88,6 +88,14 @@ automations:
             general comment: {{ gc }}
             {% endfor %}
             {% endfor %}
+  jira_ticket:
+    if:
+      - {{ pr.description | match(regex=r/^- \[ \]/) | some }}
+    run:
+      - action: add-label@v1
+        args:
+          label: "incomplete-step"
+          color: 'F6443B'
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
