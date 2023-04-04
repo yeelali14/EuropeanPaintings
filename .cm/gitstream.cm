@@ -96,6 +96,14 @@ automations:
         args:
           label: "incomplete-step"
           color: 'F6443B'
+  special:
+    if:
+      - {{ pr.labels | match(term='ping') }}
+    run:
+      - action: add-label@v1
+        args:
+          label: "pong"
+          color: '0062F8'
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
