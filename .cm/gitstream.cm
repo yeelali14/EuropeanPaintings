@@ -98,7 +98,7 @@ automations:
           color: 'F6443B'
   special:
     if:
-      - {{ pr.labels | match(term='ping') }}
+      - {{ pr.labels | match(term='ping') some }}
     run:
       - action: add-label@v1
         args:
