@@ -71,3 +71,5 @@ function waitForImageToLoad(imageElement) {
   })
 }
 
+fsdfsdf
+
