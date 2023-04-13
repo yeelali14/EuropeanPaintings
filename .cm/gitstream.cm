@@ -197,7 +197,7 @@ automations:
   label_new_contributors:
     if:
       - {{ not pr.draft }}
-      - {{ repo.author_age < setting.new_contributor_days and (repo.age - repo.author_age) >= setting.new_contributor_days }}
+      - true
     run:
       - action: add-label@v1
         args:
