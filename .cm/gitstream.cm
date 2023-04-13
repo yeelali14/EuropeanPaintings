@@ -30,11 +30,6 @@ automations:
     if:
       - true
     run:
-      # Add reviewers from the dev-leads team, and require two approvals
-      # Modify `my_organization/dev-leads` to match your organization.
-      - action: set-required-approvals@v1
-        args:
-          approvals: 2
       - action: add-reviewers@v1
         args:
           reviewers: [blp-test-dev/release]
