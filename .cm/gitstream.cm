@@ -131,7 +131,7 @@ automations:
       - action: add-label@v1
         args:
           label: 'safe-changes'
-          color: {{ color.purple }}
+          color: 5319E7
       - action: approve@v1
   
   # assign people that are "experts" in the review for better quality reviews
@@ -190,7 +190,7 @@ automations:
       - action: add-label@v1
         args:
           label: "{{ calc.etr }} min review"
-          color: {{ color.red if (calc.etr >= 30) else (color.yellow if (calc.etr >= 10) else color.green) }}
+          color: {{ 5319E7 if (calc.etr >= 30) else (5319E7 if (calc.etr >= 10) else 5319E7) }}
 
   # require extra PR reviews for new contributors to give them more support
   # https://docs.gitstream.cm/examples/#require-2-approvals-for-complex-prs
@@ -202,7 +202,7 @@ automations:
       - action: add-label@v1
         args:
           label: 'new-contibutor'
-          color: {{ color.purple }}
+          color: 5319E7
       - action: add-reviewers@v1
         args:
           team_reviewers: {{ setting.senior_team_reviewer }}
@@ -225,7 +225,7 @@ automations:
   #     - action: add-label@v1
   #       args:
   #         label: "missing-story"
-  #         color: {{ color.bad }}
+  #         color: 5319E7
   #     - action: add-comment@v1
   #       args:
   #         comment: |
