@@ -23,12 +23,13 @@ config:
 automations:
   error_label:
     if:
+      - {{ not pr.draft }}
       - true
     run:
       - action: add-label@v1
         args:
-          label: "test"
-          color: {{ color.red }}
+          label: 'new-contibutor'
+          color: {{ color.purple }}
 
 
 calc:
