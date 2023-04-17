@@ -27,7 +27,8 @@ automations:
     run:
       - action: add-labels@v1
         args:
-          labels: ["error", "error"]
+          labels: ["error"]
+          color: {{ color.red }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
