@@ -25,10 +25,11 @@ automations:
     if:
       - true
     run:
-      - action: add-labels@v1
+      - action: add-label@v1
         args:
-          labels: ["error"]
+          label: "test"
           color: {{ color.red }}
+
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
