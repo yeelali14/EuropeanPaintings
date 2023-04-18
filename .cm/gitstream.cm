@@ -1,5 +1,4 @@
 # -*- mode: yaml -*-
-
 manifest:
   version: 1.1
 config:
@@ -21,23 +20,88 @@ config:
      - 'shaked zohar <shaked.zrihen@gmail.com>': 'ShakedZrihen'
      - 'kodiakhq[bot] <49736102+kodiakhq[bot]@users.noreply.github.com>': 'kodiakhq[bot]'
 automations:
-  error_label:
+  the_expert_reviewer:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            expertReviewer result: {{ repo | expertReviewer(gt=10) }}
+  explain_expert_reviewer:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ repo | explainExpertReviewer(gt=10) }}
+  git_blame:
     if:
-      - {{ not pr.draft }}
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ repo | explainRankByGitBlame(gt=25) }}
+  estimated_time_to_review:
+    if:
       - true
     run:
       - action: add-label@v1
         args:
-          label: 'new-contibutor'
-          color: {{ color.purple }}
-
-
+          label: "{{ calc.etr }} min review"
+          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
+  code_experts:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            codeExperts result: {{ repo | codeExperts(gt=10) }}
+  code_experts_reviewers:
+    if: 
+      - true
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: {{ repo | codeExperts(gt=10) }}
+  print_description:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            description: {{ pr.description }}
+  print_general_comments:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {% for comment in pr.general_comments %}
+            {% for gc in comment %}
+            general comment: {{ gc }}
+            {% endfor %}
+            {% endfor %}
+  jira_ticket:
+    if:
+      - {{ pr.description | list | match(regex=r/^- \[ \]/) | some }}
+    run:
+      - action: add-label@v1
+        args:
+          label: "incomplete-step"
+          color: 'F6443B'
+  special:
+    if:
+      - {{ pr.labels | match(term='ping') | some }}
+    run:
+      - action: add-label@v1
+        args:
+          label: "pong"
+          color: '0062F8'
 calc:
   etr: {{ branch | estimatedReviewTime }}
-color:
-  red: B60205
-  orange: D93F0B
-  yellow: FBCA04
-  green: 0E8A16
-  blue: 1D76DB
-  purple: 5319E7
