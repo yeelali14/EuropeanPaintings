@@ -21,7 +21,7 @@ config:
      - 'kodiakhq[bot] <49736102+kodiakhq[bot]@users.noreply.github.com>': 'kodiakhq[bot]'
 automations:
   the_expert_reviewer:
-    if: 
+      if: 
       - true
     run:
       - action: add-comment@v1
