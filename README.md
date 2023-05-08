@@ -31,3 +31,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 #PR
 Lady gaga the queen
 team flare :)
+ok
+sonar 2
+fsfsdffesfsd
+dasdasdasdasdasdsds
+fsdfsddsdasd
+dadadad
