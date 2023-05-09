@@ -67,41 +67,6 @@ automations:
       - action: add-reviewers@v1
         args:
           reviewers: {{ repo | codeExperts(gt=10) }}
-  print_description:
-    if:
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            description: {{ pr.description }}
-  print_general_comments:
-    if:
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            {% for comment in pr.general_comments %}
-            {% for gc in comment %}
-            general comment: {{ gc }}
-            {% endfor %}
-            {% endfor %}
-  jira_ticket:
-    if:
-      - {{ pr.description | list | match(regex=r/^- \[ \]/) | some }}
-    run:
-      - action: add-label@v1
-        args:
-          label: "incomplete-step"
-          color: 'F6443B'
-  special:
-    if:
-      - {{ pr.labels | match(term='ping') | some }}
-    run:
-      - action: add-label@v1
-        args:
-          label: "pong"
-          color: '0062F8'
+
 calc:
   etr: {{ branch | estimatedReviewTime }}
