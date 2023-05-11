@@ -1,2 +1,11 @@
-def hello():
-  print("shaked")
+# mango
+
+
+# sadas
+# banana
+# dsa
+# sadas
+
+def function():
+	print('1')
+	pass
