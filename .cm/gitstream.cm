@@ -75,7 +75,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            codeExperts result: {{ pr | sonarParser | dump }}
+            sonarParser result: {{ pr | sonarParser | dump }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
