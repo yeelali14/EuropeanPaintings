@@ -68,6 +68,14 @@ automations:
       - action: add-reviewers@v1
         args:
           reviewers: {{ repo | codeExperts(gt=10) }}
+  sonar_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            codeExperts result: {{ pr | sonarParser | dump }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
