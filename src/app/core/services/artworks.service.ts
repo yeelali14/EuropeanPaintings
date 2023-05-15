@@ -86,6 +86,7 @@ function waitForImageToLoad(imageElement) {
   })
 }
 
+//for code smell update
 export const SONAR_REGEX = {
   BUGS: /\[\d+ Bug[s]?\]/g,
   VULNERABILITIES: /\[\d+ Vulnerabilit(?:ies|y)\]/g,
