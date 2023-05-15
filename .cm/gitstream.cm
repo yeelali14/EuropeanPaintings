@@ -78,7 +78,7 @@ automations:
             sonarParser result: {{ sonar | dump }} code smell {{ sonar.code_smells.count }}
   mark_code_smell:
     if:
-      - {{ sonar.codeSmells.count > 0 }}
+      - {{ sonar.code_smells.count > 0 }}
     run: 
       - action: add-label@v1
         args:
