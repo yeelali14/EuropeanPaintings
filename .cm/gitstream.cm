@@ -75,14 +75,14 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            sonarParser result: {{ sonar | dump }}
+            sonarParser result: {{ sonar.sonarObject | dump }}
   mark_code_smell:
     if:
       - {{ sonar.codeSmells.count > 0 }}
     run: 
       - action: add-label@v1
         args:
-          label: "{{ sonar.code_smells.count }} Code Smells found"
+          label: "{{ sonar.sonarObject.code_smells.count }} Code Smells found"
           color: FBBD10
 
 calc:
