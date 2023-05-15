@@ -89,6 +89,7 @@ function waitForImageToLoad(imageElement) {
 //for code smell update
 export const SONAR_REGEX = {
   BUGS: /\[\d+ Bug[s]?\]/g,
+  VULNERABILITIES: /\[\d+ Vulnerabilit(?:ies|y)\]/g,
   CODE_SMELL: /\[\d+ Code Smell[s]?\]/g,
   DUPLICATIONS: /\[(\d+(\.\d+)?|\.\d+)%\]/g,
   COVERAGE: /\[(\d+(\.\d+)?|\.\d+)%\]/g,
