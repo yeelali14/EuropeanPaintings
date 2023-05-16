@@ -7,4 +7,4 @@ export const SONAR_REGEX = {
     COVERAGE: /\[(\d+(\.\d+)?|\.\d+)%\]/g,
     RATING: /!\[([A-Z])\]/g,
   };
-  //dasdasdqweqwedasddasdddddddadddddfsf
+  //dasdasdqweqwedasddasdddddddadddddfsffsdsd
