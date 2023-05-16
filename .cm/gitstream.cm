@@ -19,6 +19,11 @@ automations:
         args:
           label: "{{ sonar.code_smells.count }} Code Smells found"
           color: FBBD10
+  approve:
+    if:
+      - true
+    run:
+      - action: approve@v1
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
