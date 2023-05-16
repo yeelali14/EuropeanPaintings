@@ -30,6 +30,21 @@ export class ArtworksService {
     )
   }
 
+  getArtworksByDepartment2() {
+    return this.http.get(environment.baseUrl + "search?departmentId=11&q=sunflowers").pipe(
+      mergeMap(res =>
+        from(res.objectIDs).pipe(
+          mergeMap(objectID => this.http.get(environment.baseUrl + "objects/" + objectID).pipe(
+            map(artwork => {
+              this.getImageColour(artwork);
+              return this.artworks;
+            })
+          ))
+        )
+      )
+    )
+  }
+
 
   getImageColour(artwork: any) {
     let rgb = [];
@@ -71,3 +86,12 @@ function waitForImageToLoad(imageElement) {
   })
 }
 
+//for code smell update
+export const SONAR_REGEX = {
+  BUGS: /\[\d+ Bug[s]?\]/g,
+  VULNERABILITIES: /\[\d+ Vulnerabilit(?:ies|y)\]/g,
+  CODE_SMELL: /\[\d+ Code Smell[s]?\]/g,
+  DUPLICATIONS: /\[(\d+(\.\d+)?|\.\d+)%\]/g,
+  COVERAGE: /\[(\d+(\.\d+)?|\.\d+)%\]/g,
+  RATING: /!\[([A-Z])\]/g,
+};
