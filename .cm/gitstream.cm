@@ -1,3 +1,7 @@
+# -*- mode: yaml -*-
+manifest:
+  version: 1.1
+
 automations:
   sonar_parser:
     if: 
@@ -16,4 +20,6 @@ automations:
           label: "{{ sonar.code_smells.count }} Code Smells found"
           color: FBBD10
 
+calc:
+  etr: {{ branch | estimatedReviewTime }}
 sonar: {{ pr | sonarParser }}
