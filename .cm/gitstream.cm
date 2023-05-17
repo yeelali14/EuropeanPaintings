@@ -14,24 +14,24 @@ automations:
     run: 
       - action: add-label@v1
         args:
-          label: "{{ sonar.bugs.count }} Bugs found"
-          color: eabe06
+          label: '{{ sonar.bugs.count }} Bugs found'
+          color: 'eabe06'
   mark_code_smell:
     if:
       - {{ sonar.code_smells.count > 0 }}
     run: 
       - action: add-label@v1
         args:
-          label: "{{ sonar.code_smells.count }} Code Smells found"
-          color: 00aa00
+          label: '{{ sonar.code_smells.count }} Code Smells found'
+          color: '00aa00'
   mark_security_hotspots:
     if:
       - {{ sonar.security_hotspots.count > 0 }}
     run: 
       - action: add-label@v1
         args:
-          label: "{{ sonar.security_hotspots.count }} Security hotspots found"
-          color: d4333f
+          label: '{{ sonar.security_hotspots.count }} Security hotspots found'
+          color: 'd4333f'
   mark_outstanding_pr:
     if:
       - {{ sonar.bugs.count == 0 }}
@@ -42,8 +42,8 @@ automations:
     run: 
       - action: add-label@v1
         args:
-          label: "👍 All Sonar tests passed"
-          color: d4333f
+          label: '👍 All Sonar tests passed'
+          color: 'd4333f'
   high_duplications:
     if:
       - {{ sonar.duplications > 40 }}
@@ -54,16 +54,16 @@ automations:
             High percentage of duplications in code. Please fix!
       - action: add-label@v1
         args:
-          label: "{{ sonar.duplications }} Duplications found"
-          color: d4333f
+          label: '{{ sonar.duplications }} Duplications found'
+          color: 'd4333f'
   assign_vulnerabilities:
     if:
       - {{ sonar.vulnerabilities.count > 0 }}
     run: 
       - action: add-label@v1
         args:
-          label: "{{ sonar.vulnerabilities.count }} Vulnerabilities found"
-          color: d4333f
+          label: '{{ sonar.vulnerabilities.count }} Vulnerabilities found'
+          color: 'd4333f'
       - action: add-reviewers@v1
         args:
           reviewers: [linear-b/app-sec]
