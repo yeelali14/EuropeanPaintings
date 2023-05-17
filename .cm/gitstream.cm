@@ -42,7 +42,7 @@ automations:
     run: 
       - action: add-label@v1
         args:
-          label: ":+1: All Sonar tests passed"
+          label: "👍 All Sonar tests passed"
           color: d4333f
   high_duplications:
     if:
