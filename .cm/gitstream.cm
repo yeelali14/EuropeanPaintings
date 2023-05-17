@@ -32,14 +32,6 @@ automations:
         args:
           label: "{{ sonar.security_hotspots.count }} Security hotspots found"
           color: d4333f
-  mark_security_hotspots:
-    if:
-      - {{ sonar.security_hotspots.count > 0 }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: "{{ sonar.security_hotspots.count }} Security hotspots found"
-          color: d4333f
   mark_outstanding_pr:
     if:
       - {{ sonar.bugs.count == 0 }}
