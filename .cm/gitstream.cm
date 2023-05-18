@@ -67,6 +67,14 @@ automations:
       - action: add-reviewers@v1
         args:
           reviewers: [Dudu-linb]
+  test_sonar:
+    if:
+      - true
+    run:
+      - action: request-changes@v1
+        args:
+          comment: |
+            {{ sonar | dump }}
 
 
 sonar: {{ pr | sonarParser }}
