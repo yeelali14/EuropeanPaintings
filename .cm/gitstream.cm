@@ -8,65 +8,22 @@ config:
     users: ['EladKohavi']
 
 automations:
-  mark_bugs:
+  estimated_time_to_review:
     if:
-      - {{ sonar.bugs.count > 0 }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.bugs.count }} 🐞 Bugs found'
-          color: 'eabe06'
-  mark_code_smell:
-    if:
-      - {{ sonar.code_smells.count > 0 }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.code_smells.count }} 💩 Code Smells found'
-          color: '00aa00'
-  mark_security_hotspots:
-    if:
-      - {{ sonar.security_hotspots.count > 0 }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.security_hotspots.count }} 🌶️ Security hotspots found'
-          color: 'd4333f'
-  mark_outstanding_pr:
-    if:
-      - {{ sonar.bugs.count == 0 }}
-      - {{ sonar.code_smells.count == 0 }}
-      - {{ sonar.vulnerabilities.count == 0 }}
-      - {{ sonar.security_hotspots.count == 0 }}
-      - {{ sonar.duplications == null or sonar.duplications == 0.0 }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: '👍 All Sonar tests passed'
-          color: 'd4333f'
-  high_duplications:
-    if:
-      - {{ sonar.duplications > 40 }}
+      - {{ source.diff.files | isFormattingChange }}
     run:
-      - action: request-changes@v1
+      - action: add-label@v1
+        args:
+          label: "Formatting changed"
+          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
+  code_experts:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
         args:
           comment: |
-            High percentage of duplications in code. Please fix!
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.duplications }} 👯 Duplications found'
-          color: 'd4333f'
-  assign_vulnerabilities:
-    if:
-      - {{ sonar.vulnerabilities.count > 0 }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.vulnerabilities.count }} 🛡️ Vulnerabilities found'
-          color: 'd4333f'
-      - action: add-reviewers@v1
-        args:
-          reviewers: [Dudu-linb]
+            codeExperts result: {{ repo | codeExperts(gt=10) }}
   test_sonar:
     if:
       - true
