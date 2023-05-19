@@ -8,6 +8,14 @@ config:
     users: ['EladKohavi']
 
 automations:
+  mark_code_smell:
+    if:
+      - {{ sonar.code_smells.count > 0 }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: '{{ sonar.code_smells.count }} 💩 Code Smells found'
+          color: '00aa00'
   sonar_parser:
     if: 
       - true
