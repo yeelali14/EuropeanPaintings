@@ -16,8 +16,17 @@ automations:
         args:
           comment: |
             {{ sonar | dump }}
+  jit_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ jit | dump }}
 
 
-sonar: {{ pr | sonarParser }}
+sonar: {{ pr | extractSonarFindings }}
+jit: {{ pr | extractJitFindings }}
 calc:
   etr: {{ branch | estimatedReviewTime }}
