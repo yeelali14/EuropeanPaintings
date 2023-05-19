@@ -29,4 +29,5 @@ def mitre_lab_17_api(request):
         err = err.decode()
         pattern = "STATE SERVICE.*\\n\\n"
         ports = re.findall(pattern, res,re.DOTALL)[0][14:-2].split('\n')
+        # dasdasdasd
         return JsonResponse({'raw_res': str(res), 'raw_err': str(err), 'ports': ports})
