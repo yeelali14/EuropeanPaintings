@@ -8,11 +8,11 @@ config:
     users: ['EladKohavi']
 
 automations:
-  test_sonar:
-    if:
+  sonar_parser:
+    if: 
       - true
     run:
-      - action: request-changes@v1
+      - action: add-comment@v1
         args:
           comment: |
             {{ sonar | dump }}
