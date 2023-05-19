@@ -8,54 +8,6 @@ config:
     users: ['EladKohavi']
 
 automations:
-  the_expert_reviewer:
-    if: 
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            expertReviewer result: {{ repo | expertReviewer(gt=10) }}
-  explain_expert_reviewer:
-    if: 
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            {{ repo | explainExpertReviewer(gt=10) }}
-  git_blame:
-    if:
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            {{ repo | explainRankByGitBlame(gt=25) }}
-  estimated_time_to_review:
-    if:
-      - {{ source.diff.files | length > 0 }}
-    run:
-      - action: add-label@v1
-        args:
-          label: "Formatting changed"
-          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
-  code_experts:
-    if: 
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            codeExperts result: {{ repo | codeExperts(gt=10) }}
-  
-  code_experts_reviewers:
-    if: 
-      - true
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: {{ repo | codeExperts(gt=10) }}
   test_sonar:
     if:
       - true
