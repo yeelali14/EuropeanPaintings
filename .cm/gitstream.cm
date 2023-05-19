@@ -34,7 +34,7 @@ automations:
             {{ repo | explainRankByGitBlame(gt=25) }}
   estimated_time_to_review:
     if:
-      - {{ source.diff.files | isFormattingChange }}
+      - {{ source.diff.files | length > 0 }}
     run:
       - action: add-label@v1
         args:
