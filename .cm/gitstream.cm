@@ -8,15 +8,34 @@ config:
     users: ['EladKohavi']
 
 automations:
+  mark_bugs:
+    if:
+      - {{ sonar.bugs.count > 0 }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: '{{ sonar.bugs.count }} 🐞 Bugs'
+          color: {{ colors.bugs }}
   mark_code_smell:
     if:
       - {{ sonar.code_smells.count > 0 }}
     run: 
       - action: add-label@v1
         args:
-          label: '{{ sonar.code_smells.count }} 💩 Code Smells found'
-          color: '00aa00'
-    mark_outstanding_pr:
+          label: '{{ sonar.code_smells.count }} 💩 Code Smells'
+          color: {{ colors.code_smells }}
+  mark_security_hotspots:
+    if:
+      - {{ sonar.security_hotspots.count > 0 }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: '{{ sonar.security_hotspots.count }} 🌶️ Security hotspots'
+          color: {{ colors.security_hotspots }}
+      - action: add-reviewers@v1
+        args:
+          reviewers: [Dudu-linb]
+  mark_outstanding_pr:
     if:
       - {{ sonar.bugs.count == 0 }}
       - {{ sonar.code_smells.count == 0 }}
@@ -27,15 +46,27 @@ automations:
       - action: add-label@v1
         args:
           label: '💯 Sonar'
-          color: 'f6bbb7'
-  sonar_parser:
-    if: 
-      - true
+          color: 'ABEBC6'
+  high_duplications:
+    if:
+      - {{ sonar.duplications > 40 }}
     run:
-      - action: add-comment@v1
+      - action: request-changes@v1
         args:
           comment: |
-            {{ sonar | dump }}
+            High percentage of duplications in code. Please fix!
+      - action: add-label@v1
+        args:
+          label: '{{ sonar.duplications }} 👯 Duplications'
+          color: {{ colors.duplications }}
+  mark_vulnerabilities:
+    if:
+      - {{ sonar.vulnerabilities.count > 0 }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: '{{ sonar.vulnerabilities.count }} 🛡️ Vulnerabilities'
+          color: {{ colors.vulnerabilities }}
   jit_parser:
     if: 
       - true
@@ -46,7 +77,11 @@ automations:
             {{ jit | dump }}
 
 
-sonar: {{ pr | extractSonarFindings }}
+sonar: {{ pr | sonarParser }}
 jit: {{ pr | extractJitFindings }}
-calc:
-  etr: {{ branch | estimatedReviewTime }}
+colors:
+  code_smell: 'C19A6B'
+  bugs: 'F5B7B1'
+  vulnerabilities: 'F5B7B1'
+  security_hotspots: 'F5B7B1'
+  duplications: 'D7BDE2'
