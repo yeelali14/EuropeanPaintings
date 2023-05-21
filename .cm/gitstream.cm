@@ -16,7 +16,7 @@ automations:
         args:
           label: '{{ sonar.code_smells.count }} 💩 Code Smells found'
           color: '00aa00'
-    mark_outstanding_pr:
+  mark_outstanding_pr:
     if:
       - {{ sonar.bugs.count == 0 }}
       - {{ sonar.code_smells.count == 0 }}
