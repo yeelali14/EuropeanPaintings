@@ -80,7 +80,7 @@ automations:
 sonar: {{ pr | sonarParser }}
 jit: {{ pr | extractJitFindings }}
 colors:
-  code_smell: 'C19A6B'
+  code_smells: 'C19A6B'
   bugs: 'F5B7B1'
   vulnerabilities: 'F5B7B1'
   security_hotspots: 'F5B7B1'
