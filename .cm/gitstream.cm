@@ -8,73 +8,35 @@ config:
     users: ['EladKohavi']
 
 automations:
-  mark_bugs:
-    if:
-      - {{ sonar.bugs.count > 0 }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.bugs.count }} 🐞 Bugs'
-          color: {{ colors.bugs }}
-  mark_code_smell:
-    if:
-      - {{ sonar.code_smells.count > 0 }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.code_smells.count }} 💩 Code Smells'
-          color: {{ colors.code_smells }}
-  mark_security_hotspots:
-    if:
-      - {{ sonar.security_hotspots.count > 0 }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.security_hotspots.count }} 🌶️ Security hotspots'
-          color: {{ colors.security_hotspots }}
-      - action: add-reviewers@v1
-        args:
-          reviewers: [Dudu-linb]
-  mark_outstanding_pr:
-    if:
-      - {{ sonar.bugs.count == 0 }}
-      - {{ sonar.code_smells.count == 0 }}
-      - {{ sonar.vulnerabilities.count == 0 }}
-      - {{ sonar.security_hotspots.count == 0 }}
-      - {{ sonar.duplications == null or sonar.duplications == 0.0 }}
+  try_labels:
+    if: 
+      - true
     run: 
       - action: add-label@v1
         args:
           label: '💯 Sonar'
           color: 'ABEBC6'
-  high_duplications:
-    if:
-      - {{ sonar.duplications > 40 }}
-    run:
-      - action: request-changes@v1
-        args:
-          comment: |
-            High percentage of duplications in code. Please fix!
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.duplications }} 👯 Duplications'
-          color: {{ colors.duplications }}
-  mark_vulnerabilities:
-    if:
-      - {{ sonar.vulnerabilities.count > 0 }}
-    run: 
       - action: add-label@v1
         args:
           label: '{{ sonar.vulnerabilities.count }} 🛡️ Vulnerabilities'
           color: {{ colors.vulnerabilities }}
-  jit_parser:
-    if: 
-      - true
-    run:
-      - action: add-comment@v1
+      - action: add-label@v1
         args:
-          comment: |
-            {{ jit | dump }}
+          label: '{{ sonar.duplications }} 👯 Duplications'
+          color: {{ colors.duplications }}
+      - action: add-label@v1
+        args:
+          label: '{{ sonar.security_hotspots.count }} 🌶️ Security hotspots'
+          color: {{ colors.security_hotspots }}
+      - action: add-label@v1
+        args:
+          label: '{{ sonar.code_smells.count }} 💩 Code Smells'
+          color: {{ colors.code_smells }}
+      - action: add-label@v1
+        args:
+          label: '{{ sonar.bugs.count }} 🐞 Bugs'
+          color: {{ colors.bugs }}
+
 
 
 sonar: {{ pr | sonarParser }}
