@@ -8,42 +8,45 @@ config:
     users: ['EladKohavi']
 
 automations:
-  try_labels:
-    if: 
-      - true
+  mark_code_smell:
+    if:
+      - {{ sonar.code_smells.count > 0 }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: '{{ sonar.code_smells.count }} 💩 Code Smells found'
+          color: '00aa00'
+    mark_outstanding_pr:
+    if:
+      - {{ sonar.bugs.count == 0 }}
+      - {{ sonar.code_smells.count == 0 }}
+      - {{ sonar.vulnerabilities.count == 0 }}
+      - {{ sonar.security_hotspots.count == 0 }}
+      - {{ sonar.duplications == null or sonar.duplications == 0.0 }}
     run: 
       - action: add-label@v1
         args:
           label: '💯 Sonar'
-          color: 'ABEBC6'
-      - action: add-label@v1
+          color: 'f6bbb7'
+  sonar_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
         args:
-          label: '{{ sonar.vulnerabilities.count }} 🛡️ Vulnerabilities'
-          color: {{ colors.vulnerabilities }}
-      - action: add-label@v1
+          comment: |
+            {{ sonar | dump }}
+  jit_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
         args:
-          label: '{{ sonar.duplications }} 👯 Duplications'
-          color: {{ colors.duplications }}
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.security_hotspots.count }} 🌶️ Security hotspots'
-          color: {{ colors.security_hotspots }}
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.code_smells.count }} 💩 Code Smells'
-          color: {{ colors.code_smells }}
-      - action: add-label@v1
-        args:
-          label: '{{ sonar.bugs.count }} 🐞 Bugs'
-          color: {{ colors.bugs }}
+          comment: |
+            {{ jit | dump }}
 
 
-
-sonar: {{ pr | sonarParser }}
+sonar: {{ pr | extractSonarFindings }}
 jit: {{ pr | extractJitFindings }}
-colors:
-  code_smells: 'D2B48C'
-  bugs: 'FAA0A0'
-  vulnerabilities: 'F3E5AB'
-  security_hotspots: 'F89880'
-  duplications: 'D7BDE2'
+calc:
+  etr: {{ branch | estimatedReviewTime }}
