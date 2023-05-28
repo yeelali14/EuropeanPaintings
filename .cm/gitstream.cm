@@ -2,51 +2,26 @@
 
 manifest:
   version: 1.0
- 
-config:
-  admin:
-    users: ['EladKohavi']
-
 automations:
-  mark_code_smell:
+  approve_sonar_clean_code:
     if:
-      - {{ sonar.code_smells.count > 0 }}
+      - {{ sonar.bugs.rating == 'A' }}
+      - {{ sonar.code_smells.rating == 'A' }}
+      - {{ sonar.vulnerabilities.rating == 'A' }}
+      - {{ sonar.security_hotspots.rating == 'A' }}
+      - {{ sonar.duplications == null or sonar.duplications == 0 }}
     run: 
       - action: add-label@v1
         args:
-          label: '{{ sonar.code_smells.count }} 💩 Code Smells found'
-          color: '00aa00'
-  mark_outstanding_pr:
-    if:
-      - {{ sonar.bugs.count == 0 }}
-      - {{ sonar.code_smells.count == 0 }}
-      - {{ sonar.vulnerabilities.count == 0 }}
-      - {{ sonar.security_hotspots.count == 0 }}
-      - {{ sonar.duplications == null or sonar.duplications == 0.0 }}
-    run: 
-      - action: add-label@v1
-        args:
-          label: '💯 Sonar'
-          color: 'f6bbb7'
-  sonar_parser:
-    if: 
-      - true
-    run:
+          label: '✅ Sonar: Clean Code'
+          color: {{ colors.green }}
+      - action: approve@v1
       - action: add-comment@v1
         args:
           comment: |
-            {{ sonar | dump }}
-  jit_parser:
-    if: 
-      - true
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            {{ jit | dump }}
-
+            This PR passes the SonarCloud quality gate check and as been automatically approved.
 
 sonar: {{ pr | extractSonarFindings }}
-jit: {{ pr | extractJitFindings }}
-calc:
-  etr: {{ branch | estimatedReviewTime }}
+
+colors:
+  green: '0e8a16'
