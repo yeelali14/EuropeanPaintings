@@ -1,0 +1,8 @@
+automations:
+  senior_review:
+    if:
+      - true
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: [popeye, olive, acme/team-a]
