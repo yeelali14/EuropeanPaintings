@@ -1,8 +1,10 @@
+
+
 automations:
   senior_review:
     if:
-      - true
+      - {{ files | match(term='src/ui/') }}
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [EladKohavi]
+          reviewers: [popeye, olive, acme/team-a]
