@@ -3,7 +3,7 @@
 automations:
   senior_review:
     if:
-      - {{ files | match(term='src/ui/') }}
+      - true
     run:
       - action: add-reviewers@v1
         args:
