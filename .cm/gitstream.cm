@@ -1,13 +1,6 @@
 
 
 automations:
-  senior_review:
-    if:
-      - true
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [Yaarash]
   mark_code_smell:
     if:
       - {{ sonar.code_smells.count > 0 }}
