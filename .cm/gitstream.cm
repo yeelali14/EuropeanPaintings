@@ -7,4 +7,4 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [linear-b/bananas]
+          reviewers: [EladKohavi ,linear-b/bananas]
