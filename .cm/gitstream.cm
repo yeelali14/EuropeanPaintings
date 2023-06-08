@@ -6,7 +6,7 @@ config:
     - 'juice-shop'
     
 automations:
-  estimated_time_to_review:
+  estimated_time_to_review_3:
     if:
       - true
     run:
