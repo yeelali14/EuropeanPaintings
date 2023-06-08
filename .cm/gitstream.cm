@@ -1,3 +1,10 @@
+config:
+  admin:
+    users: ['EladKohavi']
+  ignore_repositories:
+    - 'gitstream-test-repo'
+    - 'juice-shop'
+    
 automations:
   mark_code_smell:
     if:
