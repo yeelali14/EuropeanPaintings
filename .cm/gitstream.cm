@@ -1,22 +1,41 @@
-config:
-  admin:
-    users: ['EladKohavi']
-  ignore_repositories:
-    - 'gitstream-test-repo'
-    - 'juice-shop'
-    
 automations:
-  estimated_time_to_review:
+  mark_code_smell:
     if:
-      - true
-    run:
+      - {{ sonar.code_smells.count > 0 }}
+    run: 
       - action: add-label@v1
         args:
-          label: "{{ calc.etr }} min review"
-          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
-
-# To simplify the automation, this calculation is placed under a unique YAML key.
-# The result is assigned to `calc.etr` which is used in the automation above.
-# You can add as many keys as you like.
+          label: '{{ sonar.code_smells.count }} 💩 Code Smells found'
+          color: '00aa00'
+  mark_outstanding_pr:
+    if:
+      - {{ sonar.bugs.count == 0 }}
+      - {{ sonar.code_smells.count == 0 }}
+      - {{ sonar.vulnerabilities.count == 0 }}
+      - {{ sonar.security_hotspots.count == 0 }}
+      - {{ sonar.duplications == null or sonar.duplications == 0.0 }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: '💯 Sonar'
+          color: 'f6bbb7'
+  sonar_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ sonar | dump }}
+  jit_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ jit | dump }}
+sonar: {{ pr | extractSonarFindings }}
+jit: {{ pr | extractJitFindings }}
 calc:
   etr: {{ branch | estimatedReviewTime }}
