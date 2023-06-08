@@ -44,5 +44,3 @@ automations:
             {{ jit | dump }}
 sonar: {{ pr | extractSonarFindings }}
 jit: {{ pr | extractJitFindings }}
-calc:
-  etr: {{ branch | estimatedReviewTime }}
