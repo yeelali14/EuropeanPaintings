@@ -2,16 +2,16 @@ manifest:
   version: 1.0
 
 automations:
-  assign_reviewers:
+  double_review:
     if:
       - true
     run:
-      - action: add-reviewers@v1
+      - action: http-request@v1
         args:
-          reviewers: {{ maintainers | reject(term=pr.author) }}  
-    
-maintainers:
-  - ShakedZrihen
-  - EladKohavi
-  - yeelali14
-  - Yaarash
+          url: {{ slack.base }}{{slack.channel }}
+          method: POST
+          headers: '{"Content-type": "application/json"}'
+          body: '{"text":"Hello, World! from EuropeanPaintings"}'
+slack:
+   base: "https://hooks.slack.com/services"
+   channel: "/T9S1TJFAA/B05BZ7KBBL3/obPg3orTqQEenqVvVa4s8VY0"
