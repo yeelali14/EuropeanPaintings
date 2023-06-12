@@ -15,4 +15,4 @@ automations:
 slack:
    base: "https://hooks.slack.com/services"
    channel: "/T9S1TJFAA/B056TUAR75K/We90F6y4mMPlk3vG9RbeVrTg"
-   
+
