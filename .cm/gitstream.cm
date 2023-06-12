@@ -11,7 +11,7 @@ automations:
           url: {{ slack.base }}{{slack.channel }}
           method: POST
           headers: '{"Content-type": "application/json"}'
-          body: '{"text":"Hello Ofer! <@U02HN6X1K27> Hello Pavel <@U051SAW9RU1>"}'
+          body: '{"text":"Hello! <@U02HFGFQC5U>"}'
 slack:
    base: "https://hooks.slack.com/services"
-   channel: "/T9S1TJFAA/B056TUAR75K/We90F6y4mMPlk3vG9RbeVrTg"
+   channel: "D02HQEJ57HS"
