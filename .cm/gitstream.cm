@@ -12,7 +12,19 @@ automations:
           method: POST
           headers: '{"Content-type": "application/json"}'
           body: '{"text":"Hello, Pavel!"}'
+  assign_code_experts:
+    # Triggered when someone applies a suggest-reviewer label to a PR.
+    if: 
+      - {{ files | allDocs }}
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: {{ repo | codeExperts(gt=10) }}
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ repo | explainCodeExperts(gt=10) }}
 slack:
    base: "https://hooks.slack.com/services"
    channel: "/T9S1TJFAA/B056TUAR75K/We90F6y4mMPlk3vG9RbeVrTg"
-   
+
