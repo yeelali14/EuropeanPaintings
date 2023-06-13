@@ -2,16 +2,6 @@ manifest:
   version: 1.0
 
 automations:
-  double_review:
-    if:
-      - true
-    run:
-      - action: http-request@v1
-        args:
-          url: {{slack.base}}{{slack.channel }}
-          method: POST
-          headers: '{"Content-type": "application/json"}'
-          body: '{"text":"Hello! <@U02HFGFQC5U>"}'
   mark_code_smell:
     if:
       - {{ sonar.code_smells.count > 0 }}
