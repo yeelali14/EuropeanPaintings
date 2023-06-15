@@ -1,23 +1,48 @@
-# -*- mode: yaml -*-
-
 manifest:
   version: 1.0
-  
+
 automations:
-  dispatch_mobile_build_action:
+  mark_code_smell:
     if:
-      - {{files | match(regex=r/src\/android\//) | some }}
-    run:
-      - action: http-request@v1
+      - {{ sonar.code_smells.count > 0 }}
+    run: 
+      - action: add-label@v1
         args:
-          url: 'https://api.github.com/repos/blp-test-dev/hello-gitstream/actions/workflows/mobile.yml/dispatches' 
-          method: "POST"
-          headers: '{ "Authorization": "Bearer {{ env.DISPATCH_ACTIONS }}", "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" }'
-          body: '{ "ref":"{{ branch.name }}" }'
-
-
-githubActions:
-  - name: mobile_build
-    directories: src/android/
-    workflow: 'https://api.github.com/repos/blp-test-dev/hello-gitstream/actions/workflows/mobile.yml/dispatches' 
-  
+          label: '{{ sonar.code_smells.count }} 💩 Code Smells found'
+          color: '00aa00'
+  mark_outstanding_pr:
+    if:
+      - {{ sonar.bugs.count == 0 }}
+      - {{ sonar.code_smells.count == 0 }}
+      - {{ sonar.vulnerabilities.count == 0 }}
+      - {{ sonar.security_hotspots.count == 0 }}
+      - {{ sonar.duplications == null or sonar.duplications == 0.0 }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: '💯 Sonar'
+          color: 'f6bbb7'
+  sonar_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ sonar | dump }}
+  jit_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ jit | dump }}
+            
+sonar: {{ pr | extractSonarFindings }}
+jit: {{ pr | extractJitFindings }}
+calc:
+  etr: {{ branch | estimatedReviewTime }}
+slack:
+   base: "https://hooks.slack.com/services"
+   channel: "T9S1TJFAA/B05C9S8AN2Y/q4JiLHtuhAoVkMUGdgNjqA41"
