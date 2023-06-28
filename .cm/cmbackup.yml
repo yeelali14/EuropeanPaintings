@@ -1,0 +1,48 @@
+manifest:
+  version: 1.0
+
+automations:
+  mark_code_smell:
+    if:
+      - {{ sonar.code_smells.count > 0 }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: '{{ sonar.code_smells.count }} 💩 Code Smells found'
+          color: '00aa00'
+  mark_outstanding_pr:
+    if:
+      - {{ sonar.bugs.count == 0 }}
+      - {{ sonar.code_smells.count == 0 }}
+      - {{ sonar.vulnerabilities.count == 0 }}
+      - {{ sonar.security_hotspots.count == 0 }}
+      - {{ sonar.duplications == null or sonar.duplications == 0.0 }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: '💯 Sonar'
+          color: 'f6bbb7'
+  sonar_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ sonar | dump }}
+  jit_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ jit | dump }}
+            
+sonar: {{ pr | extractSonarFindings }}
+jit: {{ pr | extractJitFindings }}
+calc:
+  etr: {{ branch | estimatedReviewTime }}
+slack:
+   base: "https://hooks.slack.com/services"
+   channel: "T9S1TJFAA/B05C9S8AN2Y/q4JiLHtuhAoVkMUGdgNjqA41"
