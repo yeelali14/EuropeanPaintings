@@ -2,7 +2,7 @@ manifest:
   version: 1.0
 
 automations:
-  jit_parser:
+  pr_title:
     if: 
       - {{ pr.title | includes(term=yeela) }}
     run:
