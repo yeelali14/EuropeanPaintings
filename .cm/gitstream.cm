@@ -4,11 +4,10 @@ manifest:
 automations:
   pr_title:
     if: 
-      - {{ pr.title | includes(term='yeela') }}
+      - {{ pr.labels | match(term='bug') | some }}
     run:
       - action: add-comment@v1
         args:
           comment: |
             title changed !
             
-          
