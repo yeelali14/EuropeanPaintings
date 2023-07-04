@@ -1,21 +1,14 @@
-manifest:
-  version: 1.0
-
 automations:
-  pr_title:
-    if: 
-      - {{ pr.title | includes(term=yeela) }}
-    run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            title changed !
-  just_a_comment:
+  invoke_action:
     if: 
       - true
     run:
-      - action: add-comment@v1
+      - action: invoke-github-action@v1
         args:
-          comment: |
-            just a comment
-          
+          owner: yeelali14
+          repo: pasha
+          workflow: .github/workflows/example.yml
+          ref: main
+
+        
+            
