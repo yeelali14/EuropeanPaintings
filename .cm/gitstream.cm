@@ -8,7 +8,7 @@ automations:
     run:
       - action: explain-code-experts@v1
         args:
-          gt: 10
+          lt: 10
 
   approve_safe_changes:
     if:
