@@ -31,3 +31,22 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 #PR
 Lady gaga the queen
 team flare :)
+manifest:
+  version: 1.0
+
+automations:
+  invoke_action:
+    if: 
+      - true
+    run:
+      - action: invoke-github-action@v1
+        args:
+          owner: yeelali14
+          repo: pasha
+          workflow: yeelali14
+          owner: yeelali14
+          owner: yeelali14
+          owner: yeelali14
+          owner: yeelali14
+        
+            
