@@ -6,6 +6,6 @@ automations:
       - action: invoke-github-action@v1
         args:
           owner: yeelali14
-          repo: pasha
+          repo: https://github.com/yeelali14/pasha
           workflow: .github/workflows/example.yml
           ref: main
