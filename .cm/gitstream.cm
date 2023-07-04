@@ -4,7 +4,7 @@ manifest:
 automations:
   suggest_code_experts:
     if: 
-      - {{ pr.labels | match(term='suggest-reviewer') }}
+      - {{ pr.labels | match(term='suggest-reviewer') | some }}
     run:
       - action: explain-code-experts@v1
         args:
