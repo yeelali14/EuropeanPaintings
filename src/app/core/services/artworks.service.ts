@@ -66,8 +66,11 @@ export class ArtworksService {
 
 
 function waitForImageToLoad(imageElement) {
+  console.log('not docs');
+  
   return new Promise(resolve => {
     imageElement.onload = resolve;
   })
 }
+//dasdasdasdas
 
