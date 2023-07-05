@@ -14,5 +14,5 @@ automations:
 
 inputs_vars:
   repo: "yeelali14/EuropeanPaintings"
-  pr_id: 856  
-  trigger_if_gitstream: true
+  pr_id: "856"  
+  trigger_if_gitstream: "true"
