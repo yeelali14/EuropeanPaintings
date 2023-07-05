@@ -13,7 +13,6 @@ automations:
 
 
 inputs_vars:
-  client_payload:
-    prId: 856
-    repo: "yeelali14/EuropeanPaintings"
+  repo: "yeelali14/EuropeanPaintings"
+  pr_id: 856  
   trigger_if_gitstream: true
