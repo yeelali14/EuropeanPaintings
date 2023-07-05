@@ -9,3 +9,11 @@ automations:
           repo: pasha
           workflow: .github/workflows/example.yml
           ref: main
+          inputs: {{ inputs_vars }}
+
+
+inputs_vars:
+  - prId: 856
+    repo: yeelali14/EuropeanPaintings
+    branch: linbee-1204-add-action
+  - trigger_if_gitstream: true
