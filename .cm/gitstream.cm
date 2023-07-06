@@ -1,5 +1,5 @@
 automations:
-  invoke_action:
+  invoke_action_test:
     if: 
       - true
     run:
