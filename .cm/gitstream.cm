@@ -11,6 +11,11 @@ automations:
           ref: main
           inputs: {{ inputs_var | dump }}
 
-inputs_var: 
-  client_payload: "test"
+inputs_vars: 
+  client_payload: {{ payload_content | dump | dump }}
   trigger_if_gitstream: "true"
+
+payload_content: 
+  prId: 856
+  repo: "yeelali14/EuropeanPaintings"
+  trigger_if_gitstream: true
