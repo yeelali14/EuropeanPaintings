@@ -11,12 +11,12 @@ automations:
           color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
   suggest_code_experts:
     if: 
-      - {{ pr.labels | match(term='suggest-reviewer') }}
+      - {{ pr.labels | match(term='suggest-reviewer') | some }}
     run:
       - action: add-comment@v1
         args:
           comment: |
             {{ repo | explainCodeExperts(gt=10) }}
-            
+
 calc:
   etr: {{ branch | estimatedReviewTime }}
