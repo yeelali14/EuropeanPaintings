@@ -13,6 +13,8 @@ automations:
 
 
 inputs_vars:
+  {{ client_payload | dump }}
+client_payload:
   repo: "yeelali14/EuropeanPaintings"
   pr_id: "856"  
   trigger_if_gitstream: "true"
