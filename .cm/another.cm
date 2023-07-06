@@ -6,7 +6,6 @@ automations:
       - true
     run:
       - action: add-label@v1
-      # etr is defined in the last section of this example
         args:
           label: "{{ calc.etr }} min review"
           color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
@@ -18,6 +17,6 @@ automations:
         args:
           comment: |
             {{ repo | explainCodeExperts(gt=10) }}
-# The next function calculates the estimated time to review and makes it available in the automation above.
+            
 calc:
   etr: {{ branch | estimatedReviewTime }}
