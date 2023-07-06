@@ -9,11 +9,9 @@ automations:
           repo: pasha
           workflow: .github/workflows/example.yml
           ref: main
-          inputs: {{ inputs_vars | dump }}
+          inputs: {{ client_payload | dump }}
 
 
-inputs_vars:
-  {{ client_payload | dump }}
 client_payload:
   repo: "yeelali14/EuropeanPaintings"
   pr_id: "856"  
