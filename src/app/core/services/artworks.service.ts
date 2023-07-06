@@ -71,4 +71,4 @@ function waitForImageToLoad(imageElement) {
   })
 }
 
-//dasdasdadssasa
+//dasdasdadssasafsdfs
