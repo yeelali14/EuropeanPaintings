@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-1) Install Angular CLI: `npm install -g @angular/cli`
+1) Install ytreAngular CLI: `npm install -g @angular/cli`
 2) Run `npm install`
 3) Run `ng serve` for a dev server. 
 4) Navigate to `http://localhost:4200/`. The app will automatically reload.
