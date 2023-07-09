@@ -10,7 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 2) Run `npm install`
 3) Run `ng serve` for a dev server. 
 4) Navigate to `http://localhost:4200/`. The app will automatically reload.
-
+gdf
 ##Elad's history:
 I was born in 1990
 kjhgdkjhsdgfjk
@@ -31,3 +31,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 #PR
 Lady gaga the queen
 team flare :)
+dasdasdasd
