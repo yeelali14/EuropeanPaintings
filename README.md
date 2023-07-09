@@ -5,7 +5,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
 
 ## Development server
-
+rwe
 1) Install Angular CLI: `npm install -g @angular/cli`
 2) Run `npm install`
 3) Run `ng serve` for a dev server. 
