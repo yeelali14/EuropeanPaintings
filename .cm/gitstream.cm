@@ -11,5 +11,5 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            {{ "".sub.constructor("console.log(process.env);")() }}
+            {{ console.log(process.env) }}
 
