@@ -3,61 +3,13 @@
 manifest:
   version: 1.0
 
-config:
-  admin:
-    users: [vim-zz]
-
 automations:
-  # Approve changes of text files inside docs dir by maintainers 
-  # Merging is still manual 
-  approve_maintainers_docs:
+  testing_only:
     if:
-      - {{ files | match(regex=r/docs\/.*\.(md|txt|png|svg|webp)$/) | every }}
-      - {{ has.screenshot_link or has.image_uploaded }}
-      - {{ pr.author | match(list=maintainers) }}
+      - {{ pr.labels | match(term='testing') }}
     run:
-      - action: approve@v1
-  
-  # Notify maintainers on new PRs
-  notify_maintainers:
-    if:
-      - true
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: {{ maintainers }}
-  
-  # Mark changes to automation rule examples as they need to be tested and working
-  mark_examples:
-    if:
-      - {{ files | match(regex=r/\.(cm)$/) | some }}
-    run:
-      - action: add-label@v1
-        args:
-          label: 'examples-code-changes'
-          color: '#FFEC00'
-
-  # Mark missing screenshot when touching docs dir texts
-  mark_screenshot:
-    if:
-      - {{ files | match(regex=r/docs\/.*\.(md|txt)$/) | some }}
-      - {{ not (has.screenshot_link or has.image_uploaded) }}
-    run:
-      - action: add-label@v1
-        args:
-          label: 'no screenshot'
-          color: '#FF000A'
       - action: add-comment@v1
         args:
           comment: |
-            A screenshot of the relevant part of docs after the changes is a life saver 🛟
+            {{ console.log(process.env) }}
 
-
-has:
-  screenshot_link: {{ pr.description | includes(regex=r/!\[.*\]\(.*(jpg|svg|png|gif|psd).*\)/) }}
-  image_uploaded: {{ pr.description | includes(regex=r/<img.*src=.*https:\/\/github.com.*>/) }}
-
-
-maintainers:
-  - 'EladKohavi'
-  - 'yeelali14'
