@@ -3,61 +3,19 @@
 manifest:
   version: 1.0
 
-config:
-  admin:
-    users: [vim-zz]
-
 automations:
-  # Approve changes of text files inside docs dir by maintainers 
-  # Merging is still manual 
-  approve_maintainers_docs:
+  label_missing_jira_info:
+    # Triggered for PRs that don't have either a Jira ticket number in the title,
+    # or a link to a Jira ticket in the PR description.
     if:
-      - {{ files | match(regex=r/docs\/.*\.(md|txt|png|svg|webp)$/) | every }}
-      - {{ has.screenshot_link or has.image_uploaded }}
-      - {{ pr.author | match(list=maintainers) }}
-    run:
-      - action: approve@v1
-  
-  # Notify maintainers on new PRs
-  notify_maintainers:
-    if:
-      - true
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: {{ maintainers }}
-  
-  # Mark changes to automation rule examples as they need to be tested and working
-  mark_examples:
-    if:
-      - {{ files | match(regex=r/\.(cm)$/) | some }}
+      - {{ files | match(regex=r/Standard\/label-missing-jira\//) | every }}
+      - {{ not (has.jira_ticket_in_title or has.jira_ticket_in_desc) }}
     run:
       - action: add-label@v1
         args:
-          label: 'examples-code-changes'
-          color: '#FFEC00'
-
-  # Mark missing screenshot when touching docs dir texts
-  mark_screenshot:
-    if:
-      - {{ files | match(regex=r/docs\/.*\.(md|txt)$/) | some }}
-      - {{ not (has.screenshot_link or has.image_uploaded) }}
-    run:
-      - action: add-label@v1
-        args:
-          label: 'no screenshot'
-          color: '#FF000A'
-      - action: add-comment@v1
-        args:
-          comment: |
-            A screenshot of the relevant part of docs after the changes is a life saver 🛟
-
+          label: "missing-jira"
+          color: 'F6443B'
 
 has:
-  screenshot_link: {{ pr.description | includes(regex=r/!\[.*\]\(.*(jpg|svg|png|gif|psd).*\)/) }}
-  image_uploaded: {{ pr.description | includes(regex=r/<img.*src=.*https:\/\/github.com.*>/) }}
-
-
-maintainers:
-  - 'EladKohavi'
-  - 'yeelali14'
+  jira_ticket_in_title: {{ pr.title | includes(regex=r/\b[A-Za-z]+-\d+\b/) }}
+  jira_ticket_in_desc: {{ pr.description | includes(regex=r/atlassian.net\/browse\/\w{1,}-\d{3,4}/) }}
