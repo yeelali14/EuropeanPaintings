@@ -22,7 +22,7 @@ automations:
         - action: add-comment@v1
           args:
             comment: |
-              {{ repo | explainCodeExperts(gt=10) }}
+              {{ repo | explainCodeExperts(gt=10) | blabla }}
     etr_comment:
       if:
         - true
