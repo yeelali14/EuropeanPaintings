@@ -4,18 +4,31 @@ manifest:
   version: 1.0
 
 automations:
-  label_missing_jira_info:
-    # Triggered for PRs that don't have either a Jira ticket number in the title,
-    # or a link to a Jira ticket in the PR description.
+  gitstream-challenge-16-3-gold:
+    # PR have at least 1 test, 5 or less files and branch includes Jira-Ticket prefix
     if:
-      - {{ files | match(regex=r/Standard\/label-missing-jira\//) | every }}
-      - {{ not (has.jira_ticket_in_title or has.jira_ticket_in_desc) }}
+      - {{ files | match(regex=r/(test|spec)/) | some }}
+      - {{ files | length <= 5 }}
+      - {{ branch.name | match(regex=r/[A-Z]{2,}-\d+.*/) }} 
     run:
       - action: add-label@v1
         args:
-          label: "missing-jira"
-          color: 'F6443B'
-
-has:
-  jira_ticket_in_title: {{ pr.title | includes(regex=r/\b[A-Za-z]+-\d+\b/) }}
-  jira_ticket_in_desc: {{ pr.description | includes(regex=r/atlassian.net\/browse\/\w{1,}-\d{3,4}/) }}
+          label: 'gitStream-gold 🥇'
+          color: '#F4EBD0'
+    explain_expert_reviewer:
+      if: 
+        - true
+      run:
+        - action: add-comment@v1
+          args:
+            comment: |
+              {{ repo | explainCodeExperts(gt=10) }}
+    etr_comment:
+      if:
+        - true
+      run:
+        - action: add-comment@v1
+          args:
+            comment: |
+              {{ branch | estimatedReviewTime < 5 }}
+              
