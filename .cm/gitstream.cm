@@ -15,21 +15,28 @@ automations:
         args:
           label: 'gitStream-gold 🥇'
           color: '#F4EBD0'
-    explain_expert_reviewer:
-      if: 
-        - true
-      run:
-        - action: add-comment@v1
-          args:
-            comment: |
-              {{ repo | explainCodeExperts(gt=10) }}
-    etr_comment:
-      if:
-        - true
-      run:
-        - action: add-comment@v1
-          args:
-            comment: |
-              {{ branch | estimatedReviewTime < 5 }}
+  explain_expert_reviewer:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ repo | explainCodeExperts(gt=10) }}
+  etr_comment:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ branch | estimatedReviewTime < 5 }}
+  code_experts:
+    if:
+      - true
+    run:
+      - action: explain-code-experts@v1 
+        args:
+          gt: 10
 
               
