@@ -1,42 +1,44 @@
 # -*- mode: yaml -*-
 
 manifest:
-  version: 1.1
+  version: 1.0
 
 automations:
-  gitstream-challenge-16-3-gold:
-    # PR have at least 1 test, 5 or less files and branch includes Jira-Ticket prefix
+  estimated_time_to_review:
     if:
-      - {{ files | match(regex=r/(test|spec)/) | some }}
-      - {{ files | length <= 5 }}
-      - {{ branch.name | match(regex=r/[A-Z]{2,}-\d+.*/) }} 
+      - true
+    run:
+      - action : add-label@v1
+        args:
+          label: "{{ calc.etr }} min review"
+          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
+
+  guide:
+    if:
+      - true
+    run:
+      - action : add-comment@v1
+        args:
+          comment: |
+            `[DEBUG]` `repo.contributors`: {{ repo.contributors | dump | safe }}
+            `[DEBUG]` `branch.author`: {{ branch.author | dump | safe }}
+
+  junior:
+    if:
+      - {{ repo.author_age < 21 and (repo.age - repo.author_age) >= 21 }}
     run:
       - action: add-label@v1
         args:
-          label: 'gitStream-gold 🥇'
-          color: '#F4EBD0'
-  explain_expert_reviewer:
-    if: 
-      - true
-    run:
-      - action: add-comment@v1
+          label: 'first-weeks'
+          color: '#FBBD10'
+      - action : add-comment@v1
         args:
           comment: |
-            {{ repo | explainCodeExperts(gt=10) }}
-  etr_comment:
-    if:
-      - true
-    run:
-      - action: add-comment@v1
+            During your first 21 days, your team lead will be assigned to review your PRs.
+            // You first commited to this repos {{ repo.author_age }} days ago. 
+      - action: add-reviewers@v1
         args:
-          comment: |
-            {{ branch | estimatedReviewTime < 5 }}
-  code_experts:
-    if:
-      - true
-    run:
-      - action: explain-code-experts@v1 
-        args:
-          gt: 10
+          reviewers: [ShakedZrihen]
 
-              
+calc:
+  etr: {{ branch | estimatedReviewTime }}
