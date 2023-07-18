@@ -12,33 +12,22 @@ automations:
         args:
           label: "{{ calc.etr }} min review"
           color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
-
-  guide:
-    if:
+          
+  invoke_action:
+    if: 
       - true
     run:
-      - action : add-comment@v1
+      - action: invoke-github-action@v1
         args:
-          comment: |
-            `[DEBUG]` `repo.contributors`: {{ repo.contributors | dump | safe }}
-            `[DEBUG]` `branch.author`: {{ branch.author | dump | safe }}
+          owner: yeelali14
+          repo: pasha
+          workflow: .github/workflows/example.yml
+          ref: main
+          inputs: {{ inputs_var | dump }}
 
-  junior:
-    if:
-      - {{ repo.author_age < 21 and (repo.age - repo.author_age) >= 21 }}
-    run:
-      - action: add-label@v1
-        args:
-          label: 'first-weeks'
-          color: '#FBBD10'
-      - action : add-comment@v1
-        args:
-          comment: |
-            During your first 21 days, your team lead will be assigned to review your PRs.
-            // You first commited to this repos {{ repo.author_age }} days ago. 
-      - action: add-reviewers@v1
-        args:
-          reviewers: [ShakedZrihen]
+inputs_var: 
+  client_payload: "test"
+  trigger_if_gitstream: "true"
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
