@@ -26,7 +26,7 @@ automations:
           inputs: {{ inputs_var | dump }}
 
 inputs_var: 
-  commit_sha: "dce57a6055e17f0c79105d412f974cbe10f9a3b2"
+  commit_sha: "2539d9d90f606fa77c4b22239ccf1e9cab56314d"
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
