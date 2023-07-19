@@ -92,3 +92,46 @@ const action = {
   },
   shouldExecute: true,
 };
+
+const checks = [
+  {
+    id: 15160744755,
+    name: 'Create/Update a commit Check Run',
+    node_id: 'CR_kwDOJOZy_s8AAAADh6abMw',
+    head_sha: 'd1b3c8142eb67dab3c12135eaf8aa24d90f6ade4',
+    external_id: 'a81d0fee-2a51-5a7b-bfac-5e4df2e92e8f',
+    url: 'https://api.github.com/repos/yeelali14/pasha/check-runs/15160744755',
+    html_url:
+      'https://github.com/yeelali14/pasha/actions/runs/5597115060/jobs/10235041656',
+    details_url:
+      'https://github.com/yeelali14/pasha/actions/runs/5597115060/jobs/10235041656',
+    status: 'completed',
+    conclusion: 'success',
+    started_at: '2023-07-19T09:00:05Z',
+    completed_at: '2023-07-19T09:00:08Z',
+    output: {
+      title: null,
+      summary: null,
+      text: null,
+      annotations_count: 1,
+      annotations_url:
+        'https://api.github.com/repos/yeelali14/pasha/check-runs/15160744755/annotations',
+    },
+    check_suite: { id: 14405010167 },
+    app: {
+      id: 15368,
+      slug: 'github-actions',
+      node_id: 'MDM6QXBwMTUzNjg=',
+      owner: [Object],
+      name: 'GitHub Actions',
+      description: 'Automate your workflow from idea to production',
+      external_url: 'https://help.github.com/en/actions',
+      html_url: 'https://github.com/apps/github-actions',
+      created_at: '2018-07-30T09:30:17Z',
+      updated_at: '2019-12-10T19:04:12Z',
+      permissions: [Object],
+      events: [Array],
+    },
+    pull_requests: [],
+  },
+];
