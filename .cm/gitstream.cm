@@ -22,12 +22,11 @@ automations:
           owner: yeelali14
           repo: pasha
           workflow: .github/workflows/example.yml
-          ref: main
+          ref: "yeelali14-patch-11"
           inputs: {{ inputs_var | dump }}
 
 inputs_var: 
-  client_payload: "test"
-  trigger_if_gitstream: "true"
+  commit_sha: "dce57a6055e17f0c79105d412f974cbe10f9a3b2"
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
