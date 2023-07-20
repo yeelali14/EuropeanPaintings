@@ -1,5 +1,5 @@
 //dasdasdas
-//dasd
+//dasdfsdfsdfsd
 const action = {
   watchPREvents: { labels: true },
   watchFilters: {},
@@ -138,3 +138,81 @@ const checks = [
 
 
 //dasdasd
+
+const checkByName = {
+  total_count: 4,
+  check_runs: [
+    {
+      id: 15169676696,
+      name: 'Create/Update a commit Check Run',
+      node_id: 'CR_kwDOJOZy_s8AAAADiC7lmA',
+      head_sha: 'd1b3c8142eb67dab3c12135eaf8aa24d90f6ade4',
+      external_id: 'a81d0fee-2a51-5a7b-bfac-5e4df2e92e8f',
+      url: 'https://api.github.com/repos/yeelali14/pasha/check-runs/15169676696',
+      html_url: 'https://github.com/yeelali14/pasha/actions/runs/5600120835/jobs/10242049461',
+      details_url: 'https://github.com/yeelali14/pasha/actions/runs/5600120835/jobs/10242049461',
+      status: 'completed',
+      conclusion: 'success',
+      started_at: '2023-07-19T14:02:06Z',
+      completed_at: '2023-07-19T14:02:09Z',
+      output: [Object],
+      check_suite: [Object],
+      app: [Object],
+      pull_requests: []
+    },
+    {
+      id: 15167400984,
+      name: 'Create/Update a commit Check Run',
+      node_id: 'CR_kwDOJOZy_s8AAAADiAwsGA',
+      head_sha: 'd1b3c8142eb67dab3c12135eaf8aa24d90f6ade4',
+      external_id: 'a81d0fee-2a51-5a7b-bfac-5e4df2e92e8f',
+      url: 'https://api.github.com/repos/yeelali14/pasha/check-runs/15167400984',
+      html_url: 'https://github.com/yeelali14/pasha/actions/runs/5599386182/jobs/10240276813',
+      details_url: 'https://github.com/yeelali14/pasha/actions/runs/5599386182/jobs/10240276813',
+      status: 'completed',
+      conclusion: 'success',
+      started_at: '2023-07-19T12:55:45Z',
+      completed_at: '2023-07-19T12:55:48Z',
+      output: [Object],
+      check_suite: [Object],
+      app: [Object],
+      pull_requests: []
+    },
+    {
+      id: 15166858601,
+      name: 'Create/Update a commit Check Run',
+      node_id: 'CR_kwDOJOZy_s8AAAADiAPlaQ',
+      head_sha: 'd1b3c8142eb67dab3c12135eaf8aa24d90f6ade4',
+      external_id: 'a81d0fee-2a51-5a7b-bfac-5e4df2e92e8f',
+      url: 'https://api.github.com/repos/yeelali14/pasha/check-runs/15166858601',
+      html_url: 'https://github.com/yeelali14/pasha/actions/runs/5599199339/jobs/10239849144',
+      details_url: 'https://github.com/yeelali14/pasha/actions/runs/5599199339/jobs/10239849144',
+      status: 'completed',
+      conclusion: 'success',
+      started_at: '2023-07-19T12:38:24Z',
+      completed_at: '2023-07-19T12:38:27Z',
+      output: [Object],
+      check_suite: [Object],
+      app: [Object],
+      pull_requests: []
+    },
+    {
+      id: 15160744755,
+      name: 'Create/Update a commit Check Run',
+      node_id: 'CR_kwDOJOZy_s8AAAADh6abMw',
+      head_sha: 'd1b3c8142eb67dab3c12135eaf8aa24d90f6ade4',
+      external_id: 'a81d0fee-2a51-5a7b-bfac-5e4df2e92e8f',
+      url: 'https://api.github.com/repos/yeelali14/pasha/check-runs/15160744755',
+      html_url: 'https://github.com/yeelali14/pasha/actions/runs/5597115060/jobs/10235041656',
+      details_url: 'https://github.com/yeelali14/pasha/actions/runs/5597115060/jobs/10235041656',
+      status: 'completed',
+      conclusion: 'success',
+      started_at: '2023-07-19T09:00:05Z',
+      completed_at: '2023-07-19T09:00:08Z',
+      output: [Object],
+      check_suite: [Object],
+      app: [Object],
+      pull_requests: []
+    }
+  ]
+}
