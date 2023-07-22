@@ -1,218 +1,43 @@
-//dasdasdasdasdasdadadas
-//dasdfsdfsdfsdfsdasdaddfsd
-const action = {
-  watchPREvents: { labels: true },
-  watchFilters: {},
-  repoPath: '.github/workflows/gitstream.yml',
-  gitstreamGatesCheckId: 15138786365,
-  repo: 'EuropeanPaintings',
-  owner: 'yeelali14',
-  branch: 'LINBEE-1503',
-  installationId: 39772543,
-  pullRequestNumber: 867,
-  headSha: 'd9591293bc562c94c50f83dccc7d971c8152b079',
-  baseRef: 'main',
-  triggeredBy: 'yeelali14',
-  triggeredPREvent: 'synchronize',
-  source: 'github',
-  ddApiKey: '123',
-  env: 'local',
-  creator: 'yeelali14',
-  analytics_url: 'http://yeela.ngrok.io/analytics',
-  analyticsHttpApiUrl: 'https://api.amplitude.com/2/httpapi',
-  analyticsKey: '123',
-  segmentServiceUrl: 'https://api.segment.io',
-  segmentWriteKey: 'Ts5ERU2KWfeE50DekgnG6t5g5Rp0wFRA',
-  prContext: {
+const tt2 = {
+  timestamp: '2023-07-22T16:35:47.741Z',
+  level: 'info',
+  message:
+    'set prState: github-yeelali14/EuropeanPaintings/867 with payload: {"prCommands":[],"isFullyInstalled":true,"trackedWorkflows":{"branch":"","wokflow_id":".github/workflows/example.yml","check_name":"blabla"},"org":"github-yeelali14","prPath":"EuropeanPaintings/867"}',
+  ctx: {
+    environment: 'local',
+    app: 'github-actions-consumer',
+    prCommands: [],
+    watchers: { watchPREvents: { labels: true }, watchFilters: {} },
+    prPath: 'EuropeanPaintings/867',
+    trackedWorkflows: {
+      branch: '',
+      wokflow_id: '.github/workflows/example.yml',
+      check_name: 'blabla',
+    },
+    org: 'github-yeelali14',
     isFullyInstalled: true,
-    title: 'linbee-1503',
-    approvals: [],
-    requested_changes: [],
-    author: 'yeelali14',
-    description:
-      'WyFbd29ya2VyQl0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9lbmRwb2ludD91cmw9aHR0cHMlM0ElMkYlMkZ3b3JrZXJiLmxpbmVhcmIuaW8lMkZ2MiUyRmJhZGdlJTJGcHJpdmF0ZSUyRlUyRnNkR1ZrWDFra3M4cDFkQkdHcjF2dlhza2xrQjdMTXlseGpCbEpzJTJGY29sbGFib3JhdGlvbi5zdmclM0ZjYWNoZVNlY29uZHMlM0Q2MCldKGh0dHBzOi8vd29ya2VyYi5saW5lYXJiLmlvL3YyL2JhZGdlL2NvbGxhYm9yYXRpb24tcGFnZT9tYWdpY0xpbmtJZD1fTkl2MHlxKQ==',
-    checks: [
-      { name: 'gitStream.cm', status: 'in_progress' },
-      { name: '- add-label@v1', status: 'completed', conclusion: 'success' },
-      {
-        name: 'gitStream workflow automation',
-        status: 'completed',
-        conclusion: 'success',
-      },
-    ],
-    created_at: '2023-07-18T15:35:05Z',
-    draft: false,
-    mergeable: true,
-    labels: ['1 min review'],
-    reviewers: [],
-    status: 'open',
-    updated_at: '2023-07-18T15:45:25Z',
-    assignees: [],
-    contributors: [
-      { login: 'lkilpatrick', name: 'Luke Kilpatrick' },
-      { login: 'Yaarash', name: 'Yaara Shoham' },
-      { login: 'ShakedZrihen', name: 'shaked zohar' },
-      { login: 'yeelali14', name: 'Yeela Lifshitz' },
-      { login: 'paparoach14', name: null },
-      { login: 'ShaniBelisha', name: 'Shani' },
-      { login: 'EladKohavi', name: 'Elad Kohavi' },
-    ],
-    paths: [
-      { name: 'another.cm' },
-      { name: 'cmbackup.yml' },
-      { name: 'gitstream.cm' },
-    ],
-    author_teams: [],
-    comments: [
-      {
-        commenter: 'gitstream-yeela-local',
-        content:
-          'YFtERUJVR11gIGByZXBvLmNvbnRyaWJ1dG9yc2A6IHsiWWVlbGEgTGlmc2hpdHogPHllZWxhbGlmc2hpdHpATWFjQm9vay1Qcm8tOC5sb2NhbD4iOjI1MiwiWWVlbGEgTGlmc2hpdHogPHllZWxhbGlmc2hpdHpATWFjQm9vay1Qcm8ubG9jYWw+IjoyMjcsIlllZWxhIExpZnNoaXR6IDx5ZWVsYWxpZnNoaXR6QFllZWxhLU1hY0Jvb2stUHJvLmxvY2FsPiI6MTQ1LCJZZWVsYSBMaWZzaGl0eiA8NTI0NTEyOTQreWVlbGFsaTE0QHVzZXJzLm5vcmVwbHkuZ2l0aHViLmNvbT4iOjI4LCJMdWtlIEtpbHBhdHJpY2sgPGx1a2VraWxwYXRAZ21haWwuY29tPiI6NSwic2hha2VkIHpvaGFyIDxzaGFrZWQuenJpaGVuQGdtYWlsLmNvbT4iOjUsIkVsYWQgS29oYXZpIDwxMDY5Nzg4NDYrRWxhZEtvaGF2aUB1c2Vycy5ub3JlcGx5LmdpdGh1Yi5jb20+IjozLCJZZWVsYSBMaWZzaGl0eiA8eWVlbGFsaWZzaGl0ekBZZWVsYXMtTWFjQm9vay1Qcm8ubG9jYWw+IjozLCJ5ZWVsYWxpMTQgPDUyNDUxMjk0K3llZWxhbGkxNEB1c2Vycy5ub3JlcGx5LmdpdGh1Yi5jb20+IjozLCJZZWVsYSA8eWVlbGFAZ2l0YXRlY2hub2xvZ2llcy5jb20+IjoyLCJFbGFkS29oYXZpIDwxMDY5Nzg4NDYrRWxhZEtvaGF2aUB1c2Vycy5ub3JlcGx5LmdpdGh1Yi5jb20+IjoxLCJMdWtlIEtpbHBhdHJpY2sgPGx1a2VAbHVrZWsuY2E+IjoxLCJZYWFyYSBTaG9oYW0gPHlhYXJhLnNob2hhbWRAZ21haWwuY29tPiI6MSwia29kaWFraHFbYm90XSA8NDk3MzYxMDIra29kaWFraHFbYm90XUB1c2Vycy5ub3JlcGx5LmdpdGh1Yi5jb20+IjoxfQpgW0RFQlVHXWAgYGJyYW5jaC5hdXRob3JgOiAiWWVlbGEgTGlmc2hpdHogPHllZWxhbGlmc2hpdHpAWWVlbGEtTWFjQm9vay1Qcm8ubG9jYWw+Igo=',
-        created_at: '2023-07-18T15:36:42Z',
-        id: 1640468195,
-      },
-    ],
-    reviews: [],
-    conversations: [],
-    unresolved_threads: 0,
   },
-  hasCmRepo: false,
-  providerRepoId: 400902592,
-  isNewCommit: true,
-  admins: [],
-  dryRun: false,
-  onlyRulesFilesChanges: false,
-  action: 'invoke-github-action@v1',
-  args: {
-    owner: 'yeelali14',
-    repo: 'pasha',
-    workflow: '.github/workflows/example.yml',
-    ref: 'main',
-    inputs: { client_payload: 'test', trigger_if_gitstream: 'true' },
-  },
-  shouldExecute: true,
 };
 
-const checks = [
-  {
-    id: 15160744755,
-    name: 'Create/Update a commit Check Run',
-    node_id: 'CR_kwDOJOZy_s8AAAADh6abMw',
-    head_sha: 'd1b3c8142eb67dab3c12135eaf8aa24d90f6ade4',
-    external_id: 'a81d0fee-2a51-5a7b-bfac-5e4df2e92e8f',
-    url: 'https://api.github.com/repos/yeelali14/pasha/check-runs/15160744755',
-    html_url:
-      'https://github.com/yeelali14/pasha/actions/runs/5597115060/jobs/10235041656',
-    details_url:
-      'https://github.com/yeelali14/pasha/actions/runs/5597115060/jobs/10235041656',
-    status: 'completed',
-    conclusion: 'success',
-    started_at: '2023-07-19T09:00:05Z',
-    completed_at: '2023-07-19T09:00:08Z',
-    output: {
-      title: null,
-      summary: null,
-      text: null,
-      annotations_count: 1,
-      annotations_url:
-        'https://api.github.com/repos/yeelali14/pasha/check-runs/15160744755/annotations',
+const tt = {
+  timestamp: '2023-07-22T16:35:57.330Z',
+  level: 'info',
+  message:
+    'set prState: github-yeelali14/EuropeanPaintings/867 with payload: {"prCommands":[{"state":"UPDATE_LABELS","args":{"labels":["5 min review"]}}],"watchers":{"watchPREvents":{"labels":true},"watchFilters":{}},"isFullyInstalled":true,"trackedWorkflows":{"branch":"","wokflow_id":".github/workflows/example.yml","check_name":"blabla"},"org":"github-yeelali14","prPath":"EuropeanPaintings/867"}',
+  ctx: {
+    environment: 'local',
+    app: 'github-actions-consumer',
+    prCommands: [
+      { state: 'UPDATE_LABELS', args: { labels: ['5 min review'] } },
+    ],
+    watchers: { watchPREvents: { labels: true }, watchFilters: {} },
+    prPath: 'EuropeanPaintings/867',
+    trackedWorkflows: {
+      branch: '',
+      wokflow_id: '.github/workflows/example.yml',
+      check_name: 'blabla',
     },
-    check_suite: { id: 14405010167 },
-    app: {
-      id: 15368,
-      slug: 'github-actions',
-      node_id: 'MDM6QXBwMTUzNjg=',
-      owner: [Object],
-      name: 'GitHub Actions',
-      description: 'Automate your workflow from idea to production',
-      external_url: 'https://help.github.com/en/actions',
-      html_url: 'https://github.com/apps/github-actions',
-      created_at: '2018-07-30T09:30:17Z',
-      updated_at: '2019-12-10T19:04:12Z',
-      permissions: [Object],
-      events: [Array],
-    },
-    pull_requests: [],
+    org: 'github-yeelali14',
+    isFullyInstalled: true,
   },
-];
-
-
-//dasdasd
-
-const checkByName = {
-  total_count: 4,
-  check_runs: [
-    {
-      id: 15169676696,
-      name: 'Create/Update a commit Check Run',
-      node_id: 'CR_kwDOJOZy_s8AAAADiC7lmA',
-      head_sha: 'd1b3c8142eb67dab3c12135eaf8aa24d90f6ade4',
-      external_id: 'a81d0fee-2a51-5a7b-bfac-5e4df2e92e8f',
-      url: 'https://api.github.com/repos/yeelali14/pasha/check-runs/15169676696',
-      html_url: 'https://github.com/yeelali14/pasha/actions/runs/5600120835/jobs/10242049461',
-      details_url: 'https://github.com/yeelali14/pasha/actions/runs/5600120835/jobs/10242049461',
-      status: 'completed',
-      conclusion: 'success',
-      started_at: '2023-07-19T14:02:06Z',
-      completed_at: '2023-07-19T14:02:09Z',
-      output: [Object],
-      check_suite: [Object],
-      app: [Object],
-      pull_requests: []
-    },
-    {
-      id: 15167400984,
-      name: 'Create/Update a commit Check Run',
-      node_id: 'CR_kwDOJOZy_s8AAAADiAwsGA',
-      head_sha: 'd1b3c8142eb67dab3c12135eaf8aa24d90f6ade4',
-      external_id: 'a81d0fee-2a51-5a7b-bfac-5e4df2e92e8f',
-      url: 'https://api.github.com/repos/yeelali14/pasha/check-runs/15167400984',
-      html_url: 'https://github.com/yeelali14/pasha/actions/runs/5599386182/jobs/10240276813',
-      details_url: 'https://github.com/yeelali14/pasha/actions/runs/5599386182/jobs/10240276813',
-      status: 'completed',
-      conclusion: 'success',
-      started_at: '2023-07-19T12:55:45Z',
-      completed_at: '2023-07-19T12:55:48Z',
-      output: [Object],
-      check_suite: [Object],
-      app: [Object],
-      pull_requests: []
-    },
-    {
-      id: 15166858601,
-      name: 'Create/Update a commit Check Run',
-      node_id: 'CR_kwDOJOZy_s8AAAADiAPlaQ',
-      head_sha: 'd1b3c8142eb67dab3c12135eaf8aa24d90f6ade4',
-      external_id: 'a81d0fee-2a51-5a7b-bfac-5e4df2e92e8f',
-      url: 'https://api.github.com/repos/yeelali14/pasha/check-runs/15166858601',
-      html_url: 'https://github.com/yeelali14/pasha/actions/runs/5599199339/jobs/10239849144',
-      details_url: 'https://github.com/yeelali14/pasha/actions/runs/5599199339/jobs/10239849144',
-      status: 'completed',
-      conclusion: 'success',
-      started_at: '2023-07-19T12:38:24Z',
-      completed_at: '2023-07-19T12:38:27Z',
-      output: [Object],
-      check_suite: [Object],
-      app: [Object],
-      pull_requests: []
-    },
-    {
-      id: 15160744755,
-      name: 'Create/Update a commit Check Run',
-      node_id: 'CR_kwDOJOZy_s8AAAADh6abMw',
-      head_sha: 'd1b3c8142eb67dab3c12135eaf8aa24d90f6ade4',
-      external_id: 'a81d0fee-2a51-5a7b-bfac-5e4df2e92e8f',
-      url: 'https://api.github.com/repos/yeelali14/pasha/check-runs/15160744755',
-      html_url: 'https://github.com/yeelali14/pasha/actions/runs/5597115060/jobs/10235041656',
-      details_url: 'https://github.com/yeelali14/pasha/actions/runs/5597115060/jobs/10235041656',
-      status: 'completed',
-      conclusion: 'success',
-      started_at: '2023-07-19T09:00:05Z',
-      completed_at: '2023-07-19T09:00:08Z',
-      output: [Object],
-      check_suite: [Object],
-      app: [Object],
-      pull_requests: []
-    }
-  ]
-}
+};
