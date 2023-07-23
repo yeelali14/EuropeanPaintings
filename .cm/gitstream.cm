@@ -22,7 +22,7 @@ automations:
           owner: yeelali14
           repo: pasha
           workflow: .github/workflows/example.yml
-          ref: "main"
+          ref: "yeelali14-patch-12"
           inputs: {{ inputs_var | dump }}
 
 inputs_var: 
