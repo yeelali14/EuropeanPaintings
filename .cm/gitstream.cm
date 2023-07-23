@@ -22,7 +22,19 @@ automations:
           owner: yeelali14
           repo: pasha
           workflow: .github/workflows/example.yml
-          ref: "yeelali14-patch-12"
+          ref: "yeelali14-patch-13"
+          inputs: {{ inputs_var | dump }}
+
+  invoke_action_2:
+    if: 
+      - true
+    run:
+      - action: invoke-github-action@v1
+        args:
+          owner: yeelali14
+          repo: pasha
+          workflow: .github/workflows/example-2.yml
+          ref: "yeelali14-patch-13"
           inputs: {{ inputs_var | dump }}
 
 inputs_var: 
