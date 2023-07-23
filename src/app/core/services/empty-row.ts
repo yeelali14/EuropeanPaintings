@@ -46,3 +46,6 @@ const workflowResult = {
 };
 //dasd
 //dasdsddasdadasdasasdad
+
+const workflowRecord = {"wokflow":".github/workflows/example.yml","org":"github-yeelali14","repo":"EuropeanPaintings","prNumber":867,"checkName":"args.check_name","branch":"yeelali14-patch-13","workflowId":62113785}
+const workflowRecord2 = {"wokflow":".github/workflows/example-2.yml","org":"github-yeelali14","repo":"EuropeanPaintings","prNumber":867,"checkName":"args.check_name","branch":"yeelali14-patch-13","workflowId":63997890}
