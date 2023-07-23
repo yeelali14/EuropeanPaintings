@@ -24,7 +24,6 @@ automations:
           workflow: .github/workflows/example.yml
           ref: "yeelali14-patch-12"
           inputs: {{ inputs_var | dump }}
-          check_name: "blabla"
 
 inputs_var: 
   commit_sha: "2539d9d90f606fa77c4b22239ccf1e9cab56314d"
