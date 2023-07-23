@@ -24,6 +24,7 @@ automations:
           workflow: .github/workflows/example.yml
           ref: "yeelali14-patch-13"
           inputs: {{ inputs_var | dump }}
+          check_name: "wow"
 
   invoke_action_2:
     if: 
