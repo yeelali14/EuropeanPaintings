@@ -315,3 +315,7 @@ const event = {
     node_id: 'MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMzk5ODUxMzY='
   }
 }
+
+const eventAction = {
+  
+}
