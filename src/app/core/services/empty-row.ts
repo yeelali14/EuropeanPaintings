@@ -90,3 +90,15 @@ const event = {
   checkName: 'invoke-github-action@v1',
   updatedBy: 'github-actions-consumer: actions executor',
 };
+
+const action = {
+  wokflow: '.github/workflows/example.yml',
+  org: 'github-yeelali14',
+  repo: 'EuropeanPaintings',
+  headSha: 'bd4f8eb984e4920a10a9822736c372d161e69cc1',
+  prNumber: 869,
+  checkName: 'wow',
+  branch: 'yeelali14-patch-13',
+  workflowId: 62113785,
+};
+//dasdasd
