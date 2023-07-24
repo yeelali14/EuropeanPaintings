@@ -28,7 +28,7 @@ automations:
 
   invoke_action_2:
     if: 
-      - true
+      - {{ files | length == 2 }}
     run:
       - action: invoke-github-action@v1
         args:
