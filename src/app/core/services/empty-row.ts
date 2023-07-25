@@ -130,7 +130,7 @@ const inputs1 = {
   repo: 'EuropeanPaintings',
   ref: 'yeelali14-patch-13',
   headSha: '31f5115d67a65acc759500411f275aef25f5aa86',
-  checkName: 'wow'
+  checkName: 'wow',
 };
 const installationID = 40012869;
 const res = {
@@ -194,3 +194,67 @@ const res = {
   },
 };
 //fsdkjdskfjkjkkkkhjhj
+
+const uf = {
+  timestamp: '2023-07-25T08:51:23.724Z',
+  level: 'info',
+  message:
+    'Failed handle workflow run event: Invalid request.\n\nNo subschema in "anyOf" matched.\n"conclusion" wasn\'t supplied.\ncompleted is not a member of ["queued", "in_progress"].',
+  ctx: {
+    environment: 'local',
+    app: 'gitstream-events-consumer',
+    name: 'HttpError',
+    status: 422,
+    response: {
+      url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs',
+      status: 422,
+      headers: {
+        'access-control-allow-origin': '*',
+        'access-control-expose-headers':
+          'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset',
+        connection: 'close',
+        'content-length': '244',
+        'content-security-policy': "default-src 'none'",
+        'content-type': 'application/json; charset=utf-8',
+        date: 'Tue, 25 Jul 2023 08:51:23 GMT',
+        'referrer-policy':
+          'origin-when-cross-origin, strict-origin-when-cross-origin',
+        server: 'GitHub.com',
+        'strict-transport-security':
+          'max-age=31536000; includeSubdomains; preload',
+        vary: 'Accept-Encoding, Accept, X-Requested-With',
+        'x-content-type-options': 'nosniff',
+        'x-frame-options': 'deny',
+        'x-github-api-version-selected': '2022-11-28',
+        'x-github-media-type': 'github.v3; format=json',
+        'x-github-request-id': 'F534:1303A:BCA9D3:BE428C:64BF8D0B',
+        'x-ratelimit-limit': '5000',
+        'x-ratelimit-remaining': '4968',
+        'x-ratelimit-reset': '1690278523',
+        'x-ratelimit-resource': 'core',
+        'x-ratelimit-used': '32',
+        'x-xss-protection': '0',
+      },
+      data: {
+        message:
+          'Invalid request.\n\nNo subschema in "anyOf" matched.\n"conclusion" wasn\'t supplied.\ncompleted is not a member of ["queued", "in_progress"].',
+        documentation_url:
+          'https://docs.github.com/rest/checks/runs#create-a-check-run',
+      },
+    },
+    request: {
+      method: 'POST',
+      url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs',
+      headers: {
+        accept: 'application/vnd.github.v3+json',
+        'user-agent':
+          'octokit.js/2.0.7 octokit-core.js/4.2.1 Node.js/16.20.1 (linux; arm64)',
+        authorization: 'tok*****',
+        'content-type': 'application/json; charset=utf-8',
+      },
+      body: '{"head_sha":"fa1e4f8a4f39a4090bf66978e0022ab54c7b2828","name":"wow","status":"completed"}',
+      request: {},
+    },
+  },
+};
+//fsdfsd
