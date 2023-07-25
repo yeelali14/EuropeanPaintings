@@ -101,4 +101,15 @@ const action = {
   branch: 'yeelali14-patch-13',
   workflowId: 62113785,
 };
-//dasdasdfsdfssfsdfsfdsfsd
+//dasdasdfsdfssfsdfsfdsfsdfsdfsd
+
+const workflow = {
+  wokflow: '.github/workflows/example.yml',
+  org: 'github-yeelali14',
+  repo: 'EuropeanPaintings',
+  headSha: 'c9bbe6f4d80cb47c3b93e0a530fe80e5559f02c0',
+  prNumber: 869,
+  checkName: 'wow',
+  branch: 'yeelali14-patch-13',
+  workflowId: 62113785,
+};
