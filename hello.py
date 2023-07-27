@@ -1,6 +1,4 @@
 # mango
-hi
-
 # sadas
 # banana
 # dsa
