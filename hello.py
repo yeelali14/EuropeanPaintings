@@ -1,9 +1,7 @@
 # mango
 # sadas
 # banana
-# dsa
-# sadas
-
+# ds
 def function():
 	print('1')
 	pass
