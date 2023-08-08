@@ -12,7 +12,7 @@ automations:
           color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
   suggest_code_experts:
     if: 
-      - {{ pr.labels | match(term='suggest-reviewer') }}
+      - true
     run:
       - action: add-comment@v1
         args:
