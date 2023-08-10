@@ -1,12 +1,8 @@
 # -*- mode: yaml -*-
 manifest:
   version: 1.0
-on:
-  - commit
 automations:
   suggest_code_experts:
-    on:
-      - label_added
     if: 
       - {{ pr.labels | match(term='suggest-reviewer') | some }}
     run:
