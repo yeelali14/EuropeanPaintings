@@ -14,6 +14,8 @@ automations:
           color: '36A853'
           
   invoke_action:
+    on:
+      - comment_added
     if: 
       - true
     run:
@@ -27,6 +29,8 @@ automations:
           check_name: "wow"
 
   invoke_action_2:
+    on:
+      - comment_added
     if: 
       - true
     run:
