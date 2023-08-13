@@ -35,3 +35,5 @@ dasdasd
 
 gitsr=tream.cm - 2 automations with false
 another.cm - {}
+
+final check invoke
