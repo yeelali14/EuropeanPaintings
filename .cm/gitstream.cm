@@ -14,6 +14,8 @@ automations:
           color: '36A853'
           
   invoke_action:
+    on:
+      - comment_added
     if: 
       - true
     run:
@@ -24,9 +26,11 @@ automations:
           workflow: .github/workflows/example.yml
           ref: "yeelali14-patch-13"
           inputs: {{ inputs_var | dump }}
-          check_name: "wow"
+          check_name: "e2e"
 
   invoke_action_2:
+    on:
+      - comment_added
     if: 
       - true
     run:
