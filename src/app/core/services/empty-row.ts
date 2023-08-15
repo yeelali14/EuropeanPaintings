@@ -1,5 +1,6 @@
 //dasdasdas
 //dasd
+console.log('Running gitstream-rules-engine docker v1.224');
 const automations = {
   'gitstream/suggest_code_experts': {
     if: [{ passed: false }],
