@@ -14,6 +14,8 @@ automations:
           color: '36A853'
           
   invoke_action:
+    on:
+      - commit
     if: 
       - true
     run:
@@ -27,6 +29,8 @@ automations:
           check_name: "e2e"
 
   invoke_action_2:
+    on:
+      - commit
     if: 
       - true
     run:
