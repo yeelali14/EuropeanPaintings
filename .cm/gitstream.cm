@@ -4,46 +4,11 @@ manifest:
   version: 1.0
 
 automations:
-  estimated_time_to_review:
+  dependencies_update:
     if:
-      - true
+      - {{ source.diff.files | reject(attr='new_file', term='package.json') | matchDiffLines(regex='^[+-].*console\\.log', ignoreWhiteSpaces=true) | every }}
     run:
-      - action : add-label@v1
+      - action: approve@v1
+      - action: add-label@v1
         args:
-          label: "debug gitstream"
-          color: '36A853'
-          
-  invoke_action:
-    on:
-      - commit
-    if: 
-      - true
-    run:
-      - action: invoke-github-action@v1
-        args:
-          owner: yeelali14
-          repo: pasha
-          workflow: .github/workflows/example.yml
-          ref: "yeelali14-patch-13"
-          inputs: {{ inputs_var | dump }}
-          check_name: "e2e"
-
-  invoke_action_2:
-    on:
-      - commit
-    if: 
-      - true
-    run:
-      - action: invoke-github-action@v1
-        args:
-          owner: yeelali14
-          repo: pasha
-          workflow: .github/workflows/example-2.yml
-          ref: "yeelali14-patch-13"
-          inputs: {{ inputs_var | dump }}
-
-inputs_var: 
-  commit_sha: "2539d9d90f606fa77c4b22239ccf1e9cab56314d"
-
-calc:
-  etr: {{ branch | estimatedReviewTime }}
+          label: 'dependencies-update'
