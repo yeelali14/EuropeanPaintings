@@ -3,6 +3,10 @@
 manifest:
   version: 1.0
 
+config:
+  ignore_files:
+    - 'package-lock.json'
+
 automations:
   dependencies_update:
     if:
