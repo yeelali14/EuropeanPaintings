@@ -16,12 +16,10 @@ automations:
       - commit
     if:
       - {{ is.formatting or is.docs or is.tests or is.image }}
-    # Apply a safe change label, approve the PR and explain why in a comment.
     run: 
       - action: add-label@v1
         args:
           label: 'safe-change'
-      - action: approve@v1
       - action: add-comment@v1
         args:
           comment: |
