@@ -12,7 +12,6 @@ automations:
     if:
       - {{ source.diff.files | reject(attr='new_file', term='package.json') | matchDiffLines(regex='^[+-].*console\\.log', ignoreWhiteSpaces=true) | every }}
     run:
-      - action: approve@v1
       - action: add-label@v1
         args:
           label: 'dependencies-update'
