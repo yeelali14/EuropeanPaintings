@@ -10,7 +10,7 @@ config:
 automations:
   dependencies_update:
     if:
-      - {{ source.diff.files | reject(attr='new_file', term='package.json') | matchDiffLines(regex='^[+-].*console\\.log', ignoreWhiteSpaces=true) | every }}
+      - true
     run:
       - action: add-label@v1
         args:

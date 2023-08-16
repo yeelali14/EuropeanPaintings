@@ -25,7 +25,6 @@ automations:
           comment: |
             This PR is considered a safe change and has been automatically approved.
 
-# These custom expressions are used in the safe_changes automation
 is:
   formatting: {{ source.diff.files | isFormattingChange }}
   docs: {{ files | allDocs }}
