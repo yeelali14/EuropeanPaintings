@@ -12,7 +12,8 @@ automations:
         args:
           gt: 10 
   safe_changes:
-    # Triggered for any changes that only affect formatting, documentation, tests, or images
+    on:
+      - commit
     if:
       - {{ is.formatting or is.docs or is.tests or is.image }}
     # Apply a safe change label, approve the PR and explain why in a comment.
