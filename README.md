@@ -34,6 +34,6 @@ team flare :)
 
 EXPECTED:
 const triggers = {
-    ".cm/another.cm": { "safe_changes": true, "automation_with_triggers": true },
+    ".cm/another.cm": { "safe_changes": false, "automation_with_triggers": false },
     ".cm/gitstream.cm": { "explain_code_experts": true, "dependencies_update": true },
 };
