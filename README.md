@@ -32,3 +32,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Lady gaga the queen
 team flare :)
 dasdasd
+
+yeela-debug validatedTriggers:  undefined
+yeela-debug setEvaluationValue: {
+  updatedTriggers: {
+    '.cm/another.cm': { safe_changes: true },
+    '.cm/gitstream.cm': { dependencies_update: true }
+  },
+  someTriggersAreTrue: true
+}
+yeela-debug updatedTriggers: {
+  '.cm/another.cm': { safe_changes: true },
+  '.cm/gitstream.cm': { dependencies_update: true }
+}
