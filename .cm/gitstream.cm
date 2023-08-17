@@ -8,6 +8,13 @@ config:
     - 'package-lock.json'
 
 automations:
+  explain_code_experts:
+    if:
+      - true
+    run:
+      - action: explain-code-experts@v1 
+        args:
+          gt: 10 
   dependencies_update:
     if:
       - true
