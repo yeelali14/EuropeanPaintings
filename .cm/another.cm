@@ -15,6 +15,15 @@ automations:
         args:
           comment: |
             This PR is considered a safe change and has been automatically approved.
+  automation_with_triggers:
+    on:
+      - commit
+    if:
+      - true
+    run: 
+      - action: add-label@v1
+        args:
+          label: 'on commit'
 
 is:
   formatting: {{ source.diff.files | isFormattingChange }}
