@@ -16,15 +16,20 @@ automations:
         args:
           comment: |
             This PR is considered a safe change and has been automatically approved.
-  automation_with_triggers:
+  invoke_action:
     on:
-      - comment_added 
-    if:
+      - comment_added
+    if: 
       - true
-    run: 
-      - action: add-label@v1
+    run:
+      - action: invoke-github-action@v1
         args:
-          label: 'on commit'
+          owner: yeelali14
+          repo: pasha
+          workflow: .github/workflows/example.yml
+          ref: "yeelali14-patch-13"
+          inputs: {{ inputs_var | dump }}
+          check_name: "invoke-pasha-action"
 
 is:
   formatting: {{ source.diff.files | isFormattingChange }}
