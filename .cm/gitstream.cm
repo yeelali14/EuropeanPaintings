@@ -22,10 +22,3 @@ automations:
       - action: add-label@v1
         args:
           label: 'dependencies-update'
-  assign_code_experts:
-    if: 
-      - {{ pr.title | includes(term='yeela') }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: {{ repo | codeExperts(gt=10) }}
