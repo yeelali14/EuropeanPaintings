@@ -22,11 +22,3 @@ automations:
       - action: add-label@v1
         args:
           label: 'dependencies-update'
-  estimated_time_to_review: 
-    if:
-      - true
-    run:
-      - action: add-label@v1
-        args:
-          label: "{{ calc.etr }} min review"
-          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
