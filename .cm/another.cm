@@ -18,7 +18,7 @@ automations:
             This PR is considered a safe change and has been automatically approved.
   automation_with_triggers:
     on:
-      - commit 
+      - comment_added 
     if:
       - true
     run: 
