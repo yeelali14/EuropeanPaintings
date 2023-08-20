@@ -3,7 +3,7 @@
 manifest:
   version: 1.0
 on:
-  - pr_created
+  - label_added
 automations:
   safe_changes:
     if:
@@ -16,20 +16,7 @@ automations:
         args:
           comment: |
             This PR is considered a safe change and has been automatically approved.
-  invoke_action:
-    on:
-      - comment_added
-    if: 
-      - true
-    run:
-      - action: invoke-github-action@v1
-        args:
-          owner: yeelali14
-          repo: pasha
-          workflow: .github/workflows/example.yml
-          ref: "yeelali14-patch-13"
-          inputs: {{ inputs_var | dump }}
-          check_name: "invoke-pasha-action"
+
 
 is:
   formatting: {{ source.diff.files | isFormattingChange }}
