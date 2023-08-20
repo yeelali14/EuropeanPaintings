@@ -31,3 +31,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 #PR
 Lady gaga the queen
 team flare :)
+
+const triggers = {
+    ".cm/another.cm": { "safe_changes": true, "automation_with_triggers": true },
+    ".cm/gitstream.cm": { "explain_code_experts": true, "dependencies_update": true, assign_code_experts:true },
+};
