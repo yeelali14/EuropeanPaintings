@@ -16,6 +16,15 @@ automations:
         args:
           comment: |
             This PR is considered a safe change and has been automatically approved.
+  check_lables: 
+    if:
+      -  true
+    run:
+      - action: add-comment@v1
+      # etr is defined in the last section of this example
+        args:
+          comment: |
+            lables: {{ pr.labels | dump | safe }}
 
 
 is:
