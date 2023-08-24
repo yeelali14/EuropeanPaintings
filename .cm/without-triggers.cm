@@ -3,7 +3,6 @@
 manifest:
   version: 1.0
 automations:
-  # Add a label that indicates how many minutes it will take to review the PR.
   check_lables: 
     if:
       -  true
@@ -12,10 +11,10 @@ automations:
       # etr is defined in the last section of this example
         args:
           comment: |
-            lables: {{ pr.labels | dump | safe }}
+            this is just a comment
   assign_code_experts:
     if: 
-      - {{ pr.labels | match(term='suggest-reviewer') | some }}
+      - true
     run:
       - action: add-reviewers@v1
         args:
