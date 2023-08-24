@@ -1,0 +1,18 @@
+# -*- mode: yaml -*-
+# This configuration is for gitStream. To know more visit: https://docs.gitstream.cm/quick-start/
+manifest:
+  version: 1.0
+
+# on:
+#  - commit
+
+automations:
+  # Flag the author if an appropriate type label isn't present
+  check_label_type:
+    if:
+      - true
+    run:
+      - action: explain-code-experts@v1
+        args:
+          gt: 10
+          
