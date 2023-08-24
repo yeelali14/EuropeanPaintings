@@ -3,16 +3,15 @@
 manifest:
   version: 1.0
 
-# on:
-#  - commit
-
 automations:
   # Flag the author if an appropriate type label isn't present
   check_label_type:
     if:
       - true
     run:
-      - action: explain-code-experts@v1
+      - action: add-comment@v1
+      # etr is defined in the last section of this example
         args:
-          gt: 10
+          comment: |
+            this is comment without triggers
           
