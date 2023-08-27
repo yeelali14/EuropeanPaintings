@@ -16,4 +16,4 @@ automations:
       # etr is defined in the last section of this example
         args:
           comment: |
-            lables: {{ pr.labels | dump | safe }}
+            triggers
