@@ -17,3 +17,12 @@ automations:
         args:
           comment: |
             triggers
+  check_lables_2: 
+    if:
+      -  true
+    run:
+      - action: add-comment@v1
+      # etr is defined in the last section of this example
+        args:
+          comment: |
+            triggers 2
