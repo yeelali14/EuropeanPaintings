@@ -4,7 +4,7 @@ manifest:
 automations:
   check_label_type:
     if:
-      - {{ files | length > 1 }}
+      - {{ pr.labels | length > 1 }}
     run:
       - action: add-comment@v1
         args:
