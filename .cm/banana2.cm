@@ -1,41 +1,14 @@
-# -*- mode: yaml -*-
-
 manifest:
   version: 1.0
 
 automations:
-  gitstream-challenge-16-3-gold:
-    # PR have at least 1 test, 5 or less files and branch includes Jira-Ticket prefix
+  check_label_type:
     if:
-      - {{ files | match(regex=r/(test|spec)/) | some }}
-      - {{ files | length <= 5 }}
+      - {{ files | length > 1 }}
     run:
-      - action: add-label@v1
+      - action: add-comment@v1
         args:
-          label: 'gitStream-gold 🥇'
-          color: '#F4EBD0'
-    explain_expert_reviewer:
-      if: 
-        - true
-      run:
-        - action: add-comment@v1
-          args:
-            comment: |
-              {{ repo | explainCodeExperts(gt=10) }}
-    etr_comment:
-      if:
-        - true
-      run:
-        - action: add-comment@v1
-          args:
-            comment: |
-              {{ branch | estimatedReviewTime < 5 }}
-    print_owner:
-      if: 
-        - {{ files | length > 2 }}
-      run:
-        - action: add-comment@v1
-          args:
-            comment: |
-              {{ repo.owner }}
-              
+          comment: |
+            this is comment without triggers
+
+          
