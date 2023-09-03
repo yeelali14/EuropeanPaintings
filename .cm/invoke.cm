@@ -14,7 +14,7 @@ automations:
           workflow: .github/workflows/example.yml
           owner: yeelali14
           repo: pasha
-          branch: main
+          ref: main
           inputs: {{ inputs_var | dump }}
           check_name: "invoke-pasha-action"
           stop_ongoing_workflow: false
