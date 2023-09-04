@@ -12,5 +12,5 @@ automations:
       - action: add-github-check@v1
         args:
           check_name: blabla
-          conclusion: bla
+          conclusion: skipped
   
