@@ -9,7 +9,7 @@ automations:
     if: 
       - true
     run:
-      - action: invoke-github-action@v1
+      - action: run-github-workflow@v1
         args:
           workflow: .github/workflows/example.yml
           owner: yeelali14
