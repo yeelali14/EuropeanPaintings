@@ -20,7 +20,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            You've got {{ pr.conflict_count }}  merge conflicts... cue the dramatic soap opera music 🎻
+            You've got {{ pr.conflict_count }} merge conflicts... cue the dramatic soap opera music 🎻
 
 inputs_var: 
   commit_sha: "test"
