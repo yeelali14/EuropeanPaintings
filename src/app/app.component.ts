@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'EuropeanPaintings';
 }
+//main comment yeela fkhsdkfhsk
+//bla bla
 //main comment yeela
 //bla bla
