@@ -8,4 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'EuropeanPaintings';
 }
-console.log('bla');
+console.log('blafksdhf');
