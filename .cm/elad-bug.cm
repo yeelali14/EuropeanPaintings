@@ -5,7 +5,7 @@ manifest:
 
 config:
   ignore_files:
-    - 'package-lock.json'
+    - 'src/app/core/services/emtyFile.ts'
 
 automations:
   dependencies_update:
@@ -16,3 +16,11 @@ automations:
       - action: add-label@v1
         args:
           label: 'dependencies-update'
+  prnt_files:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ files }}
