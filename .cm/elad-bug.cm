@@ -1,0 +1,18 @@
+# -*- mode: yaml -*-
+
+manifest:
+  version: 1.0
+
+config:
+  ignore_files:
+    - 'package-lock.json'
+
+automations:
+  dependencies_update:
+    if:
+      - {{ source.diff.files | reject(attr='new_file', term='package.json') | matchDiffLines(regex='^[+-].*console\\.log', ignoreWhiteSpaces=true) | every }}
+    run:
+      - action: approve@v1
+      - action: add-label@v1
+        args:
+          label: 'dependencies-update'
