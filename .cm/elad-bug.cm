@@ -16,11 +16,11 @@ automations:
       - action: add-label@v1
         args:
           label: 'dependencies-update'
-  prnt_files:
+  print_files:
     if:
       - true
     run:
       - action: add-comment@v1
         args:
           comment: |
-            {{ files }}
+            files {{ files }}
