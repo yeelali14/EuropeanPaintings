@@ -129,7 +129,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [ChenAlon, hadasKatz]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
           
   ui_review:
@@ -138,7 +138,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [MishaKav, Moshemo]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   github_files_review:
@@ -147,7 +147,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [MishaKav]
+          reviewers: [EladKohavi]
 
   request_description_in_lambdas:
     if:
@@ -171,13 +171,6 @@ automations:
             - [synthetic / cli agents](https://github.com/Contrast-Security-Inc/cn-mono/actions/workflows/deploy_cn_customer.yml)
             - [dev / stage agents](https://github.com/Contrast-Security-Inc/cn-mono/actions/workflows/deploy_cn_customer_dev_agents.yml)
 
-  # contrast_deploy_review:
-  #   if:
-  #     - {{ files | match(regex='_utils\\/contrast_deploy\\/') | some }}
-  #   run:
-  #     - action: add-reviewers@v1
-  #       args:
-  #         reviewers: [ManuelNemirovsky]
 
   api_docs_review:
     if:
@@ -185,7 +178,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [Moshemo]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   api_docs_discard_auto_generated_files:
@@ -204,7 +197,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [stasez]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   gateway_review:
@@ -213,7 +206,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [aviadhhh]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
   
   e2e_review:
@@ -222,7 +215,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [Moshemo, MarkLipovetsky]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   graph_review:
@@ -231,7 +224,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [Moshemo, asafgamliel]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   image_detector_review:
@@ -240,7 +233,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [Moshemo, liadbenari]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   cft_review:
@@ -249,7 +242,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [4ppsec, spaglipa]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   cft_request_review:
@@ -258,7 +251,7 @@ automations:
     run:
       - action: require-reviewers@v1
         args:
-          reviewers: [4ppsec, spaglipa]
+          reviewers: [EladKohavi]
 
   cft_version_review:
     if:
@@ -277,7 +270,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [Moshemo, liadbenari, asafgamliel, MishaKav]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   scans_review:
@@ -286,7 +279,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [Moshemo, aviadhhh]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   resources_review:
@@ -295,7 +288,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [Moshemo, aviadhhh]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   instrumentor_review:
@@ -304,7 +297,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [Moshemo, aviadhhh]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   old_discovery_remark:
@@ -313,7 +306,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [Moshemo]
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
       - action: request-changes@v1
         args:
@@ -327,7 +320,7 @@ automations:
       - action: add-reviewers@v1
         args:
           wait_for_all_checks: true
-          reviewers: [AtsukoM]
+          reviewers: [EladKohavi]
 
   validate_translations:
     if:
