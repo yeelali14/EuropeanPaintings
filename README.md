@@ -32,3 +32,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Lady gaga the queen
 team flare :)
 check #2
+
+I am a magnet for broken pieces
+I am attracted to broken people
+I pick 'em up and now my fingers are bleeding
+And it looks like my fault
+And it looks like I'm caught red-handed
