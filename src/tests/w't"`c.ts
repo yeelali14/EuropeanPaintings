@@ -7,7 +7,7 @@ function waitForImageToLoad(imageElement) {
   }
 
   console.log('service ');
-  //asdasdasdasdasda
+  //asdasdasdasdasda-11212
   getArtworksByDepartment() {
     return this.http.get(environment.baseUrl + "search?departmentId=11&q=sunflowers").pipe(
       mergeMap(res =>
