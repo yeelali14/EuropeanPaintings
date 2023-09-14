@@ -33,14 +33,12 @@ automations:
     run: 
       - action: add-comment@v1
         args:
-          comment: active coders: {{ active_coders }}
-          rookie: {{is_rookie}}
+          comment: |
+            active coders: {{ active_coders }}
+            rookie: {{is_rookie}}
 
-
-# The next function calculates the estimated time to review and makes it available in the automation above.
 calc:
   etr: {{ branch | estimatedReviewTime }}
 
 active_coders: {{ repo | rankByGitActivity(gt=50, weeks=12) }}
 is_rookie: {{ repo | rankByGitBlame(lt=15) | match(term=branch.author) | some }}
-
