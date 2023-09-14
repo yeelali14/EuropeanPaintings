@@ -1,13 +1,15 @@
 
 function waitForImageToLoad(imageElement) {
-    //dasdas
+    //dasdassdfsd222
     return new Promise(resolve => {
       imageElement.onload = resolve;
     })
   }
 
   console.log('service ');
-  //asdasd
+  //asdadasdasdada
+  //asdadasdasdada
+  //asdadasdasdada
   getArtworksByDepartment() {
     return this.http.get(environment.baseUrl + "search?departmentId=11&q=sunflowers").pipe(
       mergeMap(res =>
