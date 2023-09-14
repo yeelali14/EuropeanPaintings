@@ -5,5 +5,6 @@ function waitForImageToLoad(imageElement) {
     })
   }
 
+  //test
   console.log('service ');
-  
+  //dasdasd
