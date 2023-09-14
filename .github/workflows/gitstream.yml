@@ -17,7 +17,7 @@ on:
         description: the head sha
         required: true
       base_ref:
-        description: the base ref
+        description: the base ref 
         required: true
       installation_id:
         description: the installation id
@@ -32,7 +32,6 @@ on:
 
 jobs:
   gitStream:
-    # if: github.actor != 'agorapulse-bot'
     timeout-minutes: 5
     runs-on: ubuntu-latest
     name: gitStream workflow automation
