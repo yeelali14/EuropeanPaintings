@@ -48,6 +48,13 @@ automations:
           comment: |
             When your code politely asks for couple's therapy: 
             You've got {{ pr.conflicted_files_count }} merge conflicts... 🚩
+  check_title:
+    if: 
+    - {{ pr.title | includes(term='LINBEE-22-76') }}
+    run: 
+      - action: add-comment@v1
+        args:
+          comment: title match!
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
