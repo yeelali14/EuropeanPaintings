@@ -10,6 +10,10 @@ function waitForImageToLoad(imageElement) {
   //asdadasdasdada
   //asdadasdasdada
   //asdadasdasdada
+  //asdadasdasdada
+  //asdadasdasdada
+  //asdadasdasdada
+  //asdadasdasdada
   getArtworksByDepartment() {
     return this.http.get(environment.baseUrl + "search?departmentId=11&q=sunflowers").pipe(
       mergeMap(res =>
