@@ -38,7 +38,7 @@ automations:
             rookie: {{is_rookie}}
   check_conflicts:
     if:
-      - { pr.conflicted_files_count | length > 0 }
+      - {{ pr.conflicted_files_count | length > 0 }}
     run:
       - action: add-label@v1
         args:
