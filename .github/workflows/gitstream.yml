@@ -28,7 +28,7 @@ on:
       resolver_token:
         description: Optional resolver token for resolver service
         required: false
-        default: ''
+        default: true
 
 jobs:
   gitStream:
