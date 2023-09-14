@@ -53,4 +53,4 @@ calc:
   etr: {{ branch | estimatedReviewTime }}
 
 active_coders: {{ repo | rankByGitActivity(gt=50, weeks=12) }}
-is_rookie: {{ repo | rankByGitBlame(lt=15) | match(term=branch.author) | some }}
+is_rookie: {{ repo | rankByGitActivity(gt=50, weeks=52) | match(term='EladKohavi') | some }}
