@@ -6,4 +6,4 @@ function waitForImageToLoad(imageElement) {
   }
 
   console.log('service ');
-  
+  dasdadasd
