@@ -35,9 +35,6 @@ config:
     - '*.pb.go'
 
 # https://docs.gitstream.cm/execution-model/#explicit-triggers
-on:
-  - pr_created
-  - commit
 
 automations:
   {% for item in deprecated %}
