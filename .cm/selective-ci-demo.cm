@@ -3,7 +3,7 @@ manifest:
 
 on:
   - comment_added
-  
+
 automations:
   core_changes:
     if:
@@ -11,5 +11,5 @@ automations:
     run:
       - action: add-github-check@v1
         args:
-          check_name: "- run-github-workflow@v1"
+          check_name: "cypress-e2e"
           conclusion: skipped
