@@ -7,7 +7,7 @@ on:
 automations:
   core_changes:
     if:
-      - {{ files | match(regex=r/^src/app/core\//) | every }}
+      - {{ files | match(regex=r/^src\/app\/core\//) | every }}
     run:
       - action: add-github-check@v1
         args:
