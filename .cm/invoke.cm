@@ -2,7 +2,7 @@ manifest:
   version: 1.0
 
 on:
-  - comment_added
+  - commit
 
 automations:
   invoke_action:
