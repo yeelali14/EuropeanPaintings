@@ -1,0 +1,25 @@
+manifest:
+    version: 1.0
+
+automations:
+  ui_review:
+    if:
+      - {{ files | match(regex=r/^ui\//) | some }}
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: [EladKohavi]
+          wait_for_all_checks: true
+  invoke_action:
+    if: 
+      - true
+    run:
+      - action: run-github-workflow@v1
+        args:
+          workflow: .github/workflows/example.yml
+          owner: yeelali14
+          repo: pasha
+          ref: main
+          inputs: {{ inputs_var | dump }}
+          check_name: "invoke-pasha-action"
+          stop_ongoing_workflow: false
