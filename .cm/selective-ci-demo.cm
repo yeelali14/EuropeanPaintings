@@ -1,6 +1,9 @@
 manifest:
     version: 1.0
 
+on:
+  - comment_added
+  
 automations:
   core_changes:
     if:
