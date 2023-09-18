@@ -1,0 +1,12 @@
+manifest:
+    version: 1.0
+
+automations:
+  core_changes:
+    if:
+      - {{ files | match(regex=r/^src/app/core\//) | every }}
+    run:
+      - action: add-github-check@v1
+        args:
+          check_name: "- run-github-workflow@v1"
+          conclusion: skipped
