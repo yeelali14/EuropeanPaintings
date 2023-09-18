@@ -16,7 +16,7 @@ automations:
           repo: pasha
           ref: main
           inputs: {{ inputs_var | dump }}
-          check_name: "invoke-pasha-action"
+          check_name: "cypress-e2e"
           stop_ongoing_workflow: false
   add_label:
     if:
