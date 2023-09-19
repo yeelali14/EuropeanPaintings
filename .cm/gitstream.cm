@@ -22,11 +22,11 @@ automations:
           gt: 10 
   is_firs_commit:
     if: 
-    - {{ repo.contributors | isFirstCommit(branch.author_name) }}
+    - {{ repo.contributors | isFirstCommit(branch.author) }}
     run: 
       - action: add-comment@v1
         args:
-          comment: Welcome {{branch.author}}!
+          comment: Welcome {{branch.author_name}}!
   print_active_coders_and_rookie:
     if: 
     - true
@@ -60,8 +60,9 @@ automations:
     - true
     run: 
       - action: add-comment@v1
-        args:
-          comment: {{ pr | dump }}
+          comment: |
+            branch: {{ branch | dump }}
+            repo: {{ repo | dump }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
