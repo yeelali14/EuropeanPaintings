@@ -1,6 +1,10 @@
 manifest:
     version: 1.0
 
+on:
+  - pr_created
+  - commit
+
 automations:
   ui_review:
     if:
