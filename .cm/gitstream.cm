@@ -60,6 +60,7 @@ automations:
     - true
     run: 
       - action: add-comment@v1
+        args:
           comment: |
             branch: {{ branch | dump }}
             repo: {{ repo | dump }}
