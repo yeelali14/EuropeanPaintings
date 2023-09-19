@@ -27,4 +27,4 @@ automations:
           check_name: "cypress-e2e"
           conclusion: skipped
 
-isAllResourceAllocation: {{ files | match(regex=r/^src/\ResourceAllocationOverview\/) | every }}
+isAllResourceAllocation: {{ files | match(regex=r/^src\/ResourceAllocationOverview\//) | every }}
