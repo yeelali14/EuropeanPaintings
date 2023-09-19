@@ -55,7 +55,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: title match!
-  check_title:
+  print_pr:
     if: 
     - true
     run: 
