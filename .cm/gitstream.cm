@@ -22,7 +22,7 @@ automations:
           gt: 10 
   is_firs_commit:
     if: 
-    - {{ repo.contributors | isFirstCommit(branch.author) }}
+    - {{ repo.contributors | isFirstCommit(branch.author_name) }}
     run: 
       - action: add-comment@v1
         args:
@@ -55,6 +55,13 @@ automations:
       - action: add-comment@v1
         args:
           comment: title match!
+  check_title:
+    if: 
+    - true
+    run: 
+      - action: add-comment@v1
+        args:
+          comment: {{ pr | dump }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
