@@ -5,6 +5,9 @@ automations:
   invoke_action:
     on:
       - comment_added
+      - label_added
+      - open_pr
+      ...
     if: 
       - {{ not isAllResourceAllocation }}
     run:
