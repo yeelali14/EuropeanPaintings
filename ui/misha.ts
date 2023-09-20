@@ -1,25 +1,25 @@
 const currentChecks = [
     {
-      id: 16962875066,
+      id: 16963481431,
       name: '- add-reviewers@v1',
-      node_id: 'CR_kwDOF-VJwM8AAAAD8xDuug',
-      head_sha: 'b73b56f2cce64cce538514894c7445b1df388a26',
+      node_id: 'CR_kwDOF-VJwM8AAAAD8xovVw',
+      head_sha: '08138b782d958bf28960dc65da589b42d16f2814',
       external_id: '',
-      url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16962875066',
-      html_url: 'https://github.com/yeelali14/EuropeanPaintings/runs/16962875066',
+      url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16963481431',
+      html_url: 'https://github.com/yeelali14/EuropeanPaintings/runs/16963481431',
       details_url: 'http://gitstream.cm',
       status: 'queued',
       conclusion: null,
-      started_at: '2023-09-20T12:14:57Z',
+      started_at: '2023-09-20T12:32:22Z',
       completed_at: null,
       output: {
         title: null,
         summary: null,
         text: null,
         annotations_count: 0,
-        annotations_url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16962875066/annotations'
+        annotations_url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16963481431/annotations'
       },
-      check_suite: { id: 16367368750 },
+      check_suite: { id: 16368038653 },
       app: {
         id: 230606,
         slug: 'gitstream-yeela-local',
@@ -37,26 +37,26 @@ const currentChecks = [
       pull_requests: [ [Object] ]
     },
     {
-      id: 16962855993,
+      id: 16963460451,
       name: 'gitStream workflow automation',
-      node_id: 'CR_kwDOF-VJwM8AAAAD8xCkOQ',
-      head_sha: 'b73b56f2cce64cce538514894c7445b1df388a26',
+      node_id: 'CR_kwDOF-VJwM8AAAAD8xndYw',
+      head_sha: '08138b782d958bf28960dc65da589b42d16f2814',
       external_id: '3749c695-1515-5daa-58cb-f1f0796642c7',
-      url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16962855993',
-      html_url: 'https://github.com/yeelali14/EuropeanPaintings/actions/runs/6248372354/job/16962855993',
-      details_url: 'https://github.com/yeelali14/EuropeanPaintings/actions/runs/6248372354/job/16962855993',
+      url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16963460451',
+      html_url: 'https://github.com/yeelali14/EuropeanPaintings/actions/runs/6248570780/job/16963460451',
+      details_url: 'https://github.com/yeelali14/EuropeanPaintings/actions/runs/6248570780/job/16963460451',
       status: 'completed',
       conclusion: 'success',
-      started_at: '2023-09-20T12:14:29Z',
-      completed_at: '2023-09-20T12:14:51Z',
+      started_at: '2023-09-20T12:31:52Z',
+      completed_at: '2023-09-20T12:32:15Z',
       output: {
         title: null,
         summary: null,
         text: null,
         annotations_count: 2,
-        annotations_url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16962855993/annotations'
+        annotations_url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16963460451/annotations'
       },
-      check_suite: { id: 16367424335 },
+      check_suite: { id: 16368055417 },
       app: {
         id: 15368,
         slug: 'github-actions',
@@ -74,26 +74,26 @@ const currentChecks = [
       pull_requests: [ [Object] ]
     },
     {
-      id: 16962849292,
+      id: 16963454973,
       name: 'gitStream.cm',
-      node_id: 'CR_kwDOF-VJwM8AAAAD8xCKDA',
-      head_sha: 'b73b56f2cce64cce538514894c7445b1df388a26',
+      node_id: 'CR_kwDOF-VJwM8AAAAD8xnH_Q',
+      head_sha: '08138b782d958bf28960dc65da589b42d16f2814',
       external_id: '',
-      url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16962849292',
-      html_url: 'https://github.com/yeelali14/EuropeanPaintings/runs/16962849292',
+      url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16963454973',
+      html_url: 'https://github.com/yeelali14/EuropeanPaintings/runs/16963454973',
       details_url: 'http://gitstream.cm',
       status: 'in_progress',
       conclusion: null,
-      started_at: '2023-09-20T12:14:11Z',
+      started_at: '2023-09-20T12:31:36Z',
       completed_at: null,
       output: {
         title: null,
         summary: null,
         text: null,
         annotations_count: 0,
-        annotations_url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16962849292/annotations'
+        annotations_url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16963454973/annotations'
       },
-      check_suite: { id: 16367368750 },
+      check_suite: { id: 16368038653 },
       app: {
         id: 230606,
         slug: 'gitstream-yeela-local',
@@ -109,5 +109,43 @@ const currentChecks = [
         events: [Array]
       },
       pull_requests: [ [Object] ]
+    },
+    {
+      id: 16963446355,
+      name: 'job_1',
+      node_id: 'CR_kwDOF-VJwM8AAAAD8xmmUw',
+      head_sha: '08138b782d958bf28960dc65da589b42d16f2814',
+      external_id: '275f1d19-1bd8-5591-b06b-07d489ea915a',
+      url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16963446355',
+      html_url: 'https://github.com/yeelali14/EuropeanPaintings/actions/runs/6248565948/job/16963446355',
+      details_url: 'https://github.com/yeelali14/EuropeanPaintings/actions/runs/6248565948/job/16963446355',
+      status: 'in_progress',
+      conclusion: null,
+      started_at: '2023-09-20T12:31:29Z',
+      completed_at: null,
+      output: {
+        title: null,
+        summary: null,
+        text: null,
+        annotations_count: 0,
+        annotations_url: 'https://api.github.com/repos/yeelali14/EuropeanPaintings/check-runs/16963446355/annotations'
+      },
+      check_suite: { id: 16368041014 },
+      app: {
+        id: 15368,
+        slug: 'github-actions',
+        node_id: 'MDM6QXBwMTUzNjg=',
+        owner: [Object],
+        name: 'GitHub Actions',
+        description: 'Automate your workflow from idea to production',
+        external_url: 'https://help.github.com/en/actions',
+        html_url: 'https://github.com/apps/github-actions',
+        created_at: '2018-07-30T09:30:17Z',
+        updated_at: '2019-12-10T19:04:12Z',
+        permissions: [Object],
+        events: [Array]
+      },
+      pull_requests: [ [Object] ]
     }
-  ]
+  ];
+  //dasda
