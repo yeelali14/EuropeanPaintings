@@ -3,7 +3,7 @@ manifest:
 automations:
   is_firs_commit:
     if: 
-      - {{ repo.contributors | isFirstCommit(branch.author) }}
+      - true
     run: 
       - action: add-comment@v1
         args:
