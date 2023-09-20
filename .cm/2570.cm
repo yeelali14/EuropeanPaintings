@@ -1,0 +1,66 @@
+# -*- mode: yaml -*-
+
+manifest:
+  version: 1.0
+
+number_of_tests: {{ source | countTests }}
+
+automations:
+  gitstream-challenge-16-3-gold:
+    # PR have at least 1 test, 5 or less files and branch includes Jira-Ticket prefix
+    if:
+      - {{ files | match(regex=r/(test|spec)/) | some }}
+      - {{ files | length <= 5 }}
+      - {{ "LINB" | match(regex=r/[A-Z]{2,}-\d+.*/) }} 
+    run:
+      - action: add-label@v1
+        args:
+          label: 'gitStream-gold 🥇'
+          color: '#F4EBD0'
+  new_tests:
+    if: 
+      - {{ number_of_tests > 0 }}
+    run:
+      - action: add-comment@v1
+        args:
+          comment: {{ pr.author }} Added {{ number_of_tests }} new tests!
+            
+  etr_comment:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ branch | estimatedReviewTime < 5 }}
+  print_owner:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ changes_summary }}
+
+  send_slack:
+    if:
+      - true
+    run:
+    - action: send-slack-message@v1
+      args:
+        webhook_url: CHANNEL_ID
+        message: Hello world tada
+
+changes:
+  - name: shaked
+    count: 1
+    total: 10
+  - name: yeela
+    count: 2
+    total: 10
+
+changes_summary: |
+  {% for platform in changes %}
+  Platform {{ platform.name }} - {{ platform.count }} files ({{ (platform.count / platform.total * 100) | round(2) }}% of the total).
+  {% endfor %}
+
