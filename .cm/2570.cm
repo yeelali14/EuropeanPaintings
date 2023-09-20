@@ -11,7 +11,7 @@ automations:
     if:
       - {{ files | match(regex=r/(test|spec)/) | some }}
       - {{ files | length <= 5 }}
-      - {{ "LINB" | match(regex=r/[A-Z]{2,}-\d+.*/) }} 
+      - {{ "LINB" | match(regex=r/[A-Z]{2,}-\d+.*/) | some }} 
     run:
       - action: add-label@v1
         args:
@@ -33,7 +33,7 @@ automations:
         args:
           comment: |
             {{ branch | estimatedReviewTime < 5 }}
-  print_owner:
+  print_summary:
     if: 
       - true
     run:
@@ -41,15 +41,6 @@ automations:
         args:
           comment: |
             {{ changes_summary }}
-
-  send_slack:
-    if:
-      - true
-    run:
-    - action: send-slack-message@v1
-      args:
-        webhook_url: CHANNEL_ID
-        message: Hello world tada
 
 changes:
   - name: shaked

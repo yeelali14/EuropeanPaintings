@@ -50,7 +50,7 @@ automations:
             You've got {{ pr.conflicted_files_count }} merge conflicts... 🚩
   check_title:
     if: 
-    - {{ pr.title | includes(term='LINBEE-22-76') }}
+    - {{ pr.title | includes(term='LINBEE-') }}
     run: 
       - action: add-comment@v1
         args:
