@@ -7,6 +7,7 @@ automations:
       - comment_added
     if: 
       - {{ not isAllResourceAllocation }}
+      - {{ pr.comments | last | map(attr='content') | match(regex=r/^\/e2e) | every }}
     run:
       - action: run-github-workflow@v1
         args:
@@ -16,9 +17,10 @@ automations:
           ref: main
           check_name: "cypress-e2e"
           stop_ongoing_workflow: false
-  core_changes:
+  ra_changes:
     on:
       - commit
+      - pr_created
     if:
       - {{ isAllResourceAllocation }}
     run:
