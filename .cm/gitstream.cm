@@ -55,18 +55,9 @@ automations:
       - action: add-comment@v1
         args:
           comment: title match!
-  print_pr:
-    if: 
-      - true
-    run: 
-      - action: add-comment@v1
-        args:
-          comment: |
-            branch: {{ branch | dump }}
-            repo: {{ repo | dump }}
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
 
-active_coders: {{ repo | rankByGitActivity(gt=50, weeks=12) }}
+active_coders: {{ repo | rankByGitActivity(gt=10, weeks=52) }}
 is_rookie: {{ repo | rankByGitActivity(gt=50, weeks=52) | match(term='EladKohavi') | some }}
