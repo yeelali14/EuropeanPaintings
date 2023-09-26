@@ -22,14 +22,14 @@ automations:
           gt: 10 
   is_firs_commit:
     if: 
-    - {{ repo.contributors | isFirstCommit(branch.author) }}
+      - {{ repo.contributors | isFirstCommit(branch.author) }}
     run: 
       - action: add-comment@v1
         args:
           comment: Welcome {{branch.author_name}}!
   print_active_coders_and_rookie:
     if: 
-    - true
+      - true
     run: 
       - action: add-comment@v1
         args:
@@ -50,14 +50,14 @@ automations:
             You've got {{ pr.conflicted_files_count }} merge conflicts... 🚩
   check_title:
     if: 
-    - {{ pr.title | includes(term='LINBEE-') }}
+      - {{ pr.title | includes(term='LINBEE-') }}
     run: 
       - action: add-comment@v1
         args:
           comment: title match!
   print_pr:
     if: 
-    - true
+      - true
     run: 
       - action: add-comment@v1
         args:
