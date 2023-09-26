@@ -7,7 +7,7 @@ automations:
       - comment_added
     if: 
       - {{ not isAllResourceAllocation }}
-      - {{ pr.comments | map(attr='content') | match(regex=r/^\/e2e/) | first }}
+      - {{ pr.comments | map(attr='content') | match(regex=r/^\/e2e/) | last }}
     run:
       - action: run-github-workflow@v1
         args:
