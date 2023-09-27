@@ -4,6 +4,13 @@
 manifest:
   version: 1.0
 automations:
+  explain_code_experts:
+    if:
+      - true
+    run:
+      - action: explain-code-experts@v1 
+        args:
+          gt: 10 
   print_active_coders_and_rookie:
     if: 
       - true
@@ -15,7 +22,7 @@ automations:
             rookie: {{is_rookie}}
   is_firs_commit:
     if: 
-    - {{ repo.contributors | isFirstCommit(branch.author) }}
+      - {{ repo.contributors | isFirstCommit(branch.author) }}
     run: 
       - action: add-comment@v1
         args:
