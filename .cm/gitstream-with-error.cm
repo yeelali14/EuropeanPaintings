@@ -26,7 +26,7 @@ automations:
     run: 
       - action: add-comment@v1
         args:
-          comment: Welcome {{branch.author_name}}!
+          comment: "Welcome {{branch.author_name}}!"
   
 active_coders: {{ repo | rankByGitActivity(gt=10, weeks=52) }}
 is_rookie: {{ repo | rankByGitActivity(gt=50, weeks=52) | match(term='EladKohavi') | some }}
