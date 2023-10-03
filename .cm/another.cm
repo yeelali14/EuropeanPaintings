@@ -16,7 +16,7 @@ automations:
         args:
           comment: |
             This PR is considered a safe change and has been automatically approved.
-  check_lables_koko_2: 
+  check_lables_koko__3: 
     if:
       -  true
     run:
