@@ -81,10 +81,10 @@ const filterOutProperties = () => {
   };
   const contentMap = Object.keys(record).reduce((acc, key) => {
     if (record[key].content) {
-      acc[key] = record[key].content;
+        return { ...acc, [key]: record[key].content}
     }
     return acc;
-  }, {} as {[key: string]: string});
+  }, {});
   
   console.log(contentMap);
 };

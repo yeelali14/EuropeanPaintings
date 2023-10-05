@@ -33,7 +33,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          # | WARNING: change to the appropriate organization and team |
+  # | WARNING: change to the appropriate organization and team |
           reviewers: [my-organization/security]
       - action: set-required-approvals@v1
         args:
