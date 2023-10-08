@@ -1,7 +1,7 @@
 manifest:
   version: 1.0
 automations:
-  welcome_author:
+  welcome_author_66666:
     if: 
       - true
     run: 
