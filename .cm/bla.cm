@@ -1,10 +1,10 @@
 manifest:
   version: 1.0
 automations:
-  fuck_hamas_666_1:
+  welcome_author:
     if: 
       - true
     run: 
       - action: add-comment@v1
         args:
-          comment: Welcome {{branch.author}}!
+          comment: "Welcome {{branch.author}}!"
