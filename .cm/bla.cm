@@ -1,7 +1,7 @@
 manifest:
   version: 1.0
 automations:
-  fuck_hamas_666_666666_wtf:
+  fuck_hamas_666_666666_wt1f:
     if: 
       - true
     run: 
