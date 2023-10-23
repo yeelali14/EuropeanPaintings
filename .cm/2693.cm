@@ -5,11 +5,11 @@ on:
   - commit
 
 automations:
-  ui_review:
-    if:
-      - false
+  just_comment:
+    if: 
+      - true
     run:
-      - action: add-github-check@v1
+      - action: add-comment@v1
         args:
-          check_name: FE-tests
-          conclusion: skipped
+          comment: |
+            just a comment
