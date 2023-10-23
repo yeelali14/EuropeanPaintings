@@ -2,15 +2,14 @@ manifest:
     version: 1.0
 
 on:
-  - pr_created
   - commit
 
 automations:
   ui_review:
     if:
-      - {{ files | match(regex=r/^ui\//) | some }}
+      - false
     run:
-      - action: add-reviewers@v1
+      - action: add-github-check@v1
         args:
-          reviewers: [EladKohavi]
-          wait_for_all_checks: true
+          check_name: FE-tests
+          conclusion: skipped
