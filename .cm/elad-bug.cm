@@ -15,3 +15,10 @@ automations:
       - action: explain-code-experts@v1 
         args:
           gt: 10
+  check_title:
+    if: 
+      - {{ pr.title | includes(term='LINBEE-') }}
+    run: 
+      - action: add-comment@v1
+        args:
+          comment: title match!
