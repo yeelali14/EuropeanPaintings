@@ -4,6 +4,6 @@ manifest:
 automations:
   just_comment:
     if: 
-      - true
+      - false
     run:
       - action: approve@v1
