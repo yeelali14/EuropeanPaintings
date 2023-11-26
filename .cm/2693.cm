@@ -1,15 +1,9 @@
 manifest:
     version: 1.0
 
-on:
-  - commit
-
 automations:
   just_comment:
     if: 
       - true
     run:
-      - action: add-comment@v1
-        args:
-          comment: |
-            just a comment
+      - action: approve@v1
