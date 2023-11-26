@@ -15,3 +15,11 @@ automations:
       - action: explain-code-experts@v1 
         args:
           gt: 10
+  junior:
+    if:
+      - {{ repo.author_age < 21 and repo.age >= 21 }}
+    run:
+      - action: add-label@v1
+        args:
+          label: noob
+          color: '#ff0000'
