@@ -1,0 +1,83 @@
+# SOC2 compliance checks
+# Rev: 0.2
+
+manifest:
+  version: 1.0
+
+automations:
+  # DCF155 CC8.1 
+  # Code Changes are Tested
+  DCF155-pr-tested:
+    if:
+      - {{ files | match(regex=r/[^a-zA-Z0-9](spec|test|tests)[^a-zA-Z0-9]/) | none }}
+    run: 
+      - action: add-label@v1
+        args:
+          label: 'DCF155-tests-missing'
+          color: '#E94637'
+      - action: add-comment@v1
+        args:
+          comment: |
+            SOC2 requires testign every code change.
+            This PR has no new tests. 
+            _SOC2 ref: CC8.1_
+
+  # DCF5 CC8.1 
+  # Code Review Process
+  DCF5-pr-has-ticket:
+    if:
+      - {{ not (has.jira_ticket_in_title or has.jira_ticket_in_desc) }}
+    run:
+      - action: add-label@v1
+        args:
+          label: "DCF5-docs-missing"
+          color: 'F6443B'
+      - action: add-comment@v1
+        args:
+          comment: |
+            SOC2 requires code review process on every code change.
+            This PR has no Jira issue ticket mentioned in either the PR title or the PR description. 
+            _SOC2 ref: CC8.1_
+  DCF5-pr-reviewed:
+    on:
+      - merge
+    if:
+      - {{ pr.approvals | length == 0 }}
+    run:
+      - action: add-label@v1
+        args:
+          label: "DCF5-merge-without-approve"
+          color: 'F6443B'
+      - action: add-comment@v1
+        args:
+          comment: |
+            SOC2 requires code review process on every code change.
+            This PR was merged without any review process. 
+            _SOC2 ref: CC8.1_
+
+  # DCF18 CC1.2, CC3.1, CC3.2, CC3.4, CC4.1, CC4.2, CC5.1, CC5.2, CC7.1, CC7.2 
+  # Vulnerability Scanning
+  DCF18-vulnerability-scanning:
+    if:
+      - {{ pr.checks | match(attr='name', list=sec_scanners) | nope }}
+    run:
+      - action: add-label@v1
+        args:
+          label: "DCF18-no-vulnerabilities-scanning"
+          color: 'F6443B'
+      - action: add-comment@v1
+        args:
+          comment: |
+            SOC2 requires vulnerability scanning on every code change.
+            None of the listed vulnerability scanning tools has checked the PR. 
+            _SOC2 ref: CC1.2, CC3.1, CC3.2, CC3.4, CC4.1, CC4.2, CC5.1, CC5.2, CC7.1, CC7.2_
+            Scanning tools: {{ sec_scanners | dump | safe}}
+
+has:
+  jira_ticket_in_title: {{ pr.title | includes(regex=r/^\[?\w{3,4}-\d{1,6}\]?(\s|-|_).{1,}$/) }}
+  jira_ticket_in_desc: {{ pr.description | includes(regex=r/atlassian.net\/browse\/\w{1,}-\d{3,4}/) }}
+
+sec_scanners:
+  - Jit Security
+  - Snyk
+  - Sonar
