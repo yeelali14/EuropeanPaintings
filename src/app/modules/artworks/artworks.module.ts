@@ -15,3 +15,4 @@ import { ArtworksComponent } from './pages/artworks/artworks.component';
   ]
 })
 export class ArtworksModule { }
+
