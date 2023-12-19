@@ -1,0 +1,24 @@
+# -*- mode: yaml -*-
+# This configuration is for gitStream. To know more visit: https://docs.gitstream.cm/quick-start/
+manifest:
+  version: 1.0
+
+# on:
+#   - commit
+
+automations:
+  # Flag the author if an appropriate type label isn't present
+  senior_review:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            RESULT: {{ owners | intersection(list=experts) }}
+            SAFE RESULT: {{ owners | intersection(list=experts) | dump }}
+
+experts: {{ repo | codeExperts(gt=10) }}
+owners: 
+  - EladKohavi
+  - yeelali14
