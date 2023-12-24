@@ -8,7 +8,7 @@ manifest:
 
 automations:
   # Flag the author if an appropriate type label isn't present
-  senior_review:
+  intersection_comment:
     if:
       - true
     run:
