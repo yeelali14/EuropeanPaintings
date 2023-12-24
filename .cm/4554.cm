@@ -17,6 +17,13 @@ automations:
           comment: |
             RESULT: {{ owners | intersection(list=experts) }}
             SAFE RESULT: {{ owners | intersection(list=experts) | dump }}
+      - action: add-label@v1
+        args:
+          label: dryrun
+      - action: add-label@v1
+        args:
+          label: dryrun
+
 
 experts: {{ repo | codeExperts(gt=10) }}
 owners: 
