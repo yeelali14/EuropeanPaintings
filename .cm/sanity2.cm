@@ -123,6 +123,10 @@ automations:
         args:
           comment: |
             active coders: {{ active_coders }}
+      - action: add-label@v1
+        args:
+          label: 'new-contributor'
+          color: '#FBBD10'
 
 colors:
   red: 'FF0000'
