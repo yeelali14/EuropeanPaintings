@@ -26,6 +26,10 @@ automations:
       - action: explain-code-experts@v1 
         args:
           gt: 10
+      - action: add-comment@v1
+        args: 
+          comment: |
+            second run
   approve_pr:
     if:
       - {{ pr.title | includes(term='approve') }}
