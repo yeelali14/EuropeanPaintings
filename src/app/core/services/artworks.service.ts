@@ -71,3 +71,13 @@ function waitForImageToLoad(imageElement) {
   })
 }
 
+// ## [![Quality Gate Failed](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/checks/QualityGateBadge/qg-failed-20px.png 'Quality Gate Failed')](https://sonarcloud.io/dashboard?id=yeelali14_EuropeanPaintings&pullRequest=1050) **Quality Gate failed**  
+// Failed conditions
+
+// [C Reliability Rating on New Code](https://sonarcloud.io/dashboard?id=yeelali14_EuropeanPaintings&pullRequest=1050) (required ≥ A)  
+  
+// [See analysis details on SonarCloud](https://sonarcloud.io/dashboard?id=yeelali14_EuropeanPaintings&pullRequest=1050)
+
+
+
+// ![idea](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/light_bulb-16px.png 'idea') Catch issues before they fail your Quality Gate with our IDE extension ![SonarLint](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/sonarlint-16px.png 'SonarLint') [SonarLint](https://www.sonarsource.com/products/sonarlint/features/connected-mode/?referrer=pull-request)
