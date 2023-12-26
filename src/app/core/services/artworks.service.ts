@@ -71,3 +71,13 @@ function waitForImageToLoad(imageElement) {
   })
 }
 
+// withChecksUpdate
+
+
+
+  // const dryRunFunction = _.get(dryRunActionComment, params.checkName, dryRunActionComment.default);
+  // console.log('yeela-debug dryRunFunction:', dryRunFunction);
+  // const actionMessage = dryRunFunction({
+  //   ...params
+  // });
+  // console.log('yeela-debug actionMessage:', actionMessage);
