@@ -23,8 +23,24 @@ automations:
       - action: add-label@v1
         args:
           label: label2
+  require_reviewers:
+      if:
+        - true
+      run:
+        - action: require-reviewers@v1
+          args:
+            reviewers: ['EladKohavi']
+  sonar_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ sonar | dump }}
 
 
+sonar: {{ pr | sonarParser }}
 experts: {{ repo | codeExperts(gt=10) }}
 owners: 
   - EladKohavi
