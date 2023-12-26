@@ -22,7 +22,7 @@ automations:
           label: dryrun
       - action: add-label@v1
         args:
-          label: another label
+          label: label2
 
 
 experts: {{ repo | codeExperts(gt=10) }}
