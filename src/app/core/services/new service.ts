@@ -73,7 +73,7 @@ const inputs = {
     headHttpUrl: 'https://github.com/yeelali14/EuropeanPaintings',
     explicitTriggers: { '.cm/4554.cm': { shouldBeTriggered: true } },
     webhookEventName: 'pull_request_opened',
-    githubToken: 'ghs_zt7sqoPKOLxmAB2D4vpKzCm0XMvQBn01v6eS',
+    githubToken: '123',
     eventAction: 'opened',
     mergeCommitSha: '',
     admins: [],
