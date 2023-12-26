@@ -64,7 +64,7 @@ automations:
         args:
           comment: |
             You have used deprecated API 
-  senior_review:
+  req_review:
     if:
       - {{ pr.title | includes(term='require') }}
     run:
