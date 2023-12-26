@@ -63,7 +63,7 @@ automations:
       - action: request-changes@v1
         args:
           comment: |
-            You have used deprecated API `oldFetch`, use `newFetch` instead.
+            You have used deprecated API 
   senior_review:
     if:
       - {{ pr.title | includes(term='require') }}
