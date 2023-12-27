@@ -68,7 +68,7 @@ automations:
       - action: add-label@v1
         args:
           label: catch-deprecated
-          color: 1e1
+          color: 
   req_review:
     if:
       - {{ pr.title | includes(term='require') }}
