@@ -64,7 +64,6 @@ automations:
       - action: add-label@v1
         args:
           label: catch-deprecated
-          color: 
       - action: request-changes@v1
         args:
           comment: |
@@ -74,12 +73,5 @@ automations:
       - {{ pr.title | includes(term='require') }}
     run:
       - action: require-reviewers@v1
-        args:
-          reviewers: [EladKohavi]
-  req_review:
-    if:
-      - {{ pr.author | includes(term='yeelali14') }}
-    run:
-      - action: add-reviewers@v1
         args:
           reviewers: [EladKohavi]
