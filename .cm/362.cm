@@ -61,13 +61,13 @@ automations:
     if:
       - {{ pr.title | includes(term='deprecated') }}
     run:
-      - action: add-label@v1
-        args:
-          label: catch-deprecated
       - action: request-changes@v1
         args:
           comment: |
             You have used deprecated API 
+      - action: add-label@v1
+        args:
+          label: catch-deprecated
   req_review:
     if:
       - {{ pr.title | includes(term='require') }}
