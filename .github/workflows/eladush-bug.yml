@@ -1,12 +1,13 @@
-name: "Check escape single quotes"
-description: "test"
+on:
+  pull_request:
+    types: [synchronize]
 
-runs:
-  using: "composite"
-  steps:
-    - name: Escape single quotes
-      id: safe-strings
-      uses: actions/github-script@v6
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: cypress job
+      uses: actions/github-script@v3
       env:
         BASE_REF_ARG: "main"
         HEAD_REF_ARG: "CAD-13581-Change-GeneratedCircuit-to-the-QuantumProgram-and-ExecutionCircuit-to-ExecutionProgram"
