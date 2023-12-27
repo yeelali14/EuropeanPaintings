@@ -1,9 +1,11 @@
-name: "Check escape single quotes"
-description: "test"
+on:
+  pull_request:
+    types: [synchronize]
 
-runs:
-  using: "composite"
-  steps:
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
     - name: Escape single quotes
       id: safe-strings
       uses: actions/github-script@v6
@@ -33,4 +35,6 @@ runs:
             core.error(`Failed producing safe string: ${err}`);
             process.exit(1);
           }
+
+
 
