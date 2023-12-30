@@ -1,4 +1,5 @@
-//new service
+//new service 1
+var arg = process.argv.slice(2)[0];
 
 const inputs = {
     watchPREvents: {},
