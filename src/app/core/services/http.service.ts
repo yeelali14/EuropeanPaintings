@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError, finalize } from 'rxjs/operators';
+import { discardPeriodicTasks } from '@angular/core/testing';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -43,3 +44,5 @@ export class HttpService {
   };
   
 }
+jhsdkjas
+dasd
