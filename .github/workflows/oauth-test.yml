@@ -1,0 +1,35 @@
+name: Create GitHub Check on PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  create-check:
+    runs-on: ubuntu-latest
+    name: Create a Check on PR
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+          
+      - name: Create a check run on EuropeanPaintings
+        uses: actions/github-script@v3
+        id: invoke-check
+        env:
+          GITHUB_TOKEN: ${{ secrets.PASHA_ACCESS_TOKEN }}
+        with:
+          script: |
+            try {
+              const result = await github.checks.create({
+                owner: 'yeelali14',
+                repo: 'EuropeanPaintings',
+                name: 'test-oauth',
+                status: 'completed',
+                head_sha: 'LINBEE-3829',
+                conclusion: 'success'
+              });
+              return result.data
+            } catch (err) {
+              core.setFailed(`Request failed with error ${err}`)
+            }
