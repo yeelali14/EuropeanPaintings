@@ -20,15 +20,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PASHA_ACCESS_TOKEN }}
         with:
           script: |
-            const head_sha = github.context.sha;
-            core.info(`Creating check on commit: ${head_sha}`)
             try {
               const result = await github.checks.create({
                 owner: 'yeelali14',
                 repo: 'EuropeanPaintings',
                 name: 'test-oauth',
                 status: 'completed',
-                head_sha: head_sha,
+                head_sha: 'LINBEE-3829',
                 conclusion: 'success'
               });
               return result.data
