@@ -1,6 +1,10 @@
+# on:
+#   pull_request:
+#     types: [synchronize]
+
+name: gitStream workflow automation
 on:
-  pull_request:
-    types: [synchronize]
+  workflow_dispatch:
 
 jobs:
   job_1:
