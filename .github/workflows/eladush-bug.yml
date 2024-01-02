@@ -1,6 +1,9 @@
+# on:
+#   pull_request:
+#     types: [synchronize]
+
 on:
-  pull_request:
-    types: [synchronize]
+  workflow_dispatch:
 
 jobs:
   job_1:
