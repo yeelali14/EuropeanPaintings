@@ -2,6 +2,7 @@
 #   pull_request:
 #     types: [synchronize]
 
+name: gitStream workflow automation
 on:
   workflow_dispatch:
 
