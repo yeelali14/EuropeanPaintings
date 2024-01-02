@@ -7,7 +7,7 @@ automations:
   {% for item in reports %}
   label_orca_{{ item.name }}:
     if:
-      - {{ item.count > 0 }}
+      - true
     run:
       - action: add-label@v1
         args:
