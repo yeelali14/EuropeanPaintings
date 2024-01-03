@@ -38,10 +38,11 @@ calc:
   etr: {{ branch | estimatedReviewTime }}
 
 teams:
-  files:
-    - src/app/core/services/http.service.ts
-    - src/app/core/services/artworks.service.ts
-  team_members:
-    - EladKohavi
-    - ShakedZrihen
-    - yeelali14
+  - team_name: "team1"
+    team_members:
+      - "EladKohavi"
+      - "ShakedZrihen"
+      - "yeelali14"
+    files:
+      - "src/app/core/services/http.service.ts"
+      - "src/app/core/services/artworks.service.ts"

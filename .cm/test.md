@@ -10,5 +10,4 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [jdhsj, EladKohavi, ShakedZrihen]
-          fail_on_error: false
+          reviewers: [EladKohavi, ShakedZrihen]
