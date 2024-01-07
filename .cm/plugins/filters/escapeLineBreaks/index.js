@@ -1,24 +1,11 @@
 module.exports = (desc) => {
   if (desc && desc !== '""' && desc !== "''") {
-    console.log("yeela-debug pr.description: ", desc);
-    // seems that the description has extra layer of escape charecters
+    console.log("yeela-debug desc: ", desc);
+    const linesTest = desc.split(/\n/); 
     const lines = desc.split(/\n|\\n/);
-    // The loop finds the table header and then looks for the 2nd line
-    // so the guard checks for i + 2 < lines
-    for (let i = 0; i + 2 < lines.length; i++) {
-      const currentLine = lines[i];
-      if (
-        /SEVERITY.*DIRECT DEPENDENCIES.*IMPACTED DEPENDENCY.*FIXED VERSIONS.*CVES/.exec(
-          currentLine
-        )
-      ) {
-        const nextLine = lines[i + 2];
-        const cells = nextLine.split("|");
-        const [_a, from] = /:v([\d\.]+[A-Za-zαß]*)/.exec(cells[3]);
-        const [_b, to] = /([\d\.]+[A-Za-zαß]*)/.exec(cells[4]);
-        return [to, from];
-      }
-    }
+    console.log('yeela-debug split with one backslash', linesTest);
+    console.log('yeela-debug split with two backslash', lines);
+    return linesTest;
   }
 
   return null;
