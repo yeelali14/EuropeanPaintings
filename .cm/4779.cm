@@ -1,0 +1,12 @@
+manifest:
+    version: 1.0
+
+automations:
+  just_comment:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            escape result: {{ pr.description | escapeLineBreaks }}
