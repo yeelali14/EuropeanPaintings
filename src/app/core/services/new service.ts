@@ -24,7 +24,7 @@ const inputs = {
     analyticsHttpApiUrl: 'https://api.amplitude.com/2/httpapi',
     analyticsKey: '123',
     segmentServiceUrl: 'https://api.segment.io',
-    segmentWriteKey: 'Ts5ERU2KWfeE50DekgnG6t5g5Rp0wFRA',
+    segmentWriteKey: '123',
     prContext: {
       isFullyInstalled: true,
       title: 'test',
