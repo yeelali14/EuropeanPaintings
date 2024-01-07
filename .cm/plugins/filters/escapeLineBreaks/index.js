@@ -1,6 +1,6 @@
 module.exports = (desc) => {
   if (desc && desc !== '""' && desc !== "''") {
-    console.log("yeela-debug pr.description: ", pr.description);
+    console.log("yeela-debug pr.description: ", desc);
     // seems that the description has extra layer of escape charecters
     const lines = desc.split(/\n|\\n/);
     // The loop finds the table header and then looks for the 2nd line

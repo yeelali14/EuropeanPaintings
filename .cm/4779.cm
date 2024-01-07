@@ -9,4 +9,4 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            escape result: {{ pr.description | escapeLineBreaks | dump }}
+            escape result: {{ pr.description | escapeLineBreaks }}
