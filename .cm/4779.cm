@@ -1,0 +1,14 @@
+# -*- mode: yaml -*-
+
+manifest:
+  version: 1.0
+
+automations:
+  extract_strings:
+    if: 
+      - true
+    run: 
+      - action: add-comment@v1
+        args:
+          comment: |
+            result: {{ pr | escapeChars }}
