@@ -23,6 +23,9 @@ automations:
         args: 
           comment: |
             second run
+      - action: add-reviewers@v1
+        args:
+          reviewers: [dsadasd]
   approve_pr:
     if:
       - {{ pr.title | includes(term='approve') }}
