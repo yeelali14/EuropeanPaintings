@@ -1,0 +1,57 @@
+# -*- mode: yaml -*-
+
+manifest:
+  version: 1.0
+
+automations:
+  skip_ui_check:
+    if:
+      - true
+    run:
+      - action: add-github-check@v1
+        args:
+          check_name: FE-tests
+          conclusion: skipped
+  senior_review:
+    if:
+      - true
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: [EladKohavi, ShakedZrihen]
+  code_experts:
+    if:
+      - true
+    run:
+      - action: explain-code-experts@v1 
+        args:
+          gt: 10
+      - action: add-comment@v1
+        args: 
+          comment: |
+            second run
+  approve_pr:
+    if:
+      - {{ pr.title | includes(term='approve') }}
+    run:
+      - action: approve@v1
+  close_pr:
+    if:
+      - {{ pr.title | includes(term='close') }}
+    run:
+      - action: add-comment@v1
+        args: 
+          comment: |
+            close pr
+      - action: close@v1
+  auto_merge_label:
+    if:
+      - {{ pr.labels | match(list=['auto-merge']) | some }}
+    run:
+      - action: merge@v1
+        args:
+          wait_for_all_checks: true
+      - action: add-comment@v1
+        args:
+          comment: |
+            The PR will be automatically merged by Gitstream after all requirements are done.
