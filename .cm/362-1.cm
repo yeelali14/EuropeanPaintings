@@ -39,7 +39,7 @@ automations:
       - action: close@v1
   catch_deprecated:
     if:
-      - {{ pr.title | includes(term='deprecated') }}
+      - true
     run:
       - action: add-label@v1
         args:
@@ -50,7 +50,7 @@ automations:
             You have used deprecated API 
   req_review:
     if:
-      - {{ pr.title | includes(term='require') }}
+      - true
     run:
       - action: require-reviewers@v1
         args:
