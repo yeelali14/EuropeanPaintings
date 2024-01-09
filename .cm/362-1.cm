@@ -12,13 +12,6 @@ automations:
         args:
           check_name: FE-tests
           conclusion: skipped
-  senior_review:
-    if:
-      - true
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [EladKohavi, ShakedZrihen]
   code_experts:
     if:
       - true
@@ -62,6 +55,10 @@ automations:
       - action: require-reviewers@v1
         args:
           reviewers: [EladKohavi]
+      - action: add-label@v1
+        args:
+          label: "require-reviewers"
+          color: 'F6443B'
   auto_merge_label:
     if:
       - {{ pr.labels | match(list=['auto-merge']) | some }}
