@@ -44,6 +44,24 @@ automations:
           comment: |
             close pr
       - action: close@v1
+  catch_deprecated:
+    if:
+      - {{ pr.title | includes(term='deprecated') }}
+    run:
+      - action: add-label@v1
+        args:
+          label: catch-deprecated
+      - action: request-changes@v1
+        args:
+          comment: |
+            You have used deprecated API 
+  req_review:
+    if:
+      - {{ pr.title | includes(term='require') }}
+    run:
+      - action: require-reviewers@v1
+        args:
+          reviewers: [EladKohavi]
   auto_merge_label:
     if:
       - {{ pr.labels | match(list=['auto-merge']) | some }}
