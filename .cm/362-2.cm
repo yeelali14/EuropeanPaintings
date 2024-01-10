@@ -1,0 +1,78 @@
+# -*- mode: yaml -*-
+
+manifest:
+  version: 1.0
+
+automations:
+  skip_ui_check:
+    if:
+      - true
+    run:
+      - action: add-github-check@v1
+        args:
+          check_name: FE-tests
+          conclusion: skipped
+  senior_review:
+    if:
+      - true
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: [EladKohavi, ShakedZrihen]
+  code_experts:
+    if:
+      - true
+    run:
+      - action: explain-code-experts@v1 
+        args:
+          gt: 10
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ sonar | dump }}
+  approve_pr:
+    if:
+      - {{ pr.title | includes(term='approve') }}
+    run:
+      - action: approve@v1
+  close_pr:
+    if:
+      - {{ pr.title | includes(term='close') }}
+    run:
+      - action: add-comment@v1
+        args: 
+          comment: |
+            close pr
+      - action: close@v1
+  approve_and_merge:
+    if:
+      - {{ pr.title | includes(term='with-merge') }}
+    run:
+      - action: approve@v1
+      - action: merge@v1
+  catch_deprecated:
+    if:
+      - {{ pr.title | includes(term='deprecated') }}
+    run:
+      - action: add-label@v1
+        args:
+          label: catch-deprecated
+      - action: request-changes@v1
+        args:
+          comment: |
+            You have used deprecated API 
+  req_review:
+    if:
+      - {{ pr.title | includes(term='require') }}
+    run:
+      - action: require-reviewers@v1
+        args:
+          reviewers: [EladKohavi]
+  sonar_parser:
+    if: 
+      - true
+    run:
+
+
+
+sonar: {{ pr | sonarParser }}
