@@ -68,11 +68,6 @@ automations:
       - action: require-reviewers@v1
         args:
           reviewers: [EladKohavi]
-  sonar_parser:
-    if: 
-      - true
-    run:
-
 
 
 sonar: {{ pr | sonarParser }}
