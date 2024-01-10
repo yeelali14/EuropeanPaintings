@@ -29,7 +29,7 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            {{ sonar | dump }}
+            another comment
   approve_pr:
     if:
       - {{ pr.title | includes(term='approve') }}
@@ -68,6 +68,3 @@ automations:
       - action: require-reviewers@v1
         args:
           reviewers: [EladKohavi]
-
-
-sonar: {{ pr | sonarParser }}
