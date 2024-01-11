@@ -16,6 +16,9 @@ automations:
     if:
       - true
     run:
+      - action: add-labels@v1
+        args:
+          labels: ['formatting']
       - action: add-label@v1
         args:
           label: 'test error'
