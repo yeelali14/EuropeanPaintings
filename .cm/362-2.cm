@@ -18,7 +18,7 @@ automations:
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [EladKohavi, dasdsa23]
+          reviewers: [dasdsa23]
   code_experts:
     if:
       - true
