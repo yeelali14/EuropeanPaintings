@@ -18,7 +18,7 @@ automations:
     run:
       - action: add-labels@v1
         args:
-          labels: ['formatting']
+          labels: ['large-pr', 'large-prlarge-prlarge-prlarge-prlarge-prlarge-prlarge-prlarge-prlarge-prlarge-prlarge-pr', 'dssdfsdfsd6736slarge-pr', 'large-prlarge-pr-test', 'large-prlarge-pr-test1', 'large-prlarge-pr-test2', 'large-prlarge-prlarge-prlarge-prlarge-prlarge-prlarge-prlarge-prlarge-prlarge-prlarge-pr']
       - action: add-label@v1
         args:
           label: 'test error'
