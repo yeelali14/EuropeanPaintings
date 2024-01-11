@@ -16,9 +16,6 @@ automations:
     if:
       - true
     run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [dasdsa23]
       - action: add-label@v1
         args:
           label: 'test error'
@@ -27,6 +24,9 @@ automations:
     if:
       - true
     run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: [dsadasd]
       - action: explain-code-experts@v1 
         args:
           gt: 10
