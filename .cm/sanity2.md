@@ -92,14 +92,14 @@ automations:
         args:
           comment: |
             {{ jit | dump }}
-#  sonar_parser:
-#    if: 
-#      - true
-#    run:
-#      - action: add-comment@v1
-#        args:
-#          comment: |
-#            {{ sonar | dump }}
+  sonar_parser:
+    if: 
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            {{ sonar | dump }}
   label_color:
     if:
        - true
@@ -134,7 +134,7 @@ has:
   screenshot_link: {{ pr.description | includes(regex=r/!\[.*\]\(.*(jpg|svg|png|gif|psd).*\)/) }}
   image_uploaded: {{ pr.description | includes(regex=r/<img.*src.*(jpg|svg|png|gif|psd).*>/) }}
 jit: {{ pr | extractJitFindings }}
-# sonar: {{ pr | sonarParser }}
+sonar: {{ pr | sonarParser }}
 active_coders: {{ repo | rankByGitActivity(gt=10, weeks=52) }}
 # | WARNING: change to the appropriate contributor |
 intersection_reviewer: {{ repo | codeExperts(gt=10) | intersection([yeelali14]) }}
