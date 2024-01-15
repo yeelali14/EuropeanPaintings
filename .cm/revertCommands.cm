@@ -20,3 +20,10 @@ automations:
         args:
           comment: |
             Be a life saver 🛟 by adding a screenshot of the changes you made.
+  code_experts:
+    if: 
+      - true
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: {{ repo | codeExperts(gt=10) }}
