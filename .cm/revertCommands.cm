@@ -1,0 +1,18 @@
+# -*- mode: yaml -*-
+
+manifest:
+  version: 1.0
+
+automations:
+  request_screenshot:
+    if:
+      - {{ pr.title | includes(term='request') }}
+    run:
+      - action: add-label@v1
+        args:
+          label: 'no-screenshot'
+          color: '#FF000A'
+      - action: request-changes@v1
+        args:
+          comment: |
+            Be a life saver 🛟 by adding a screenshot of the changes you made.
