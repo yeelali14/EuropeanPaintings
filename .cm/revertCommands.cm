@@ -27,3 +27,11 @@ automations:
       - action: add-reviewers@v1
         args:
           reviewers: {{ repo | codeExperts(gt=10) }}
+      - action: add-comment@v1
+        args:
+          comment: |
+            comment 1
+      - action: add-comment@v1
+        args:
+          comment: |
+            comment 2
