@@ -3,6 +3,9 @@
 manifest:
   version: 1.0
 
+on:
+  - commit
+
 automations:
   request_screenshot:
     if:
