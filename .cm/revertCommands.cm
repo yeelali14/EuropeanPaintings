@@ -10,7 +10,7 @@ automations:
   request_screenshot:
     if:
       - true
-      - {{ pr.title | includes(term='request') }}
+      - {{ files | length < 1 }}
     run:
       - action: add-label@v1
         args:
