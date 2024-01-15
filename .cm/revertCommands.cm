@@ -6,6 +6,7 @@ manifest:
 automations:
   request_screenshot:
     if:
+      - true
       - {{ pr.title | includes(term='request') }}
     run:
       - action: add-label@v1
