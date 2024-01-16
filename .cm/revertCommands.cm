@@ -4,7 +4,7 @@ manifest:
   version: 1.0
 
 on:
-  - commit
+  - label_added
 
 automations:
   request_screenshot:
