@@ -7,7 +7,7 @@ automations:
   # Add a label that indicates how many minutes it will take to review the PR.
   check_lables: 
     if:
-      -  false
+      -  true
     run:
       - action: add-comment@v1
       # etr is defined in the last section of this example
