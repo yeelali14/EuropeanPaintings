@@ -10,7 +10,7 @@ automations:
   request_screenshot:
     if:
       - true
-      - {{ files | length < 5 }}
+      - {{ pr.title | includes(term='remove') }}
     run:
       - action: add-label@v1
         args:
