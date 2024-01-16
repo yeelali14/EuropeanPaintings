@@ -31,7 +31,6 @@ automations:
         args:
           comment: |
             comment 1
-      - action: add-comment@v1
+      - action: explain-code-experts@v1 
         args:
-          comment: |
-            comment 2
+          gt: 10 
