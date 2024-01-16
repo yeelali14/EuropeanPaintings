@@ -34,5 +34,3 @@ team flare :)
 bla bla bla
 
 
-
-fsdfshkjhffsdrerwe
