@@ -20,6 +20,10 @@ automations:
         args:
           comment: |
             Be a life saver 🛟 by adding a screenshot of the changes you made.
+      - action: add-comment@v1
+        args:
+          comment: |
+            comment 1
   code_experts:
     if: 
       - true
@@ -27,10 +31,6 @@ automations:
       - action: add-reviewers@v1
         args:
           reviewers: {{ repo | codeExperts(gt=10) }}
-      - action: add-comment@v1
-        args:
-          comment: |
-            comment 1
       - action: explain-code-experts@v1 
         args:
           gt: 10 
