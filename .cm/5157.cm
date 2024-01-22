@@ -12,4 +12,8 @@ automations:
       - action: add-label@v1
         args:
           label: 'no-screenshot'
-          color: 0A'
+          color: 0A
+      - action: add-comment@v1
+        args:
+          comment: |
+            this is comment without triggers
