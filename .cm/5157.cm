@@ -9,8 +9,7 @@ automations:
     if:
       -  true
     run:
-      - action: add-comment@v1
-      # etr is defined in the last section of this example
+      - action: add-label@v1
         args:
-          comment: |
-            triggers
+          label: 'no-screenshot'
+          color: 0A'
