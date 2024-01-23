@@ -12,7 +12,7 @@ automations:
       - action: add-label@v1
         args:
           label: 'no-screenshot'
-          color: 0A
+          color: '#FF000A'
       - action: add-comment@v1
         args:
           comment: |
