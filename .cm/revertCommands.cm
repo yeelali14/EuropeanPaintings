@@ -34,10 +34,10 @@ automations:
       - action: explain-code-experts@v1 
         args:
           gt: 10 
-  require_reviewers:
-      if:
-        - true
-      run:
-        - action: require-reviewers@v1
-          args:
-            reviewers: [linear-b/team-flare]
+  small_change:
+    if:
+      - {{ files | allDocs }}
+    run:
+      - action: merge@v1
+        args:
+          wait_for_all_checks: true
