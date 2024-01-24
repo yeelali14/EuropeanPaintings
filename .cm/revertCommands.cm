@@ -24,7 +24,7 @@ automations:
         args:
           comment: |
             comment 1
-  code_experts:
+  code_experts_1:
     if: 
       - true
     run:
