@@ -33,8 +33,3 @@ Lady gaga the queen
 team flare :)
 bla bla bla
 
-
-dasdasdd
-fdfsdfsdfdasdasdasdadfdsfsdfdad
-dasdasfdsfdsfdasdas
-fsdfsdgdfgdfdasdsdsadasdafdfsddsadsadasdcz
