@@ -38,7 +38,7 @@ automations:
       
   senior_review:
     if:
-      - true
+      - false
     run:
       - action: require-reviewers@v1
         args:
