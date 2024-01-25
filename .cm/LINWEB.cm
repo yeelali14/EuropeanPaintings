@@ -19,49 +19,15 @@ manifest:
 # called with a pipe operator (|) and can take arguments. Read more on https://docs.gitstream.cm
 
 automations:
-  safe_changes:
+  review_with_check:
     if:
-      - {{ is.formatting or is.docs or is.tests or is.images }}
-    run: 
-      - action: add-labels@v1
-        args:
-          labels: ['safe-changes']
-      - action: approve@v1
-          
-  "Assign reviewers on /components path":
-    if:
-      - {{ files | match(regex=r/src\/components\//) | some }}
+      - true
     run:
       - action: add-reviewers@v1
         args:
-          reviewers: [EladKohavi]
-      - action: add-labels@v1
-        args:
-          labels: ['domain-reviewer', 'change:components']
+          reviewers: [ShakedZrihen]
+          wait_for_all_checks: true
 
-  "Skip cypress for uncovered paths":
-    if:
-      - {{ files | match(regex=r/ResourceAllocationOverview/) | every }}
-    run:
-      - action: update-check@v1
-        args:
-          check_name: 'cypress-e2e'
-          status: 'completed'
-          conclusion: 'skipped'
-      - action: add-label@v1
-        args:
-          label: 'skip-cypress-e2e'
-          
-  "Assign reviewers on redux stuff":
-    if:
-      - {{ files | match(regex=r/src\/state\//) | some }}
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: [EladKohavi]
-      - action: add-labels@v1
-        args:
-          labels: ['domain-reviewer', 'change:redux']
   explain_code_experts:
     if: 
       - true
