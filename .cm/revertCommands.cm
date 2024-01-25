@@ -7,7 +7,7 @@ automations:
   request_screenshot_1:
     if:
       - true
-      - {{ pr.title | includes(term='request') }}
+      - {{ files | map(attr='new_file') | length > 2 }}
     run:
       - action: add-label@v1
         args:
