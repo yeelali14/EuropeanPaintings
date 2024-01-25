@@ -21,7 +21,7 @@ automations:
         args:
           comment: |
             comment 1
-  docs_safe_changes:
+  docs_safe_changes_1:
     if:
       - {{ files | allDocs }}
     run: 
