@@ -36,17 +36,15 @@ automations:
         args:
           gt: 10 
       
-  senior_review:
+  catch_deprecated:
     if:
       - true
     run:
-      - action: require-reviewers@v1
+      - action: request-changes@v1
         args:
-          reviewers:
-            [EladKohavi]
-      - action: add-labels@v1
-        args:
-          labels: ['senior-reviewer']
+          comment: |
+            You have used deprecated API `oldFetch`, use `newFetch` instead.
+
 
 calc:
   etr: {{ branch | estimatedReviewTime }}
