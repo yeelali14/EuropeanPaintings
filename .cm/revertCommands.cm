@@ -2,9 +2,9 @@
 
 manifest:
   version: 1.0
-  
+
 automations:
-  request_screenshot:
+  request_screenshot_1:
     if:
       - true
       - {{ pr.title | includes(term='request') }}
