@@ -2,10 +2,7 @@
 
 manifest:
   version: 1.0
-
-on:
-  - commit
-
+  
 automations:
   request_screenshot:
     if:
@@ -24,16 +21,6 @@ automations:
         args:
           comment: |
             comment 1
-  code_experts_1:
-    if: 
-      - true
-    run:
-      - action: add-reviewers@v1
-        args:
-          reviewers: {{ repo | codeExperts(gt=10) }}
-      - action: explain-code-experts@v1 
-        args:
-          gt: 10 
   small_change:
     if:
       - {{ files | allDocs }}
