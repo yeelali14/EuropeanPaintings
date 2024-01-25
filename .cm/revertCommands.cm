@@ -21,10 +21,10 @@ automations:
         args:
           comment: |
             comment 1
-  docs_safe_changes_1:
+  small_change:
     if:
       - {{ files | allDocs }}
-    run: 
-      - action: add-labels@v1
+    run:
+      - action: merge@v1
         args:
-          labels: ['documentation']
+          wait_for_all_checks: true
