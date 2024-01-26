@@ -36,7 +36,7 @@ automations:
         args:
           gt: 10 
       
-  catch_deprecated:
+  catch_deprecated_1:
     if:
       - true
     run:
