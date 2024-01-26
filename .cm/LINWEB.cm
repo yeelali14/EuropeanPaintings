@@ -23,9 +23,8 @@ automations:
     if:
       - true
     run:
-      - action: add-reviewers@v1
+      - action: merge@v1
         args:
-          reviewers: [ShakedZrihen]
           wait_for_all_checks: true
 
   explain_code_experts:
