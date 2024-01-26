@@ -38,7 +38,7 @@ automations:
       
   catch_deprecated_1:
     if:
-      - false
+      - true
     run:
       - action: request-changes@v1
         args:
