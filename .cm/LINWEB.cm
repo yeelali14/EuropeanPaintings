@@ -23,8 +23,9 @@ automations:
     if:
       - true
     run:
-      - action: merge@v1
+      - action: add-reviewers@v1
         args:
+          reviewers: [EladKohavi]
           wait_for_all_checks: true
 
   explain_code_experts:
