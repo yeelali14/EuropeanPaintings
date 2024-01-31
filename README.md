@@ -34,7 +34,3 @@ team flare :)
 bla bla bla
 daskdgasdgdasdasfdsfsd
 dasdas
-jdaldjl
-dasda
-saSasA
-SASasaSasaSasasaSa
