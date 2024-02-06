@@ -7,7 +7,29 @@ on:
 jobs:
   job_1:
     runs-on: ubuntu-latest
-    steps:
+        steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ env.cache-name }}-
+            ${{ runner.os }}-node-
+
+
+      - name: npm install
+        run: npm ci
+
       - name: Build and tag
         id: build
         run: |
