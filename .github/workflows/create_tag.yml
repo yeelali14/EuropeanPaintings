@@ -1,0 +1,14 @@
+name: Create tag
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create and push new tag
+        id: create-tag
+        run: |
+          npm run create-tag
