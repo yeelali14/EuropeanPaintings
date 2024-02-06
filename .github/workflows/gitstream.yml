@@ -58,5 +58,5 @@ jobs:
           resolver_url: ${{ github.event.inputs.resolver_url }}
           resolver_token: ${{ github.event.inputs.resolver_token }}
           debug_mode: true
-          linearb_metrics_api_key: ${{ secrets.LINEARB_METRICS_API_KEY }}
+          linearb_metrics_api_key: ${{ env.LINEARB_METRICS_API_KEY }}
 
