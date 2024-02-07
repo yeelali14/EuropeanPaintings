@@ -33,10 +33,6 @@ on:
           description: Run parser in debug mode
           required: false
           default: true
-      linearb_metrics_api_key:
-          description: linearb api key for custom metrics
-          required: false
-          default: ''
 
 jobs:
   gitStream:
