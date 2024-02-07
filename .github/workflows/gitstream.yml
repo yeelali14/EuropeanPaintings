@@ -43,10 +43,10 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     name: gitStream workflow automation
-    env:
-      LINEARB_METRICS_API_KEY: ${{ secrets.LINEARB_METRICS_API_KEY }}
     steps:
       - name: Evaluate Rules
+        env:
+          LINEARB_METRICS_API_KEY: ${{ secrets.LINEARB_METRICS_API_KEY }}
         uses: linear-b/gitstream-github-action@yeela
         id: rules-engine
         with:
@@ -58,5 +58,3 @@ jobs:
           resolver_url: ${{ github.event.inputs.resolver_url }}
           resolver_token: ${{ github.event.inputs.resolver_token }}
           debug_mode: true
-          linearb_metrics_api_key: ${{ env.LINEARB_METRICS_API_KEY }}
-
