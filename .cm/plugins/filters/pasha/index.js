@@ -1,3 +1,4 @@
 module.exports = (text) => {
-    return "Hello!";
-  }
+  console.log("hello from plugin:", text);
+  return { my_key: "ok", property1: "not ok" };
+};

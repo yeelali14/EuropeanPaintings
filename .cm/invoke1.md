@@ -28,3 +28,4 @@ automations:
 
 inputs_var: 
   commit_sha: "test"
+  ref: "kkk"
