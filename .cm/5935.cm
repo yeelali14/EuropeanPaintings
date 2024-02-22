@@ -13,6 +13,6 @@ automations:
           gt: 10 
   auto_merge_label:
     if:
-      - true
+      - {{ files | length > 1 }}
     run:
       - action: merge@v1
