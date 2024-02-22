@@ -4,7 +4,7 @@ manifest:
   version: 1.0
 
 automations:
-  auto_merge_label:
+  merge_automation:
     if:
       - {{ files | length > 1 }}
     run:

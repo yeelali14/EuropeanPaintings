@@ -1,0 +1,17 @@
+on:
+  pull_request:
+    types: [synchronize]
+
+jobs:
+  wait_a_minute:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print env
+      env:
+        YEELA: ${{ secrets.YEELA_TEST }}
+      uses: actions/github-script@v3
+      with:
+        script: |
+          setTimeout(() => {
+            console.log("Slept for 1 minute");
+          }, 60000);
