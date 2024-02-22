@@ -4,10 +4,6 @@ manifest:
   version: 1.0
 
 automations:
-    run:
-      - action: explain-code-experts@v1 
-        args:
-          gt: 10 
   auto_merge_label:
     if:
       - {{ files | length > 1 }}
