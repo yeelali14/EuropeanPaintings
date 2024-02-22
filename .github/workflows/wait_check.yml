@@ -14,4 +14,4 @@ jobs:
         script: |
           setTimeout(() => {
             console.log("Slept for 1 minute");
-          }, 60000);
+          }, 120000);
