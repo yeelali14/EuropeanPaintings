@@ -6,6 +6,14 @@ manifest:
 automations:
   merge_automation:
     if:
-      - {{ files | length > 1 }}
+      - {{ files | length == 3 }}
     run:
       - action: merge@v1
+  catch_deprecated:
+    if:
+      - {{ files | length == 1 }}
+    run:
+      - action: request-changes@v1
+        args:
+          comment: |
+            Requested changes 
