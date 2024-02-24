@@ -13,7 +13,7 @@ automations:
     if:
       - {{ files | length == 1 }}
     run:
-      - action: request-changes@v1
+      - action: add-label@v1
         args:
-          comment: |
-            Requested changes 
+          label: 'test error'
+          color: 'da12'
