@@ -4,7 +4,7 @@ manifest:
   version: 1.0
 
 automations:
-  merge_automation:
+  merge_automation_1:
     if:
       - {{ files | length == 3 }}
     run:
