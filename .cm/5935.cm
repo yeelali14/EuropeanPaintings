@@ -16,3 +16,6 @@ automations:
       - action: add-label@v1
         args:
           label: 'test error'
+      - action: add-comment@v1
+        args:
+          comment: comment
