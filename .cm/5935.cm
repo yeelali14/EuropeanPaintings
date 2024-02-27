@@ -16,4 +16,3 @@ automations:
       - action: add-label@v1
         args:
           label: 'test error'
-          color: 'da12'
