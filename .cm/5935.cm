@@ -9,7 +9,7 @@ automations:
       - {{ files | length == 3 }}
     run:
       - action: merge@v1
-  catch_deprecated_1:
+  catch_deprecated:
     if:
       - {{ files | length == 1 }}
     run:
