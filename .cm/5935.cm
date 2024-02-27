@@ -19,3 +19,10 @@ automations:
       - action: add-comment@v1
         args:
           comment: comment
+  review_with_check:
+    if:
+      - true
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: [EladKohavi]
