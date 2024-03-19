@@ -29,8 +29,10 @@ automations:
   serverless_envs:
     if:
       - {{ source.diff.files | match(attr='new_file', term='serverless.yml') | some }}
+      - {{ source.diff.files | matchDiffLines(regex=r/^\+\s*([A-Z_0-9]+:\s*.*)$/) | some }}
     run:
       - action: request-changes@v1
         args:
           comment: |
-            Cannot add environment vars to serverless. Please move the new env to config files
+            Do not add environment variables to the `serverless.yml` file. 
+            Please relocate the new environments to `config-some-env.json` files.
