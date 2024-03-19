@@ -1,0 +1,152 @@
+service: #tmp-#gitstream-sls-pipeline
+frameworkVersion: ">=3.0.0"
+variablesResolutionMode: 20210326
+provider:
+  name: aws
+  ecr:
+    # In this section you can define images that will be built locally and uploaded to ECR
+    images:
+      playground:
+        path: .
+        file: Dockerfile.${opt:stage}
+  runtime: nodejs16.x
+  lambdaHashingVersion: 20201221
+  region: ${self:custom.env_config.REGION}
+  deploymentBucket:
+    name: sls-gs-deployment-bucket-${opt:stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - apigateway:*
+        - dynamodb:*
+        - s3:GetObject
+      Resource: '*'
+  apiGateway:
+    binaryMediaTypes:
+      - '*/*'
+    resourcePolicy:
+    - Effect: Allow
+      Principal: "*"
+      Action: execute-api:Invoke
+      Resource:
+        - execute-api:/*
+  environment: ${file(config/ssm.${opt:stage}.yml)}
+  stackName: #tmp-#gitstream-sls-pipeline
+  apiName: #Tmp#GitStreamWebhookReciever
+  endpointType: regional
+  stage: ${opt:stage}
+  vpc:
+    securityGroupIds:
+      - ${file(config/config.${opt:stage}.json):SEC_GROUP}
+    subnetIds:
+      - ${file(config/config.${opt:stage}.json):SUBNET1}
+      - ${file(config/config.${opt:stage}.json):SUBNET2}
+
+custom:
+  env_config: ${file(config/config.${opt:stage}.json)}
+  ssm: ${file(config/ssm.${opt:stage}.yml)}
+  secrets: ${file(config/secrets.${opt:stage}.yml)}
+  postgres_config: ${file(config/postgres.${opt:stage}.yml)}
+  apiGatewayThrottling:
+    maxRequestsPerSecond: 500
+    maxConcurrentRequests: 500
+  nametag:
+    tag: true
+    tagName: LambdaFuncName
+  serverless-offline:
+    httpPort: 3196
+  serverless-offline-sqs:
+    autoCreate: false 
+    endpoint: http://sqs:9324
+    region: ${self:provider.region}
+    accessKeyId: root
+    secretAccessKey: root
+    skipCacheInvalidation: false
+  customDomain:
+    domainName: ${self:custom.env_config.GITSTREAM_API_DNS}
+    hostedZoneId: ${self:custom.env_config.HOSTED_ZONE_ID}
+    certificateName: ${self:custom.env_config.GITSTREAM_API_CERT_NAME}
+    endpointType: 'regional'
+    createRoute53Record: true
+    securityPolicy: tls_1_2
+    autoDomain: true
+  prune:
+    automatic: true
+    number: 3
+  deploymentBucket:
+    blockPublicAccess: true
+    
+plugins:
+  - serverless-domain-manager
+  - serverless-deployment-bucket
+  # need to disable it while using local debug with ts-node, because of the autoload and compilation
+  # consider switch to https://www.serverless.com/plugins/serverless-esbuild
+  - "@linearb/serverless-plugin-typescript"
+  - serverless-api-gateway-throttling
+  - serverless-plugin-git-variables
+  - serverless-plugin-nametag
+  - serverless-offline-sqs
+  - serverless-dynamodb-local
+  - serverless-prune-plugin
+  - serverless-offline # serverless-offline needs to be last in the list  
+
+functions:
+  #tmp-#gitstream-playground:
+    # when enabling provisioned Concurrency, an alias for thr lambda will be created and all triggers will be bound to
+    # the alias version and not to the latest/unqualified version
+    #provisionedConcurrency: 1  # keep one hot vm
+    name: #tmp-#gitstream-playground
+    vpc: null
+    image:
+      name: playground
+    memorySize: 2048
+    ephemeralStorageSize: 1000
+    timeout: 30 # all rests are limit to 30 due to api gateway limitation
+    events:
+      - http:
+          path: /playground
+          private: false
+          method: any
+          cors: true
+    environment:
+      SEGMENT_WRITE_KEY: ${self:custom.secrets.SEGMENT_WRITE_KEY}
+      GH_APP_WEBHOOK_SECRET: ${self:custom.secrets.GitStreamSecrets.GH_APP_WEBHOOK_SECRET}
+      GH_APP_PRIVATE_KEY: ${self:custom.secrets.GS_GH_APP_PRIVATE_KEY}
+      POSTGRES_DB_USERNAME: ${self:custom.postgres_config.CRED.GS_DB_USERNAME}
+      POSTGRES_DB_PASSWORD: ${self:custom.postgres_config.CRED.GS_DB_PASSWORD}
+      LINREST_BASE_URL: ${self:custom.ssm.LINREST_BASE_URL}
+      EXTERNAL_LINREST_TOKEN: ${self:custom.secrets.EXTERNAL_LINREST_TOKEN}
+      GS_JWT_SECRET_KEY: ${self:custom.secrets.GS_JWT_SECRET_KEY}
+      EXTERNAL_LINREST_TOKEN_1: ${self:custom.secrets.EXTERNAL_LINREST_TOKEN}
+  
+  #tmp-#gitstream-webhooks-reciever:  
+    handler: src/functions/webhooks-reciever/handler.handler
+    # when enabling provisioned Concurrency, an alias for thr lambda will be created and all triggers will be bound to
+    # the alias version and not to the latest/unqualified version
+    #provisionedConcurrency: 1  # keep one hot vm
+    name: #tmp-#gitstream-webhooks-reciever
+    memorySize: 256
+    timeout: 30 # all rests are limit to 30 due to api gateway limitation
+    events:
+      - http:
+          path: /webhooks/github
+          private: false
+          method: any
+          cors: true
+      - http:
+          path: /webhooks/gitlab
+          private: false
+          method: any
+          cors: true
+    environment:
+      ENV: ${self:custom.ssm.ENV}
+      SEGMENT_WRITE_KEY: ${self:custom.secrets.SEGMENT_WRITE_KEY}
+      GH_APP_WEBHOOK_SECRET: ${self:custom.secrets.GitStreamSecrets.GH_APP_WEBHOOK_SECRET}
+      GH_APP_PRIVATE_KEY: ${self:custom.secrets.GS_GH_APP_PRIVATE_KEY}
+      POSTGRES_DB_USERNAME: ${self:custom.postgres_config.CRED.GS_DB_USERNAME}
+      POSTGRES_DB_PASSWORD: ${self:custom.postgres_config.CRED.GS_DB_PASSWORD}
+      GS_GITLAB_WEBHOOK_TOKEN: ${self:custom.secrets.GS_GITLAB_WEBHOOK_TOKEN}
+      GS_GITLAB_WEBHOOKS_Q_URL: ${self:custom.ssm.GS_GITLAB_WEBHOOKS_Q_URL}
+      GS_GITLAB_CUSTOM_WEBHOOK_TOKEN: ${self:custom.ssm.GS_GITLAB_CUSTOM_WEBHOOK_TOKEN}
+      LINREST_BASE_URL: ${self:custom.ssm.LINREST_BASE_URL}
+      EXTERNAL_LINREST_TOKEN: ${self:custom.secrets.EXTERNAL_LINREST_TOKEN}
