@@ -118,6 +118,7 @@ functions:
       EXTERNAL_LINREST_TOKEN: ${self:custom.secrets.EXTERNAL_LINREST_TOKEN}
       GS_JWT_SECRET_KEY: ${self:custom.secrets.GS_JWT_SECRET_KEY}
       EXTERNAL_LINREST_TOKEN_1: ${self:custom.secrets.EXTERNAL_LINREST_TOKEN}
+      EXTERNAL_LINREST_DDD: ${self:custom.secrets.EXTERNAL_LINREST_TOKEN}
   
   #tmp-#gitstream-webhooks-reciever:  
     handler: src/functions/webhooks-reciever/handler.handler
