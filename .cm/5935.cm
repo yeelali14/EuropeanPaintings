@@ -34,5 +34,4 @@ automations:
       - action: request-changes@v1
         args:
           comment: |
-            Do not add environment variables to the `serverless.yml` file. 
-            Please relocate the new environments to `config-some-env.json` files.
+            change
