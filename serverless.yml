@@ -102,6 +102,7 @@ functions:
     memorySize: 2048
     ephemeralStorageSize: 1000
     timeout: 30 # all rests are limit to 30 due to api gateway limitation
+    blabla: 0 
     events:
       - http:
           path: /playground
