@@ -3,9 +3,6 @@
 manifest:
   version: 1.0
 
-on:
-  - label_added
-
 automations:
   # Add a label that indicates how many minutes it will take to review the PR.
   check_lables: 
