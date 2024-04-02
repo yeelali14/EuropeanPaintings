@@ -4,7 +4,7 @@ manifest:
   version: 1.0
 
 automations:
-  review_with_check#@#@:
+  "review with check":
     if:
       - true
     run:
