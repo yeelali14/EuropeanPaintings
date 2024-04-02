@@ -1,0 +1,31 @@
+# -*- mode: yaml -*-
+
+manifest:
+  version: 1.0
+
+automations:
+  review_with_check#@#@:
+    if:
+      - true
+    run:
+      - action: add-reviewers@v1
+        args:
+          reviewers: [EladKohavi]
+          wait_for_all_checks: true
+
+  "explain code experts":
+    if: 
+      - true
+    run:
+      - action: explain-code-experts@v1 
+        args:
+          gt: 10 
+      
+  catch_deprecated_1:
+    if:
+      - false
+    run:
+      - action: request-changes@v1
+        args:
+          comment: |
+            deprecated
