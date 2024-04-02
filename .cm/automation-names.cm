@@ -12,14 +12,6 @@ automations:
         args:
           reviewers: [EladKohavi]
           wait_for_all_checks: true
-
-  "explain code experts":
-    if: 
-      - true
-    run:
-      - action: explain-code-experts@v1 
-        args:
-          gt: 10 
       
   catch_deprecated_1:
     if:
