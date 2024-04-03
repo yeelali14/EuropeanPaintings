@@ -13,7 +13,7 @@ automations:
           reviewers: [EladKohavi]
           wait_for_all_checks: true
       
-  "catch deprecated 1":
+  catch deprecated 1:
     if:
       - false
     run:
