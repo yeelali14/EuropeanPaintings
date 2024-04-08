@@ -14,6 +14,10 @@ automations:
         args:
           comment: |
             triggers
+      - action: add-label@v1
+        args:
+          label: "🎖️ Roadmap"
+          color: FFFECB
   check_lables_2: 
     if:
       -  true
