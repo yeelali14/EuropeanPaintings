@@ -18,12 +18,7 @@ automations:
         args:
           label: "🎖️ Roadmap"
           color: FFFECB
-  check_lables_2: 
-    if:
-      -  true
-    run:
-      - action: add-comment@v1
-      # etr is defined in the last section of this example
+      - action: add-label@v1
         args:
-          comment: |
-            triggers 2
+          label: "test"
+          color: 4287f5
