@@ -5,7 +5,7 @@ manifest:
 
 config:
   ignore_repositories:
-    - pasha
+    - EuropeanPaintings
 
 automations:
   # Add a label that indicates how many minutes it will take to review the PR.
