@@ -5,7 +5,7 @@ manifest:
 
 config:
   ignore_repositories:
-    - EuropeanPaintings
+    - r/Paintings$/
 
 on: 
   - commit
