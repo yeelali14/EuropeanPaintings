@@ -18,3 +18,4 @@ automations:
 
 inputs_var: 
   commit_sha: "test"
+  pr_number: {{ pr.number }}

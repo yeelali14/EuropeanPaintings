@@ -1,3 +1,12 @@
+on:
+  - label_added
+  - pr_created
+triggers:
+  on:
+  include:
+    branch:
+      - renovate/include_me
+
   explain_code_experts:
     if:
       - true
