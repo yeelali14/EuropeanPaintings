@@ -15,7 +15,7 @@ automations:
           conclusion: cancelled
   check_label_type_1:
     on:
-      - comment 
+      - comment_added 
     if:
       - true
     run:
