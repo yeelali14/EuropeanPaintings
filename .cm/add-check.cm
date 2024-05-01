@@ -1,9 +1,6 @@
 manifest:
   version: 1.0
 
-on:
-  - label_added
-
 automations:
   add_check:
     if:
