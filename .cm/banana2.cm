@@ -5,6 +5,7 @@ automations:
   check_label_type:
     if:
       - true
+    run:
       - action: add-comment@v1
         args:
           comment: |
