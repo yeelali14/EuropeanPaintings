@@ -2,7 +2,7 @@ manifest:
   version: 1.0
 
 automations:
-  check_label_type:
+  check_label_type_1:
     if:
       - true
     run:
