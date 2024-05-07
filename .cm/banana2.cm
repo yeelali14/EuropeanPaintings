@@ -2,7 +2,7 @@ manifest:
   version: 1.0
 
 automations:
-  check_label_type_1:
+  check_label_type 1:
     if:
       - true
     run:
@@ -10,10 +10,7 @@ automations:
         args:
           comment: |
             this is comment without triggers
-  check_lables: 
-    if:
-      -  true
-    run:
+
 
 
           
