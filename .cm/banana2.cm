@@ -14,6 +14,9 @@ automations:
     if:
       -  true
     run:
+      - action: add-label@v1
+        args:
+          label: 'no-screenshot'
 
 
           
