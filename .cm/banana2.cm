@@ -1,6 +1,7 @@
 manifest:
   version: 1.0
 
+automations:
   check_label_type:
     if:
       - true
