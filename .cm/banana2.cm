@@ -2,14 +2,13 @@ manifest:
   version: 1.0
 
 automations:
-  check_label_type:
+  mark_security_hotspots:
     if:
-      - true
-    run:
-      - action: add-comment@v1
+      - {{ sonar.security_hotspots.count > 0 }}
+    run: 
+      - action: add-label@v1
         args:
-          comment: |
-            this is comment without triggers
+          label: 'Security hotspots 🌶️'          
 
 
 
