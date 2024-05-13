@@ -4,7 +4,7 @@ manifest:
 automations:
   mark_security_hotspots:
     if:
-      - {{ sonar.security_hotspots.count > 0 }}
+      - true
     run: 
       - action: add-label@v1
         args:
