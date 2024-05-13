@@ -8,7 +8,7 @@ automations:
     run: 
       - action: add-label@v1
         args:
-          label: 'Security hotspots �'          
+          label: 'Security hotspots 🌶️'          
 
 
 
