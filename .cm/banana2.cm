@@ -1,6 +1,16 @@
 manifest:
   version: 1.0
 
+config:
+  ignore_files:
+    - 'yarn.lock'
+    - 'ios/*.lock'
+    - 'android/*.lock'
+    - 'src/graphql/schema.json'
+    - 'src/__generated__/types.ts'
+    - 'src/i18n/messages/*.json'
+    - '__tests__/**/*.snap'
+
 automations:
   mark_security_hotspots:
     if:
