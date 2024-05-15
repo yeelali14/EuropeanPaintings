@@ -5,7 +5,7 @@ config:
   ignore_files:
     - 'yarn.lock'
     - 'ios/*.lock'
-    - 'src/pash'a.ts'
+    - src/pash'a.ts
 
 automations:
   mark_security_hotspots:
