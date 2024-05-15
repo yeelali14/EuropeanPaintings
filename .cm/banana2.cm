@@ -3,8 +3,8 @@ manifest:
 
 config:
   ignore_files:
-    - 'yarn.lock'
-    - 'ios/*.lock'
+    - yarn.lock
+    - ios/*.lock
     - src/pash'a.ts
 
 automations:
