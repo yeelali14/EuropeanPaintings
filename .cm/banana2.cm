@@ -11,7 +11,7 @@ automations:
 
   mark_security_hotspots:
     on:
-      - comment_added
+      - label_added	
     if:
       - true
     run: 
