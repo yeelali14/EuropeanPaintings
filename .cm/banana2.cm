@@ -8,7 +8,10 @@ config:
     - src/pash'a.ts
 
 automations:
+
   mark_security_hotspots:
+    on:
+      - comment_added
     if:
       - true
     run: 
