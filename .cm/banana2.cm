@@ -12,15 +12,8 @@ automations:
           label: 'Security hotspots 🌶️'          
   code_experts:
     if:
-      - true
+      - false
     run:
       - action: explain-code-experts@v1 
         args:
           gt: 10
-  check_conflicts:
-    if:
-      - { pr.conflicted_files_count | length > 0 }
-    run:
-      - action: add-label@v1
-        args:
-          label: pr conflicts 🚩
