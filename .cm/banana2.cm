@@ -2,7 +2,7 @@ manifest:
   version: 1.0
 
 on:
-  - commit
+  - pr_created
 
 automations:
 
@@ -15,7 +15,7 @@ automations:
           label: 'Security hotspots 🌶️'          
   auto_releae:
     if:
-      - false
+      - true
     run:
       - action: approve@v1
       - action: merge@v1
