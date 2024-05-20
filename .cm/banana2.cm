@@ -10,10 +10,9 @@ automations:
       - action: add-label@v1
         args:
           label: 'Security hotspots 🌶️'          
-  code_experts:
+  auto_releae:
     if:
       - false
     run:
-      - action: explain-code-experts@v1 
-        args:
-          gt: 10
+      - action: approve@v1
+      - action: merge@v1
