@@ -1,6 +1,9 @@
 manifest:
   version: 1.0
 
+on:
+  - pr_created
+
 automations:
 
   mark_security_hotspots:
