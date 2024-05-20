@@ -2,11 +2,11 @@ manifest:
   version: 1.0
 
 on:
-  - pr_created
+  - commit
 
 automations:
 
-  mark_security_hotspots:
+  mark_security_hotspots_1:
     if:
       - true
     run: 
