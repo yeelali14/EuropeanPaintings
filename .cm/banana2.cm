@@ -1,9 +1,6 @@
 manifest:
   version: 1.0
 
-on:
-  - pr_created
-
 automations:
 
   mark_security_hotspots:
@@ -15,7 +12,7 @@ automations:
           label: 'Security hotspots 🌶️'          
   auto_releae:
     if:
-      - true
+      - false
     run:
       - action: approve@v1
       - action: merge@v1
