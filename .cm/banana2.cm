@@ -29,3 +29,13 @@ automations:
       - action: add-label@v1
         args:
           label: '🤖 Copilot'
+
+  code_experts:
+    on:
+      - pr_created
+    if:
+      - true
+    run:
+      - action: explain-code-experts@v1 
+        args:
+          gt: 10
