@@ -24,7 +24,7 @@ automations:
     # If the PR author has indicated that they used Copilot to assist coding in this PR, 
     # apply a label indicating the PR was supported by Copilot
     if:
-      - {{ pr.comments | filter(attr='commenter', term='gitstream-cm') | filter (attr='content', regex=r/\- \[x\] Copilot Assisted/) | some}}
+      - {{ pr.comments | filter(attr='commenter', term='gitstream-daveloper') | filter (attr='content', regex=r/\- \[x\] Copilot Assisted/) | some}}
     run:
       - action: add-label@v1
         args:
