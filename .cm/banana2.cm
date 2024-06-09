@@ -5,7 +5,7 @@ manifest:
 
 
 automations:
-  send_slack:
+  send_slack_1:
     if:
       - true
     run:
