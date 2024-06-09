@@ -5,22 +5,13 @@ manifest:
 
 
 automations:
-  label_missing_jira_info:
+  send_slack:
     if:
       - true
     run:
-      - action: request-changes@v1
+      - action: send-slack-message@v1
         args:
-          comment: |
-            Request changes!
-      - action: add-comment@v1
-        args:
-          comment: |
-            This PR is missing a Jira ticket reference in the title or description.
-            Please add a Jira ticket reference to the title or description of this PR.
-      - action: close@v1
-        args:
-          comment: shut the pr
-      - action: explain-code-experts@v1 
-        args:
-          gt: 10
+          message: "Hello world :tada:."
+          webhook_url: "{{ slack_webhook }}"
+
+slack_webhook: {{ env.SLACK_DEV_WEBHOOK }}
