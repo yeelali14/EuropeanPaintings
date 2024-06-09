@@ -39,6 +39,8 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     name: gitStream workflow automation
+    env:
+      SLACK_DEV_WEBHOOK: ${{ secrets.SLACK_DEV_WEBHOOK }}
     steps:
       - name: Evaluate Rules
         uses: linear-b/gitstream-github-action@yeela
