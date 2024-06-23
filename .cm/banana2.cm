@@ -14,4 +14,13 @@ automations:
           message: "Hello world :tada:."
           webhook_url: "{{ slack_webhook }}"
 
+  small_change:
+    if:
+      - {{ files | allDocs }}
+    run:
+      - action: merge@v1
+        args:
+          rebase_on_merge: true
+
+
 slack_webhook: {{ env.SLACK_DEV_WEBHOOK }}
