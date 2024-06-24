@@ -1,0 +1,17 @@
+# -*- mode: yaml -*-
+
+manifest:
+  version: 1.0
+
+automations:
+  check_regex:
+    if:
+      - true
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            sourceBranchNames: {{ sourceBranchNames }}
+            targetBranchNames: {{ targetBranchNames }}
+sourceBranchNames: {{ pr.source | includes(regex=r/\b(?:master|main|release\/\d+\.\d+\.\d+|Master|hotfix\/\d+\.\d+\.\d+|develop|release|hotfix)\b/gmi) }}
+targetBranchNames: {{ pr.target | includes(regex=r/\b(?:master|main|release\/\d+\.\d+\.\d+|Master|hotfix\/\d+\.\d+\.\d+|develop|release|hotfix)\b/gmi) }}
