@@ -35,4 +35,4 @@ bla bla bla`
 LINBEE-9077 TEST 
 trydas
 debug
-static params
+static paramsdasdas
