@@ -33,3 +33,5 @@ Lady gaga the queen
 team flare :)
 bla bla bla
 fsdfsdfsdrwerdada
+      IS_ENABLE_DEBUG_ARTIFACTS: true
+      IS_ENABLE_CACHE: false
