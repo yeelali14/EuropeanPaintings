@@ -41,6 +41,8 @@ jobs:
     name: gitStream workflow automation
     env:
       SLACK_DEV_WEBHOOK: ${{ secrets.SLACK_DEV_WEBHOOK }}
+      IS_ENABLE_DEBUG_ARTIFACTS: true
+      IS_ENABLE_CACHE: false
     steps:
       - name: Evaluate Rules
         uses: linear-b/gitstream-github-action@v2
@@ -54,3 +56,9 @@ jobs:
           resolver_url: ${{ github.event.inputs.resolver_url }}
           resolver_token: ${{ github.event.inputs.resolver_token }}
           debug_mode: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          retention-days: 7
+          name: output
+          path: code/output
