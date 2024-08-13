@@ -41,11 +41,9 @@ jobs:
     name: gitStream workflow automation
     env:
       SLACK_DEV_WEBHOOK: ${{ secrets.SLACK_DEV_WEBHOOK }}
-      IS_ENABLE_DEBUG_ARTIFACTS: true
-      IS_ENABLE_CACHE: false
     steps:
       - name: Evaluate Rules
-        uses: linear-b/gitstream-github-action@LINBEE-9077-fix-bump-gitstream-core-to-2.1.34
+        uses: linear-b/gitstream-github-action@v2
         id: rules-engine
         with:
           full_repository: ${{ github.event.inputs.full_repository }}
