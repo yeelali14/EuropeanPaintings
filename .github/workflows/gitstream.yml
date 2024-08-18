@@ -41,8 +41,8 @@ jobs:
     name: gitStream workflow automation
     env:
       SLACK_DEV_WEBHOOK: ${{ secrets.SLACK_DEV_WEBHOOK }}
-      ENABLE_DEBUG_ARTIFACTS: false
-      ENABLE_CACHE: true
+      ENABLE_DEBUG_ARTIFACTS: true
+      ENABLE_CACHE: false
     steps:
       - name: Evaluate Rules
         uses: linear-b/gitstream-github-action@v2
