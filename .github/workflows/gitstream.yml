@@ -45,7 +45,7 @@ jobs:
       ENABLE_CACHE: true
     steps:
       - name: Evaluate Rules
-        uses: linear-b/gitstream-github-action@bump-gitstream-core-to-2.1.44
+        uses: linear-b/gitstream-github-action@v1
         id: rules-engine
         with:
           full_repository: ${{ github.event.inputs.full_repository }}
