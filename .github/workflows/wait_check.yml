@@ -1,6 +1,6 @@
 on:
   pull_request:
-    types: [synchronize]
+    types: [synchronize, opened]
 
 jobs:
   wait_a_minute:
