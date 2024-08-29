@@ -8,6 +8,9 @@ automations:
     if:
       - true
     run:
+      - action: add-label@v1
+        args:
+          label: 'no merger'
       - action: add-comment@v1
         args:
           comment: |
