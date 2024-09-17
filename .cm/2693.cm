@@ -6,7 +6,7 @@ automations:
     if: 
       - true
     run:
-      - action: request-changes@v1
+      - action: add-comment@v1
         args:
           comment: |
-            request changes test
+            comment 1
