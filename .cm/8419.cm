@@ -4,24 +4,11 @@ manifest:
   version: 1.0
 
 automations:
-  explain_code_experts:
+  code_experts:
     if:
       - true
     run:
-      - action: explain-code-experts@v1 
-        args:
-          gt: 10 
-  check_regex:
-    if:
-      - true
-    run:
-      - action: add-label@v1
-        args:
-          label: 'no merger'
       - action: add-comment@v1
         args:
           comment: |
-            sourceBranchNames: {{ sourceBranchNames }}
-            targetBranchNames: {{ targetBranchNames }}
-sourceBranchNames: {{ pr.source | includes(regex=r/\b(?:master|main|release\/\d+\.\d+\.\d+|Master|hotfix\/\d+\.\d+\.\d+|develop|release|hotfix)\b/gmi) }}
-targetBranchNames: {{ pr.target | includes(regex=r/\b(?:master|main|release\/\d+\.\d+\.\d+|Master|hotfix\/\d+\.\d+\.\d+|develop|release|hotfix)\b/gmi) }}
+            Reviewers {{ repo | codeExperts(gt=10) }}
