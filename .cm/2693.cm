@@ -1,6 +1,14 @@
 manifest:
     version: 1.0
 
+
+triggers:
+  exclude:
+    branch:
+      - l10n_dev
+      - dev
+      - r/(Dependabot|Renovate)/i
+
 automations:
   just_comment:
     if: 
