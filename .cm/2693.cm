@@ -7,7 +7,7 @@ triggers:
     branch:
       - l10n_dev
       - dev
-      - r/(Dependabot|Renovate)/i
+      - r/([Dd]ependabot|[Rr]enovate)/
 
 automations:
   just_comment:
