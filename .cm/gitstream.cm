@@ -13,7 +13,7 @@ automations:
           color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
   review_state:
     if:
-      - {{ meaningfulFilesLength > 15 }}
+      - {{ meaningfulFilesLength > 1 }}
     run:
       - action: add-label@v1
         args:
