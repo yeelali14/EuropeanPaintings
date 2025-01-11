@@ -18,3 +18,11 @@ automations:
         args:
           comment: |
             comment 1
+  code_experts:
+    if: 
+      - {{ branch | estimatedReviewTime | length == 1 }}
+    run:
+      - action: add-comment@v1
+        args:
+          comment: |
+            Reviewers {{ repo | codeExperts(gt=10) }}
