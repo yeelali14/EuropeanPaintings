@@ -1,6 +1,10 @@
 # -*- mode: yaml -*-
 manifest:
   version: 1.0
+
+config:
+  admin:
+    users: ['yeelali14']
     
 automations:
   estimated_time_to_review:
