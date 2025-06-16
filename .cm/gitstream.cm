@@ -6,13 +6,12 @@ config:
   admin:
     users: ['yeelali14']
   user_mapping:
-    - 'Yeela <yeela@gitatechnologies.com>': 'yeeali14',
-    - 'yeelali14 <52451294+yeelali14@users.noreply.github.com>': 'yeeali14',
+    - 'Yeela <yeela@gitatechnologies.com>': 'yeelali14',
+    - 'yeelali14 <52451294+yeelali14@users.noreply.github.com>': 'yeelali14',
     - 'EladKohavi <106978846+EladKohavi@users.noreply.github.com>': null,
     - 'Elad Kohavi <106978846+EladKohavi@users.noreply.github.com>': null,
-    - 'Yeela Lifshitz <yeelalifshitz@Yeela-MacBook-Pro.local>': 'yeeali14',
-    - 'Yeela Lifshitz <52451294+yeelali14@users.noreply.github.com>': 'yeeali14'
-
+    - 'Yeela Lifshitz <yeelalifshitz@Yeela-MacBook-Pro.local>': 'yeelali14',
+    - 'Yeela Lifshitz <52451294+yeelali14@users.noreply.github.com>': 'yeelali14'
     
 automations:
   estimated_time_to_review:
