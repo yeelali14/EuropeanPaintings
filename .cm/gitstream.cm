@@ -23,6 +23,13 @@ automations:
         args:
           label: {{ "HARD_REVIEW" if meaningfulFilesLength < 25 else "UNREVIEWABLE" }}
           color: {{ "FF6600" if meaningfulFilesLength < 25 else "D30000" }} 
+  code_experts:
+    if:
+      - true
+    run:
+      - action: explain-code-experts@v1
+        args:
+          gt: 10
   
 calc:
   etr: {{ branch | estimatedReviewTime }}
