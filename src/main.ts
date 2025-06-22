@@ -77,3 +77,4 @@ const action = {
 // need to change action.automation value to:
 action.automation = `${automaion.cm_path.replace('.cm', '')}/${automation_title}`
 // where automation.tags.cm_path == action.tags.cm_path and automation.entity.pr_url == action.entity.pr_url
+// report
