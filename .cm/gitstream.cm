@@ -1,44 +1,30 @@
 # -*- mode: yaml -*-
 manifest:
   version: 1.0
-
-config:
-  admin:
-    users: ['yeelali14']
-  user_mapping:
-    - 'Yeela <yeela@gitatechnologies.com>': 'yeelali14'
-    - 'yeelali14 <52451294+yeelali14@users.noreply.github.com>': 'yeelali14'
-    - 'EladKohavi <106978846+EladKohavi@users.noreply.github.com>': null
-    - 'Elad Kohavi <106978846+EladKohavi@users.noreply.github.com>': null
-    - 'Yeela Lifshitz <yeelalifshitz@Yeela-MacBook-Pro.local>': 'yeelali14'
-    - 'Yeela Lifshitz <52451294+yeelali14@users.noreply.github.com>': 'yeelali14'
-    
 automations:
-  estimated_time_to_review:
+  enforce_pr_title:
     if:
-      - true
+      - {{ pr.title | match(regex=titlePolicy.titleRegex) | nope }}
     run:
-      - action: add-label@v1
+      - action: request-changes@v1
         args:
-          label: "{{ calc.etr }} min review"
-          color: {{ 'E94637' if (calc.etr >= 20) else ('FBBD10' if (calc.etr >= 5) else '36A853') }}
-  review_state:
-    if:
-      - {{ meaningfulFilesLength > 1 }}
-    run:
-      - action: add-label@v1
-        args:
-          label: {{ "HARD_REVIEW" if meaningfulFilesLength < 25 else "UNREVIEWABLE" }}
-          color: {{ "FF6600" if meaningfulFilesLength < 25 else "D30000" }} 
-  code_experts:
-    if:
-      - true
-    run:
-      - action: explain-code-experts@v1
-        args:
-          gt: 10
-  
-calc:
-  etr: {{ branch | estimatedReviewTime }}
+          comment: |
+            All PRs must be titled according to our semantic naming policy: `<type>(<scope>): <short summary>`
 
-meaningfulFilesLength: {{ files | filter(regex=r/\.js$|\.py$/) | length }}
+            Type must be one of the following:
+
+             * build
+             * ci
+             * docs
+             * feature
+             * fix
+
+            Scope must be one of the following:
+
+             * common
+             * core
+             * elements
+             * forms
+             * http
+titlePolicy:
+    titleRegex: r/^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\\([-a-z\\d ]+\\))?:\\s[a-z][-.,;/\\w ]*\\s[A-Z]+-\\d+$/
