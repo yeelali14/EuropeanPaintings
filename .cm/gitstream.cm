@@ -4,7 +4,7 @@ manifest:
 automations:
   enforce_pr_title:
     if:
-      - {{ pr.title | match(regex=titlePolicy.titleRegex) | nope }}
+      - {{ pr.title | includes(regex=titlePolicy.titleRegex) }}
     run:
       - action: request-changes@v1
         args:
@@ -27,4 +27,4 @@ automations:
              * forms
              * http
 titlePolicy:
-    titleRegex: r/^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\\([-a-z\\d ]+\\))?:\\s[a-z][-.,;/\\w ]*\\s[A-Z]+-\\d+$/
+    titleRegex: r/^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([-a-z\d ]+\))?:\s[a-z][-.,;/\w ]*\s[A-Z]+-\d+$/
