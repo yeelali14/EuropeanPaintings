@@ -4,7 +4,7 @@ export class Artwork {
     DominantColour: string;
     DominantPrimaryColour: Array<string>;
 
-    constructor(i_ObjectID?: string, i_ImageURL?: string, i_DominantColour?: string, i_DominantPrimary?: Array<string>) {
+    constructor(i_ObjectID?: number, i_ImageURL?: string, i_DominantColour?: string, i_DominantPrimary?: Array<string>) {
         this.ObjectID = i_ObjectID;
         this.ImageURL = i_ImageURL;
         this.DominantColour = i_DominantColour;
