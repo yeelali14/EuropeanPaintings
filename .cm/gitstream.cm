@@ -2,7 +2,7 @@
 manifest:
   version: 1.0
 automations:
-  enforce_pr_title:
+  enforce_pr_title_1:
     if:
       - {{ pr.title | includes(regex=titlePolicy.titleRegex) }}
     run:
