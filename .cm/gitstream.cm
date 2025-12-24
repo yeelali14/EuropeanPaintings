@@ -1,30 +1,95 @@
 # -*- mode: yaml -*-
+
 manifest:
   version: 1.0
+
 automations:
-  enforce_pr_title:
+  pr_lint:
     if:
-      - {{ pr.title | includes(regex=titlePolicy.titleRegex) }}
+      - {{ not is.bot }}
+      - {{ prlint.failed }}
     run:
-      - action: request-changes@v1
+      - action: add-comment@v1
         args:
           comment: |
-            All PRs must be titled according to our semantic naming policy: `<type>(<scope>): <short summary>`
+            
+            follows:
+              title_convention: {{ pr.title | includes(regex=commitConventionRegex) }}
+              branch_convention: {{ branch.name | includes(regex=branchTypeRegex) }}
+              commit_convention: {{ branch.commits.messages | filter(regex=notCoAuthoredByRegex) | match(regex=commitConventionRegex) | every }}
 
-            Type must be one of the following:
+            jira:
+              in_title: {{ pr.title | includes(regex=jiraTicketRegex) }}
+              in_branch: {{ branch.name | includes(regex=jiraTicketRegex) }}
 
-             * build
-             * ci
-             * docs
-             * feature
-             * fix
+            breaking_changes:
+              in_title: {{ follows.title_convention and pr.title | includes(term='!:') }}
+              in_pr_description: {{ pr.description | includes(term='BREAKING_CHANGES') }}
 
-            Scope must be one of the following:
+            is:
+              bot: {{ pr.author | match(list=['github-actions', 'dependabot', '[bot]']) | some }}
+              following_conventions: {{ follows.title_convention and follows.branch_convention and follows.commit_convention }}
+              jira_ticket_provided: {{ jira.in_title and jira.in_branch }}
+              breaking_change: {{ breaking_changes.in_title or breaking_changes.in_pr_description }}
 
-             * common
-             * core
-             * elements
-             * forms
-             * http
-titlePolicy:
-    titleRegex: r/^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([-a-z\d ]+\))?:\s[a-z][-.,;/\w ]*\s[A-Z]+-\d+$/
+            follows.title_convention: ==={{ follows.title_convention }}===
+            follows.branch_convention: ==={{ follows.branch_convention }}===
+            follows.commit_convention: ==={{ follows.commit_convention }}===
+
+            follows.title and follows.branch: ==={{ follows.title_convention and follows.branch_convention }}===
+            follows.title and follows.commit: ==={{ follows.title_convention and follows.commit_convention}}===
+            follows.branch and follows.commit: ==={{ follows.branch_convention and follows.commit_convention}}===
+
+            follows.all: ==={{ follows.title_convention and follows.branch_convention and follows.commit_convention }}===
+            is.following_conventions: ==={{ is.following_conventions }}===
+            not is.following_conventions: ==={{ not is.following_conventions }}===
+            
+            is.three_trues: ==={{ is.three_trues }}===
+            not is.three_trues: ==={{ not is.three_trues }}===
+            fails:
+              convention: {{ not is.following_conventions }}
+              jira: {{ not is.jira_ticket_provided }}
+
+            pr_lint.failed: {{ pr_lint.failed }}
+
+      - action: add-label@v1
+        args:
+          label: pr-lint-evaluation
+          color: FF5C00 # Neon Orange
+
+follows:
+  title_convention: {{ pr.title | includes(regex=commitConventionRegex) }}
+  branch_convention: {{ branch.name | includes(regex=branchTypeRegex) }}
+  commit_convention: {{ branch.commits.messages | filter(regex=notCoAuthoredByRegex) | match(regex=commitConventionRegex) | every }}
+
+truths:
+  one: {{ true }}
+  two: {{ true }}
+  three: {{ true }}
+
+jira:
+  in_title: {{ pr.title | includes(regex=jiraTicketRegex) }}
+  in_branch: {{ branch.name | includes(regex=jiraTicketRegex) }}
+
+breaking_changes:
+  in_title: {{ follows.title_convention and pr.title | includes(term='!:') }}
+  in_pr_description: {{ pr.description | includes(term='BREAKING_CHANGES') }}
+
+is:
+  bot: {{ pr.author | match(list=['github-actions', 'dependabot', '[bot]']) | some }}
+  following_conventions: {{ follows.title_convention and follows.branch_convention and follows.commit_convention }}
+  three_trues: {{ truths.one and truths.two and truths.three }}
+  jira_ticket_provided: {{ jira.in_title and jira.in_branch }}
+  breaking_change: {{ breaking_changes.in_title or breaking_changes.in_pr_description }}
+
+fails:
+  convention: {{ not is.following_conventions }}
+  jira: {{ not is.jira_ticket_provided }}
+
+prlint: 
+  failed: {{ fails.convention or fails.jira }}
+
+jiraTicketRegex: r/\b[A-Za-z]+-\d+\b/
+commitConventionRegex: r/^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.*\))?[!]?:.*/
+branchTypeRegex: r/^(feat|feature|fix|hotfix|docs|style|refactor|perf|test|build|ci|chore|revert)\//
+notCoAuthoredByRegex: r/^(?!Co-authored-by:).*/
