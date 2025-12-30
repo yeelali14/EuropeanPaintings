@@ -27,6 +27,27 @@ export class HttpService {
       }));
   }
 
+  async fetchData(url: string): Promise<any> {
+    const result = this.http.get(url).toPromise();
+    return result;
+  }
+
+  post(url: string, data: any): Observable<any> {
+    console.log('Posting to:', endpointUrl);
+    return this.http.post(url, data, httpOptions)
+      .pipe(
+        catchError((err) => {
+          return this.handleError(err);
+        }));
+  }
+
+  delete(url: string, id: any): Observable<any> {
+    if (id != null) {
+      const deleteUrl = `${url}/${id}`;
+      return this.http.delete(deleteUrl, httpOptions);
+    }
+  }
+
   private handleError(error: HttpErrorResponse) {
     console.log('dasda');
     if (error.error instanceof ErrorEvent) {
