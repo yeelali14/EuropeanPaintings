@@ -55,6 +55,7 @@ export class HttpService {
       console.error('An error occurred:', error.message);
     } else {
       // The backend returned an unsuccessful response code.
+      // test
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.message}`);
