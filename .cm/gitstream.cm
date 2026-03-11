@@ -5,7 +5,7 @@ manifest:
 triggers:
   include:
     branch:
-      - r/^PLAT-\\d+$/
+      - r/^PLAT-\d+$/
     repository:
       - 'EuropeanPaintings'
       - 'mxm-proxy-routes'
