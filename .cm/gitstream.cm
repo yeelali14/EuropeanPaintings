@@ -1,95 +1,60 @@
 # -*- mode: yaml -*-
-
 manifest:
   version: 1.0
 
+triggers:
+  include:
+    branch:
+      - r/^PLAT-\\d+$/
+    repository:
+      - 'EuropeanPaintings'
+      - 'mxm-proxy-routes'
+      - 'ritmo'
+      - 'react-universal'
+
 automations:
-  pr_lint:
+  double_review:
     if:
-      - {{ not is.bot }}
-      - {{ prlint.failed }}
+      - true
     run:
-      - action: add-comment@v1
+      # To allow this action to block merge, enable branch protection and set gitStream as a required check.
+      - action: set-required-approvals@v1
         args:
-          comment: |
-            
-            follows:
-              title_convention: {{ pr.title | includes(regex=commitConventionRegex) }}
-              branch_convention: {{ branch.name | includes(regex=branchTypeRegex) }}
-              commit_convention: {{ branch.commits.messages | filter(regex=notCoAuthoredByRegex) | match(regex=commitConventionRegex) | every }}
-
-            jira:
-              in_title: {{ pr.title | includes(regex=jiraTicketRegex) }}
-              in_branch: {{ branch.name | includes(regex=jiraTicketRegex) }}
-
-            breaking_changes:
-              in_title: {{ follows.title_convention and pr.title | includes(term='!:') }}
-              in_pr_description: {{ pr.description | includes(term='BREAKING_CHANGES') }}
-
-            is:
-              bot: {{ pr.author | match(list=['github-actions', 'dependabot', '[bot]']) | some }}
-              following_conventions: {{ follows.title_convention and follows.branch_convention and follows.commit_convention }}
-              jira_ticket_provided: {{ jira.in_title and jira.in_branch }}
-              breaking_change: {{ breaking_changes.in_title or breaking_changes.in_pr_description }}
-
-            follows.title_convention: ==={{ follows.title_convention }}===
-            follows.branch_convention: ==={{ follows.branch_convention }}===
-            follows.commit_convention: ==={{ follows.commit_convention }}===
-
-            follows.title and follows.branch: ==={{ follows.title_convention and follows.branch_convention }}===
-            follows.title and follows.commit: ==={{ follows.title_convention and follows.commit_convention}}===
-            follows.branch and follows.commit: ==={{ follows.branch_convention and follows.commit_convention}}===
-
-            follows.all: ==={{ follows.title_convention and follows.branch_convention and follows.commit_convention }}===
-            is.following_conventions: ==={{ is.following_conventions }}===
-            not is.following_conventions: ==={{ not is.following_conventions }}===
-            
-            is.three_trues: ==={{ is.three_trues }}===
-            not is.three_trues: ==={{ not is.three_trues }}===
-            fails:
-              convention: {{ not is.following_conventions }}
-              jira: {{ not is.jira_ticket_provided }}
-
-            pr_lint.failed: {{ pr_lint.failed }}
-
+          approvals: 2
       - action: add-label@v1
         args:
-          label: pr-lint-evaluation
-          color: FF5C00 # Neon Orange
+          label: ">{{ config.max_changes }} code changes"
+          color: {{ colors.red }}
+      - action: add-label@v1
+        args:
+          label: "too many code changes"
+          color: {{ colors.red }}
 
-follows:
-  title_convention: {{ pr.title | includes(regex=commitConventionRegex) }}
-  branch_convention: {{ branch.name | includes(regex=branchTypeRegex) }}
-  commit_convention: {{ branch.commits.messages | filter(regex=notCoAuthoredByRegex) | match(regex=commitConventionRegex) | every }}
+colors:
+  red: 'b60205'
 
-truths:
-  one: {{ true }}
-  two: {{ true }}
-  three: {{ true }}
+stats:
+  total_changes: {{ (stats.test_changes + stats.jsx_changes + stats.other_changes) | round }}
 
-jira:
-  in_title: {{ pr.title | includes(regex=jiraTicketRegex) }}
-  in_branch: {{ branch.name | includes(regex=jiraTicketRegex) }}
+  test_changes: {{ (stats.test_additions + stats.test_deletions) * config.test_weight }}
+  test_additions: {{ branch.diff.files_metadata | filter(attr='file', regex=r/\.(spec|test)\.(ts|tsx|js|jsx)$/) | map(attr='additions') | sum }}
+  test_deletions: {{ branch.diff.files_metadata | filter(attr='file', regex=r/\.(spec|test)\.(ts|tsx|js|jsx)$/) | map(attr='deletions') | sum }}
 
-breaking_changes:
-  in_title: {{ follows.title_convention and pr.title | includes(term='!:') }}
-  in_pr_description: {{ pr.description | includes(term='BREAKING_CHANGES') }}
+  jsx_changes: {{ (stats.jsx_additions + stats.jsx_deletions) * config.jsx_weight }}
+  jsx_additions: {{ branch.diff.files_metadata | filter(attr='file', regex=r/(?<!\.(spec|test))\.(tsx|jsx)$/) | map(attr='additions') | sum }}
+  jsx_deletions: {{ branch.diff.files_metadata | filter(attr='file', regex=r/(?<!\.(spec|test))\.(tsx|jsx)$/) | map(attr='deletions') | sum }}
 
-is:
-  bot: {{ pr.author | match(list=['github-actions', 'dependabot', '[bot]']) | some }}
-  following_conventions: {{ follows.title_convention and follows.branch_convention and follows.commit_convention }}
-  three_trues: {{ truths.one and truths.two and truths.three }}
-  jira_ticket_provided: {{ jira.in_title and jira.in_branch }}
-  breaking_change: {{ breaking_changes.in_title or breaking_changes.in_pr_description }}
+  other_changes: {{ (stats.other_additions + stats.other_deletions) * config.other_weight }}
+  other_additions: {{ branch.diff.files_metadata | reject(attr='file', regex=r/\.(spec|test)\.(ts|tsx|js|jsx)$/) | reject(attr='file', regex=r/(?<!\.(spec|test))\.(tsx|jsx)$/) | map(attr='additions') | sum }}
+  other_deletions: {{ branch.diff.files_metadata | reject(attr='file', regex=r/\.(spec|test)\.(ts|tsx|js|jsx)$/) | reject(attr='file', regex=r/(?<!\.(spec|test))\.(tsx|jsx)$/) | map(attr='deletions') | sum }}
 
-fails:
-  convention: {{ not is.following_conventions }}
-  jira: {{ not is.jira_ticket_provided }}
+config:
+  max_changes: 170
 
-prlint: 
-  failed: {{ fails.convention or fails.jira }}
+  test_weight: 0.3
+  jsx_weight: 0.8
+  other_weight: 1.0
 
-jiraTicketRegex: r/\b[A-Za-z]+-\d+\b/
-commitConventionRegex: r/^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.*\))?[!]?:.*/
-branchTypeRegex: r/^(feat|feature|fix|hotfix|docs|style|refactor|perf|test|build|ci|chore|revert)\//
-notCoAuthoredByRegex: r/^(?!Co-authored-by:).*/
+  ignore_files:
+    - '**/openapi.yaml'
+    - '**/openapi.yml'
