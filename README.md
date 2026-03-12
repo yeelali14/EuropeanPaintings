@@ -36,3 +36,4 @@ Lady gaga the queenddddd
 bla bla bla
 ffsdfs
 ulu
+CS-6666 wrong regex
